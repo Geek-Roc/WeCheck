@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JgV-6D-InI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JgV-6D-InI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ewrfasdf" id="82f-T2-fsh"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="mainSegue" id="82f-T2-fsh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpb-98-RnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,12 +64,32 @@
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="ymu-i3-r9K"/>
                     <connections>
-                        <segue destination="nLm-sb-Bej" kind="show" identifier="checklistSegue" id="Xl4-6x-H01"/>
+                        <segue destination="nLm-sb-Bej" kind="show" identifier="checkListSegue" id="Xl4-6x-H01"/>
+                        <segue destination="W4X-ri-MDW" kind="show" identifier="checkResultSegue" id="OzQ-Zq-fcd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="430" y="419"/>
+        </scene>
+        <!--结果-->
+        <scene sceneID="QNq-3M-SaL">
+            <objects>
+                <viewController id="W4X-ri-MDW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X8M-0Q-SrR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vho-HK-a0B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xS9-zH-hck">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="结果" id="zSi-sA-aGT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqc-Tt-aoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="430" y="1179"/>
         </scene>
         <!--签到列表-->
         <scene sceneID="PLc-XX-TCc">

@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		77C1334F0EA914A85FD333B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FB43DA1E8F11D8AC0515A6 /* libPods.a */; };
+		FE5C833E1AD6150100A2AF7C /* HRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5C833D1AD6150100A2AF7C /* HRViewController.m */; };
+		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
+		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
+		FE5C83451AD61B0500A2AF7C /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5C83441AD61B0500A2AF7C /* HRCheckListViewController.m */; };
 		FE68B5581AADA225000FA4CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5571AADA225000FA4CE /* main.m */; };
 		FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B55A1AADA225000FA4CE /* AppDelegate.m */; };
-		FE68B55E1AADA225000FA4CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B55D1AADA225000FA4CE /* ViewController.m */; };
 		FE68B5611AADA225000FA4CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE68B55F1AADA225000FA4CE /* Main.storyboard */; };
 		FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5621AADA225000FA4CE /* Images.xcassets */; };
 		FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5641AADA225000FA4CE /* LaunchScreen.xib */; };
@@ -31,13 +34,17 @@
 		0E6E62048B787BE94CC4B6E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C88CDCD80646C23699CA936C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F2FB43DA1E8F11D8AC0515A6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5C833C1AD6150100A2AF7C /* HRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRViewController.h; sourceTree = "<group>"; };
+		FE5C833D1AD6150100A2AF7C /* HRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRViewController.m; sourceTree = "<group>"; };
+		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FE5C83431AD61B0500A2AF7C /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
+		FE5C83441AD61B0500A2AF7C /* HRCheckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckListViewController.m; sourceTree = "<group>"; };
 		FE68B5521AADA225000FA4CE /* WeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5561AADA225000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE68B5571AADA225000FA4CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FE68B5591AADA225000FA4CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE68B55A1AADA225000FA4CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FE68B55C1AADA225000FA4CE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FE68B55D1AADA225000FA4CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FE68B5601AADA225000FA4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE68B5621AADA225000FA4CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FE68B5651AADA225000FA4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -51,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */,
+				FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */,
 				77C1334F0EA914A85FD333B4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +86,8 @@
 		F964989FE23B90F122A733D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */,
+				FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */,
 				F2FB43DA1E8F11D8AC0515A6 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -107,12 +118,14 @@
 			children = (
 				FE68B5591AADA225000FA4CE /* AppDelegate.h */,
 				FE68B55A1AADA225000FA4CE /* AppDelegate.m */,
-				FE68B55C1AADA225000FA4CE /* ViewController.h */,
-				FE68B55D1AADA225000FA4CE /* ViewController.m */,
 				FE68B55F1AADA225000FA4CE /* Main.storyboard */,
 				FE68B5621AADA225000FA4CE /* Images.xcassets */,
 				FE68B5641AADA225000FA4CE /* LaunchScreen.xib */,
 				FE68B5551AADA225000FA4CE /* Supporting Files */,
+				FE5C833C1AD6150100A2AF7C /* HRViewController.h */,
+				FE5C833D1AD6150100A2AF7C /* HRViewController.m */,
+				FE5C83431AD61B0500A2AF7C /* HRCheckListViewController.h */,
+				FE5C83441AD61B0500A2AF7C /* HRCheckListViewController.m */,
 			);
 			path = WeCheck;
 			sourceTree = "<group>";
@@ -278,7 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE68B55E1AADA225000FA4CE /* ViewController.m in Sources */,
+				FE5C833E1AD6150100A2AF7C /* HRViewController.m in Sources */,
+				FE5C83451AD61B0500A2AF7C /* HRCheckListViewController.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
 			);

@@ -113,6 +113,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nLm-sb-Bej" id="9IW-iY-Rub"/>
+                                    <outlet property="delegate" destination="nLm-sb-Bej" id="Jtf-k8-vvJ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,6 +128,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="签到列表" id="Wzy-IV-nwX"/>
+                    <connections>
+                        <outlet property="beaconTableView" destination="wZc-Yf-DUW" id="jBC-Tt-WX4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdp-13-jxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

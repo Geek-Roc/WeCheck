@@ -18,9 +18,11 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 
 @interface HRCheckListViewController ()<CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *beaconTableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, unsafe_unretained) void *operationContext;
+@property (nonatomic, strong) NSArray *findBeacons;
 
 @end
 
@@ -78,18 +80,21 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _findBeacons.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckListCell" forIndexPath:indexPath];
+    CLBeacon *beacon = _findBeacons[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@%@",beacon.major,beacon.minor];
+
     return cell;
 }
 #pragma mark - Location manager delegate methods
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     if (![CLLocationManager locationServicesEnabled]) {
-        if (self.operationContext == kMonitoringOperationContext) {
+        if (_operationContext == kMonitoringOperationContext) {
             NSLog(@"Couldn't turn on monitoring: Location services are not enabled.");
             return;
         } else {
@@ -101,20 +106,20 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
     switch (authorizationStatus) {
         case kCLAuthorizationStatusAuthorizedAlways:
-            if (self.operationContext == kMonitoringOperationContext) {
+            if (_operationContext == kMonitoringOperationContext) {
             } else {
             }
             return;
             
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            if (self.operationContext == kMonitoringOperationContext) {
+            if (_operationContext == kMonitoringOperationContext) {
                 NSLog(@"Couldn't turn on monitoring: Required Location Access(Always) missing.");
             } else {
             }
             return;
             
         default:
-            if (self.operationContext == kMonitoringOperationContext) {
+            if (_operationContext == kMonitoringOperationContext) {
                 NSLog(@"Couldn't turn on monitoring: Required Location Access(Always) missing.");
                 return;
             } else {
@@ -135,6 +140,9 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
                 NSLog(@"Found %lu %@.", (unsigned long)[filteredBeacons count],
                         [filteredBeacons count] > 1 ? @"beacons" : @"beacon");
     }
+    _findBeacons = filteredBeacons;
+    
+    [_beaconTableView reloadData];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
@@ -181,6 +189,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
+#pragma mark - Index path management
 - (NSArray *)filteredBeacons:(NSArray *)beacons
 {
     // Filters duplicate beacons out; this may happen temporarily if the originating device changes its Bluetooth id

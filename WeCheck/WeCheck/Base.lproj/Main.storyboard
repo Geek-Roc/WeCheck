@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JgV-6D-InI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="95S-wl-MQx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
-        <scene sceneID="fMX-iT-cdS">
+        <scene sceneID="oEo-Nn-iEz">
             <objects>
-                <navigationController id="JgV-6D-InI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x8m-BO-4nH">
+                <navigationController storyboardIdentifier="NavigationStoryID" id="95S-wl-MQx" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jqd-DC-7Ac">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.75294117650000003" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KK3-hs-AhZ">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="mainSegue" id="82f-T2-fsh"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aJp-VL-rS2"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vpb-98-RnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4OA-od-I6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-262" y="424"/>
+            <point key="canvasLocation" x="-242" y="453"/>
         </scene>
         <!--首页-->
         <scene sceneID="tne-QT-ifu">
@@ -62,15 +60,15 @@
                             <constraint firstAttribute="centerX" secondItem="619-ff-2lW" secondAttribute="centerX" id="tCV-iI-jeM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="ymu-i3-r9K"/>
+                    <navigationItem key="navigationItem" title="首页" id="1Qp-vF-cZz"/>
                     <connections>
-                        <segue destination="nLm-sb-Bej" kind="show" identifier="checkListSegue" id="Xl4-6x-H01"/>
-                        <segue destination="W4X-ri-MDW" kind="show" identifier="checkResultSegue" id="OzQ-Zq-fcd"/>
+                        <segue destination="W4X-ri-MDW" kind="show" identifier="checkResultSegue" id="Hrn-5L-7Cb"/>
+                        <segue destination="nLm-sb-Bej" kind="show" identifier="checkListSegue" id="09K-Wp-Suo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="419"/>
+            <point key="canvasLocation" x="522" y="430"/>
         </scene>
         <!--结果-->
         <scene sceneID="QNq-3M-SaL">
@@ -81,15 +79,15 @@
                         <viewControllerLayoutGuide type="bottom" id="Vho-HK-a0B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xS9-zH-hck">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="结果" id="zSi-sA-aGT"/>
+                    <navigationItem key="navigationItem" title="结果" id="wbE-4F-ilx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqc-Tt-aoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="1179"/>
+            <point key="canvasLocation" x="561" y="1220"/>
         </scene>
         <!--签到列表-->
         <scene sceneID="PLc-XX-TCc">
@@ -125,11 +123,11 @@
                             <constraint firstAttribute="trailing" secondItem="wZc-Yf-DUW" secondAttribute="trailing" id="Scf-2r-p0b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="签到列表" id="sNN-Gr-bjZ"/>
+                    <navigationItem key="navigationItem" title="签到列表" id="Wzy-IV-nwX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdp-13-jxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="419"/>
+            <point key="canvasLocation" x="1255" y="430"/>
         </scene>
     </scenes>
 </document>

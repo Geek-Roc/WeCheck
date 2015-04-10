@@ -10,7 +10,7 @@
 
 @import CoreLocation;
 
-static NSString *const CUUID = @"8F1B2ER5-1J3R-86QF-0C2N-2011SCEDU24D";
+static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
 static NSString *const CIdentifier = @"CheckIdentifier";
 
 static void * const kMonitoringOperationContext = (void *)&kMonitoringOperationContext;
@@ -43,7 +43,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     
     [_locationManager startMonitoringForRegion:_beaconRegion];
     [_locationManager startRangingBeaconsInRegion:_beaconRegion];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,7 +128,13 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 - (void)locationManager:(CLLocationManager *)manager
         didRangeBeacons:(NSArray *)beacons
                inRegion:(CLBeaconRegion *)region {
-    NSLog(@"1");
+    NSArray *filteredBeacons = [self filteredBeacons:beacons];
+    if (filteredBeacons.count == 0) {
+                NSLog(@"No beacons found nearby.");
+    } else {
+                NSLog(@"Found %lu %@.", (unsigned long)[filteredBeacons count],
+                        [filteredBeacons count] > 1 ? @"beacons" : @"beacon");
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
@@ -175,4 +180,26 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
+
+- (NSArray *)filteredBeacons:(NSArray *)beacons
+{
+    // Filters duplicate beacons out; this may happen temporarily if the originating device changes its Bluetooth id
+    NSMutableArray *mutableBeacons = [beacons mutableCopy];
+    
+    NSMutableSet *lookup = [[NSMutableSet alloc] init];
+    for (int index = 0; index < [beacons count]; index++) {
+        CLBeacon *curr = [beacons objectAtIndex:index];
+        NSString *identifier = [NSString stringWithFormat:@"%@/%@", curr.major, curr.minor];
+        
+        // this is very fast constant time lookup in a hash table
+        if ([lookup containsObject:identifier]) {
+            [mutableBeacons removeObjectAtIndex:index];
+        } else {
+            [lookup addObject:identifier];
+        }
+    }
+    
+    return [mutableBeacons copy];
+}
+
 @end

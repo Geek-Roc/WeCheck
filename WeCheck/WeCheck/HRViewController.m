@@ -11,7 +11,7 @@
 @import CoreLocation;
 @import CoreBluetooth;
 
-static NSString *const CUUID = @"8F1B2ER5-1J3R-86QF-0C2N-2011SCEDU24D";
+static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
 static NSString *const CIdentifier = @"CheckIdentifier";
 
 @interface HRViewController ()<CBPeripheralManagerDelegate, UIAlertViewDelegate>
@@ -43,7 +43,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 */
 #pragma mark - function
 - (IBAction)teacherTurnOnCheck:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"checklistSegue" sender:nil];
+    [self performSegueWithIdentifier:@"checkListSegue" sender:nil];
 }
 
 - (IBAction)studentTurnOnCheck:(UIButton *)sender {
@@ -54,20 +54,20 @@ static NSString *const CIdentifier = @"CheckIdentifier";
         NSLog(@"蓝牙关闭");
         return;
     }
-    [self checkPeripheralAccess];
-    
-    time_t t;
-    srand((unsigned) time(&t));
-    CLBeaconMajorValue maj = 20151.0;
-    CLBeaconMinorValue min = 00101.0;
-    CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:CUUID]
-                                                                     major:maj
-                                                                     minor:min
-                                                                identifier:CIdentifier];
-    NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
-    [self.peripheralManager startAdvertising:beaconPeripheralData];
-    
-    NSLog(@"开始广播签到: %@.", region);
+    if ([self checkPeripheralAccess]) {
+        time_t t;
+        srand((unsigned) time(&t));
+        CLBeaconMajorValue maj = 20151.0;
+        CLBeaconMinorValue min = 00101.0;
+        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:CUUID]
+                                                                         major:maj
+                                                                         minor:min
+                                                                    identifier:CIdentifier];
+        NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
+        [self.peripheralManager startAdvertising:beaconPeripheralData];
+        
+        NSLog(@"开始广播签到: %@.", region);
+    }
 }
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
@@ -78,7 +78,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     }
 }
 
-- (void)checkPeripheralAccess {
+- (BOOL)checkPeripheralAccess {
     CBPeripheralManagerAuthorizationStatus authorizationStatus = [CBPeripheralManager authorizationStatus];
     if (authorizationStatus != CBPeripheralManagerAuthorizationStatusAuthorized) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"蓝牙共享"
@@ -87,7 +87,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
                                               cancelButtonTitle:@"设置"
                                               otherButtonTitles:@"取消", nil];
         [alert show];
+        return FALSE;
     }
+    return TRUE;
 }
 
 #pragma mark - Alert view delegate methods

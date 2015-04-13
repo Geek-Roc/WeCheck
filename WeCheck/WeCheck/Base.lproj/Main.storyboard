@@ -4,23 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="oEo-Nn-iEz">
-            <objects>
-                <navigationController storyboardIdentifier="NavigationStoryID" id="95S-wl-MQx" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jqd-DC-7Ac">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aJp-VL-rS2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4OA-od-I6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-857" y="1898"/>
-        </scene>
         <!--Check-->
         <scene sceneID="lgb-Dw-lhR">
             <objects>
@@ -34,6 +17,9 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cx3-MG-Skh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="s07-gk-MBg" kind="relationship" relationship="rootViewController" id="8yj-9s-nc0"/>
                     </connections>
@@ -87,7 +73,7 @@
         <!--Check-->
         <scene sceneID="jAZ-Um-F2i">
             <objects>
-                <viewController id="s07-gk-MBg" sceneMemberID="viewController">
+                <viewController id="s07-gk-MBg" customClass="HRViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZBE-3f-dVB"/>
                         <viewControllerLayoutGuide type="bottom" id="ZVo-Wd-fDT"/>
@@ -106,6 +92,9 @@
                                     <color key="titleColor" red="1" green="0.5902852904" blue="0.25884154209999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="turnOnCheck:" destination="s07-gk-MBg" eventType="touchUpInside" id="eke-DR-8Fb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPW-Zw-YJ7">
                                 <rect key="frame" x="300" y="64" width="300" height="106"/>
@@ -117,15 +106,27 @@
                                     <color key="titleColor" red="0.1098039299" green="0.97254908080000002" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="turnOnCollection:" destination="s07-gk-MBg" eventType="touchUpInside" id="1vJ-1h-c4g"/>
+                                    <segue destination="0Sc-aw-rPG" kind="show" id="6Vc-zY-rmT"/>
+                                </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vx0-YM-6Cz">
+                                <rect key="frame" x="0.0" y="170" width="600" height="381"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Vx0-YM-6Cz" secondAttribute="trailing" id="1cR-Q4-nC8"/>
                             <constraint firstAttribute="trailing" secondItem="mPW-Zw-YJ7" secondAttribute="trailing" id="ATi-az-3iM"/>
                             <constraint firstItem="mPW-Zw-YJ7" firstAttribute="top" secondItem="ZBE-3f-dVB" secondAttribute="bottom" id="D8Y-We-16o"/>
                             <constraint firstItem="D1G-zy-Jb3" firstAttribute="leading" secondItem="6ew-is-Hrx" secondAttribute="leading" id="Toe-Mg-Mkx"/>
+                            <constraint firstItem="Vx0-YM-6Cz" firstAttribute="top" secondItem="mPW-Zw-YJ7" secondAttribute="bottom" id="d9v-ZG-t6l"/>
+                            <constraint firstItem="ZVo-Wd-fDT" firstAttribute="top" secondItem="Vx0-YM-6Cz" secondAttribute="bottom" id="e2I-oD-0Tn"/>
                             <constraint firstItem="mPW-Zw-YJ7" firstAttribute="leading" secondItem="D1G-zy-Jb3" secondAttribute="trailing" id="g56-gz-G7L"/>
                             <constraint firstItem="D1G-zy-Jb3" firstAttribute="top" secondItem="ZBE-3f-dVB" secondAttribute="bottom" id="hLj-Zy-Ed9"/>
+                            <constraint firstItem="Vx0-YM-6Cz" firstAttribute="leading" secondItem="6ew-is-Hrx" secondAttribute="leading" id="mJJ-Ll-IHI"/>
                             <constraint firstItem="mPW-Zw-YJ7" firstAttribute="width" secondItem="D1G-zy-Jb3" secondAttribute="width" id="oMP-OA-jSe"/>
                         </constraints>
                     </view>
@@ -138,6 +139,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzS-fz-dCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="397" y="-1727"/>
+        </scene>
+        <!--收集-->
+        <scene sceneID="BYB-fs-1hg">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="0Sc-aw-rPG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uVX-Oj-1K1"/>
+                        <viewControllerLayoutGuide type="bottom" id="QTB-Vk-jzz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ct1-dN-dCd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOf-Dz-EjK">
+                                <rect key="frame" x="31" y="86" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dUm-v8-bFn" kind="show" id="MZQ-1p-gIb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="收集" id="vAP-7w-etp">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="XIX-D8-GAQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gsk-3u-bFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="-1729"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="FWc-z4-N3H">
+            <objects>
+                <viewController id="dUm-v8-bFn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GNs-lr-BYw"/>
+                        <viewControllerLayoutGuide type="bottom" id="mo8-hg-VnM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GRJ-Xt-Ulj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="sm3-q7-JRt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yf-Zr-oSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="-1729"/>
         </scene>
         <!--统计-->
         <scene sceneID="OEx-cf-mQr">
@@ -196,121 +251,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMF-Lt-XaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1245" y="-942"/>
-        </scene>
-        <!--首页-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="HRViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-eo-kSr">
-                                <rect key="frame" x="285" y="210" width="30" height="30"/>
-                                <state key="normal" title="老师">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="teacherTurnOnCheck:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GB7-td-Dy5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="619-ff-2lW">
-                                <rect key="frame" x="285" y="360" width="30" height="30"/>
-                                <state key="normal" title="学生">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="studentTurnOnCheck:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8yJ-sK-o3H"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="ghf-eo-kSr" secondAttribute="centerY" constant="75" id="Nsi-eb-bMB"/>
-                            <constraint firstAttribute="centerY" secondItem="619-ff-2lW" secondAttribute="centerY" constant="-75" id="RQB-gw-2p3"/>
-                            <constraint firstAttribute="centerX" secondItem="ghf-eo-kSr" secondAttribute="centerX" id="heF-lc-sFA"/>
-                            <constraint firstAttribute="centerX" secondItem="619-ff-2lW" secondAttribute="centerX" id="tCV-iI-jeM"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="首页" id="1Qp-vF-cZz"/>
-                    <connections>
-                        <segue destination="W4X-ri-MDW" kind="show" identifier="checkResultSegue" id="Hrn-5L-7Cb"/>
-                        <segue destination="nLm-sb-Bej" kind="show" identifier="checkListSegue" id="09K-Wp-Suo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="122" y="1868"/>
-        </scene>
-        <!--结果-->
-        <scene sceneID="QNq-3M-SaL">
-            <objects>
-                <viewController id="W4X-ri-MDW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X8M-0Q-SrR"/>
-                        <viewControllerLayoutGuide type="bottom" id="Vho-HK-a0B"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xS9-zH-hck">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="结果" id="wbE-4F-ilx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqc-Tt-aoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="122" y="2650"/>
-        </scene>
-        <!--签到列表-->
-        <scene sceneID="PLc-XX-TCc">
-            <objects>
-                <viewController id="nLm-sb-Bej" customClass="HRCheckListViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pxq-mi-HGL"/>
-                        <viewControllerLayoutGuide type="bottom" id="RnU-ag-kmp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uy5-RS-Oe2">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-Yf-DUW">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckListCell" id="ZFF-CO-1dK">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZFF-CO-1dK" id="wU0-2A-P9J">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="nLm-sb-Bej" id="9IW-iY-Rub"/>
-                                    <outlet property="delegate" destination="nLm-sb-Bej" id="Jtf-k8-vvJ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="RnU-ag-kmp" firstAttribute="top" secondItem="wZc-Yf-DUW" secondAttribute="bottom" id="2RY-37-nN5"/>
-                            <constraint firstItem="wZc-Yf-DUW" firstAttribute="top" secondItem="pxq-mi-HGL" secondAttribute="bottom" id="L1o-N2-ZJz"/>
-                            <constraint firstItem="wZc-Yf-DUW" firstAttribute="leading" secondItem="uy5-RS-Oe2" secondAttribute="leading" id="OvJ-M7-ZvG"/>
-                            <constraint firstAttribute="trailing" secondItem="wZc-Yf-DUW" secondAttribute="trailing" id="Scf-2r-p0b"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="签到列表" id="Wzy-IV-nwX"/>
-                    <connections>
-                        <outlet property="beaconTableView" destination="wZc-Yf-DUW" id="jBC-Tt-WX4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jdp-13-jxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="901" y="1868"/>
         </scene>
     </scenes>
 </document>

@@ -19,6 +19,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 
+//动画
+@property (nonatomic, strong) UIView *viewAnimation;
+
 @end
 
 @implementation HRViewController
@@ -42,11 +45,12 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 */
 #pragma mark - function
-- (IBAction)teacherTurnOnCheck:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"checkListSegue" sender:nil];
+- (IBAction)turnOnCollection:(UIButton *)sender {
+//    [self performSegueWithIdentifier:@"checkListSegue" sender:nil];
 }
 
-- (IBAction)studentTurnOnCheck:(UIButton *)sender {
+- (IBAction)turnOnCheck:(UIButton *)sender {
+    
     if (!_peripheralManager)
         _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
     
@@ -54,6 +58,18 @@ static NSString *const CIdentifier = @"CheckIdentifier";
         NSLog(@"蓝牙关闭");
         return;
     }
+    
+    _viewAnimation = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    _viewAnimation.backgroundColor = [UIColor blackColor];
+    _viewAnimation.alpha = 0.5;
+    
+    UIButton *btnTurnOffCheck = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnTurnOffCheck.frame = CGRectMake(64, 64, 60, 40);
+    [btnTurnOffCheck setTitle:@"停止" forState:UIControlStateNormal];
+    [btnTurnOffCheck addTarget:self action:@selector(turnOffCheck:) forControlEvents:UIControlEventTouchUpInside];
+    [_viewAnimation addSubview:btnTurnOffCheck];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_viewAnimation];
     if ([self checkPeripheralAccess]) {
         time_t t;
         srand((unsigned) time(&t));
@@ -64,12 +80,15 @@ static NSString *const CIdentifier = @"CheckIdentifier";
                                                                          minor:min
                                                                     identifier:CIdentifier];
         NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
-        [self.peripheralManager startAdvertising:beaconPeripheralData];
+        [_peripheralManager startAdvertising:beaconPeripheralData];
         
         NSLog(@"开始广播签到: %@.", region);
     }
 }
-
+- (void)turnOffCheck:(UIButton *)sender {
+    [_viewAnimation removeFromSuperview];
+    [_peripheralManager stopAdvertising];
+}
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
 {
     if (peripheralManager.state != CBPeripheralManagerStatePoweredOn) {

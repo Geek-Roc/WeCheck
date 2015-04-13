@@ -7,7 +7,7 @@
 //
 
 #import "HRCheckListViewController.h"
-
+#import "WZFlashButton.h"
 @import CoreLocation;
 
 static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
@@ -17,6 +17,7 @@ static void * const kMonitoringOperationContext = (void *)&kMonitoringOperationC
 static void * const kRangingOperationContext = (void *)&kRangingOperationContext;
 
 @interface HRCheckListViewController ()<CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
+
 
 @property (weak, nonatomic) IBOutlet UITableView *beaconTableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -32,19 +33,27 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-    }
-    [self checkLocationAccess];
+    WZFlashButton *outerRoundFlashButton = [[WZFlashButton alloc] initWithFrame:CGRectMake(150, 300, 50, 50)];
+    outerRoundFlashButton.buttonType = WZFlashButtonTypeOuter;
+    outerRoundFlashButton.layer.cornerRadius = 25;
+    outerRoundFlashButton.flashColor = [UIColor colorWithRed:240/255.f green:159/255.f blue:10/255.f alpha:1];
+    outerRoundFlashButton.backgroundColor = [UIColor colorWithRed:0 green:152.0f/255.0f blue:203.0f/255.0f alpha:1.0f];
+    [self.view addSubview:outerRoundFlashButton];
+//    if (!_locationManager) {
+//        _locationManager = [[CLLocationManager alloc] init];
+//        _locationManager.delegate = self;
+//    }
+//    [self checkLocationAccess];
+//    
+//    NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
+//    if (!_beaconRegion)
+//        _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:CIdentifier];
+//    _beaconRegion.notifyEntryStateOnDisplay = YES;
+//    
+//    [_locationManager startMonitoringForRegion:_beaconRegion];
+//    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
     
-    NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
-    if (!_beaconRegion)
-        _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:CIdentifier];
-    _beaconRegion.notifyEntryStateOnDisplay = YES;
-    
-    [_locationManager startMonitoringForRegion:_beaconRegion];
-    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
+        
 }
 
 - (void)didReceiveMemoryWarning {

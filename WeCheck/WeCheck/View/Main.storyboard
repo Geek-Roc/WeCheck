@@ -143,7 +143,7 @@
         <!--收集-->
         <scene sceneID="BYB-fs-1hg">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="0Sc-aw-rPG" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="0Sc-aw-rPG" customClass="HRCheckListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uVX-Oj-1K1"/>
                         <viewControllerLayoutGuide type="bottom" id="QTB-Vk-jzz"/>
@@ -151,17 +151,6 @@
                     <view key="view" contentMode="scaleToFill" id="ct1-dN-dCd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOf-Dz-EjK">
-                                <rect key="frame" x="31" y="86" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dUm-v8-bFn" kind="show" id="MZQ-1p-gIb"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="收集" id="vAP-7w-etp">
@@ -173,26 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsk-3u-bFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="-1729"/>
-        </scene>
-        <!--Title-->
-        <scene sceneID="FWc-z4-N3H">
-            <objects>
-                <viewController id="dUm-v8-bFn" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GNs-lr-BYw"/>
-                        <viewControllerLayoutGuide type="bottom" id="mo8-hg-VnM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GRJ-Xt-Ulj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="sm3-q7-JRt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8yf-Zr-oSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1717" y="-1729"/>
+            <point key="canvasLocation" x="1061" y="-1729"/>
         </scene>
         <!--统计-->
         <scene sceneID="OEx-cf-mQr">

@@ -7,7 +7,6 @@
 //
 
 #import "HRCheckListViewController.h"
-#import "WZFlashButton.h"
 @import CoreLocation;
 
 static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
@@ -16,10 +15,10 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 static void * const kMonitoringOperationContext = (void *)&kMonitoringOperationContext;
 static void * const kRangingOperationContext = (void *)&kRangingOperationContext;
 
-@interface HRCheckListViewController ()<CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface HRCheckListViewController ()<CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 
-@property (weak, nonatomic) IBOutlet UITableView *beaconTableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *beaconsTableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, unsafe_unretained) void *operationContext;
@@ -31,14 +30,22 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    WZFlashButton *outerRoundFlashButton = [[WZFlashButton alloc] initWithFrame:CGRectMake(150, 300, 50, 50)];
-    outerRoundFlashButton.buttonType = WZFlashButtonTypeOuter;
-    outerRoundFlashButton.layer.cornerRadius = 25;
-    outerRoundFlashButton.flashColor = [UIColor colorWithRed:240/255.f green:159/255.f blue:10/255.f alpha:1];
-    outerRoundFlashButton.backgroundColor = [UIColor colorWithRed:0 green:152.0f/255.0f blue:203.0f/255.0f alpha:1.0f];
-    [self.view addSubview:outerRoundFlashButton];
+    UIImageView *hudImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"loading_modal"]];
+    hudImageView.contentMode = UIViewContentModeCenter;
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat:(2 * M_PI) * -1];
+//    rotationAnimation.fromValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1.2;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = HUGE_VAL;
+    [hudImageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+    hudImageView.frame = CGRectMake(100, 300, 100, 100);
+    hudImageView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:hudImageView];
+    
+    // Do any additional setup after loading the view.
 //    if (!_locationManager) {
 //        _locationManager = [[CLLocationManager alloc] init];
 //        _locationManager.delegate = self;
@@ -52,8 +59,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 //    
 //    [_locationManager startMonitoringForRegion:_beaconRegion];
 //    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
-    
-        
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,18 +91,29 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
         [_locationManager requestAlwaysAuthorization];
     }
 }
-#pragma mark - UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _findBeacons.count;
+#pragma mark - UICollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 2;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckListCell" forIndexPath:indexPath];
-    CLBeacon *beacon = _findBeacons[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@%@",beacon.major,beacon.minor];
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FindCheckCell" forIndexPath:indexPath];
     return cell;
+}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *headerView =
+    [[UICollectionReusableView alloc] init];
+    
+    // Adds an activity indicator view to the section header
+    UIActivityIndicatorView *indicatorView =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [headerView addSubview:indicatorView];
+    
+    indicatorView.frame = (CGRect){(CGPoint){205, 12}, indicatorView.frame.size};
+    
+    [indicatorView startAnimating];
+    
+    return headerView;
 }
 #pragma mark - Location manager delegate methods
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -151,7 +167,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     }
     _findBeacons = filteredBeacons;
     
-    [_beaconTableView reloadData];
+    [_beaconsTableView reloadData];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region

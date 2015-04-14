@@ -94,9 +94,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     
     [[UIApplication sharedApplication].keyWindow addSubview:_viewAnimation];
 }
-- (IBAction)turnOnCollection:(UIButton *)sender {
-//    [self performSegueWithIdentifier:@"checkListSegue" sender:nil];
-}
 
 - (IBAction)turnOnCheck:(UIButton *)sender {
     
@@ -113,11 +110,11 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     if ([self checkPeripheralAccess]) {
         time_t t;
         srand((unsigned) time(&t));
-        CLBeaconMajorValue maj = 20151.0;
-        CLBeaconMinorValue min = 00101.0;
+//        CLBeaconMajorValue maj = 20152.0;
+//        CLBeaconMinorValue min = 00101.0;
         CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:CUUID]
-                                                                         major:maj
-                                                                         minor:min
+                                                                         major:rand()
+                                                                         minor:rand()
                                                                     identifier:CIdentifier];
         NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
         [_peripheralManager startAdvertising:beaconPeripheralData];

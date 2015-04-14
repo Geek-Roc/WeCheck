@@ -18,7 +18,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 @interface HRCheckListViewController ()<CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 
-@property (weak, nonatomic) IBOutlet UICollectionView *beaconsTableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *beaconsCollectionView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, unsafe_unretained) void *operationContext;
@@ -31,19 +31,19 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 - (void)viewDidLoad {
     [super viewDidLoad];    
     // Do any additional setup after loading the view.
-//    if (!_locationManager) {
-//        _locationManager = [[CLLocationManager alloc] init];
-//        _locationManager.delegate = self;
-//    }
-//    [self checkLocationAccess];
-//    
-//    NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
-//    if (!_beaconRegion)
-//        _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:CIdentifier];
-//    _beaconRegion.notifyEntryStateOnDisplay = YES;
-//    
-//    [_locationManager startMonitoringForRegion:_beaconRegion];
-//    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+    }
+    [self checkLocationAccess];
+    
+    NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
+    if (!_beaconRegion)
+        _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:CIdentifier];
+    _beaconRegion.notifyEntryStateOnDisplay = YES;
+    
+    [_locationManager startMonitoringForRegion:_beaconRegion];
+    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,9 +76,67 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
         [_locationManager requestAlwaysAuthorization];
     }
 }
+#pragma mark - Index path management
+- (NSArray *)indexPathsOfRemovedBeacons:(NSArray *)beacons
+{
+    NSMutableArray *indexPaths = nil;
+    
+    NSUInteger row = 0;
+    for (CLBeacon *existingBeacon in _findBeacons) {
+        BOOL stillExists = NO;
+        for (CLBeacon *beacon in beacons) {
+            if ((existingBeacon.major.integerValue == beacon.major.integerValue) &&
+                (existingBeacon.minor.integerValue == beacon.minor.integerValue)) {
+                stillExists = YES;
+                break;
+            }
+        }
+        if (!stillExists) {
+            if (!indexPaths)
+                indexPaths = [NSMutableArray new];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+        }
+        row++;
+    }
+    
+    return indexPaths;
+}
+- (NSArray *)indexPathsForBeacons:(NSArray *)beacons
+{
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    for (NSUInteger row = 0; row < beacons.count; row++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+    }
+    
+    return indexPaths;
+}
+- (NSArray *)indexPathsOfInsertedBeacons:(NSArray *)beacons
+{
+    NSMutableArray *indexPaths = nil;
+    
+    NSUInteger row = 0;
+    for (CLBeacon *beacon in beacons) {
+        BOOL isNewBeacon = YES;
+        for (CLBeacon *existingBeacon in _findBeacons) {
+            if ((existingBeacon.major.integerValue == beacon.major.integerValue) &&
+                (existingBeacon.minor.integerValue == beacon.minor.integerValue)) {
+                isNewBeacon = NO;
+                break;
+            }
+        }
+        if (isNewBeacon) {
+            if (!indexPaths)
+                indexPaths = [NSMutableArray new];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+        }
+        row++;
+    }
+    
+    return indexPaths;
+}
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 50;
+    return _findBeacons.count;
 }
 //定义展示的Section的个数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -106,7 +164,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerCell" forIndexPath:indexPath];
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    indicatorView.frame = (CGRect){(CGPoint){210, 12}, indicatorView.frame.size};
+    indicatorView.frame = (CGRect){(CGPoint){220, 12}, indicatorView.frame.size};
     [indicatorView startAnimating];
     [headerView addSubview:indicatorView];
     return headerView;
@@ -156,27 +214,36 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
                inRegion:(CLBeaconRegion *)region {
     NSArray *filteredBeacons = [self filteredBeacons:beacons];
     if (filteredBeacons.count == 0) {
-                NSLog(@"No beacons found nearby.");
+                NSLog(@"未找到小伙伴");
     } else {
-                NSLog(@"Found %lu %@.", (unsigned long)[filteredBeacons count],
-                        [filteredBeacons count] > 1 ? @"beacons" : @"beacon");
+                NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
     }
-    _findBeacons = filteredBeacons;
+    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
+    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
+    NSArray *reloadedRows = nil;
+    if (!deletedRows && !insertedRows)
+        reloadedRows = [self indexPathsForBeacons:filteredBeacons];
     
-    [_beaconsTableView reloadData];
+    _findBeacons = filteredBeacons;
+    ((UILabel *)[_beaconsCollectionView viewWithTag:1000]).text = [NSString stringWithFormat:@"耐心等待，收寻到%ld个小伙伴......", (unsigned long)_findBeacons.count];
+    if (insertedRows)
+        [_beaconsCollectionView insertItemsAtIndexPaths:insertedRows];
+    if (deletedRows)
+        [_beaconsCollectionView deleteItemsAtIndexPaths:deletedRows];
+    if (reloadedRows)
+        [_beaconsCollectionView reloadItemsAtIndexPaths:reloadedRows];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"进入找到: %@",region);
-    NSLog(@"Entered region: %@", region);
+    NSLog(@"进入: %@",region);
     
     [self sendLocalNotificationForBeaconRegion:(CLBeaconRegion *)region];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
-    NSLog(@"Exited region: %@", region);
+    NSLog(@"退出: %@", region);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
@@ -184,16 +251,16 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     NSString *stateString = nil;
     switch (state) {
         case CLRegionStateInside:
-            stateString = @"inside";
+            stateString = @"范围中";
             break;
         case CLRegionStateOutside:
-            stateString = @"outside";
+            stateString = @"范围外";
             break;
         case CLRegionStateUnknown:
-            stateString = @"unknown";
+            stateString = @"未知";
             break;
     }
-    NSLog(@"State changed to %@ for region %@.", stateString, region);
+    NSLog(@"位置改变为 %@ 区域 %@.", stateString, region);
 }
 
 #pragma mark - Local notifications
@@ -202,9 +269,9 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     UILocalNotification *notification = [UILocalNotification new];
     
     // Notification details
-    notification.alertBody = [NSString stringWithFormat:@"Entered beacon region for UUID: %@",
+    notification.alertBody = [NSString stringWithFormat:@"进入beacon区域的UUID: %@",
                               region.proximityUUID.UUIDString];   // Major and minor are not available at the monitoring stage
-    notification.alertAction = NSLocalizedString(@"View Details", nil);
+    notification.alertAction = NSLocalizedString(@"查看详细信息", nil);
     notification.soundName = UILocalNotificationDefaultSoundName;
     
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];

@@ -13,6 +13,7 @@
 		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
 		FE6744521ADBA1730009798A /* HRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE67444A1ADBA1730009798A /* HRViewController.m */; };
 		FE6744541ADBA1730009798A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6744501ADBA1730009798A /* Main.storyboard */; };
+		FE67445B1ADCC41B0009798A /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE67445A1ADCC41B0009798A /* head.jpg */; };
 		FE68B5581AADA225000FA4CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5571AADA225000FA4CE /* main.m */; };
 		FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B55A1AADA225000FA4CE /* AppDelegate.m */; };
 		FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5621AADA225000FA4CE /* Images.xcassets */; };
@@ -41,6 +42,7 @@
 		FE6744491ADBA1730009798A /* HRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRViewController.h; sourceTree = "<group>"; };
 		FE67444A1ADBA1730009798A /* HRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRViewController.m; sourceTree = "<group>"; };
 		FE6744501ADBA1730009798A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FE67445A1ADCC41B0009798A /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
 		FE68B5521AADA225000FA4CE /* WeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5561AADA225000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE68B5571AADA225000FA4CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,8 +117,17 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE6744591ADCC41B0009798A /* 头像 */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FE6744591ADCC41B0009798A /* 头像 */ = {
+			isa = PBXGroup;
+			children = (
+				FE67445A1ADCC41B0009798A /* head.jpg */,
+			);
+			path = "头像";
 			sourceTree = "<group>";
 		};
 		FE68B5491AADA225000FA4CE = {
@@ -268,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE6744541ADBA1730009798A /* Main.storyboard in Resources */,
+				FE67445B1ADCC41B0009798A /* head.jpg in Resources */,
 				FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */,
 				FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */,
 			);

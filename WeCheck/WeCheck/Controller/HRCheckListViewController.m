@@ -29,22 +29,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 @implementation HRCheckListViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    UIImageView *hudImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"loading_modal"]];
-    hudImageView.contentMode = UIViewContentModeCenter;
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat:(2 * M_PI) * -1];
-//    rotationAnimation.fromValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
-    rotationAnimation.duration = 1.2;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = HUGE_VAL;
-    [hudImageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-    
-    hudImageView.frame = CGRectMake(100, 300, 100, 100);
-    hudImageView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:hudImageView];
-    
+    [super viewDidLoad];    
     // Do any additional setup after loading the view.
 //    if (!_locationManager) {
 //        _locationManager = [[CLLocationManager alloc] init];
@@ -93,26 +78,37 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 }
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return 50;
 }
-
+//定义展示的Section的个数
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FindCheckCell" forIndexPath:indexPath];
+    [((UIImageView *)[cell viewWithTag:1001]) setImage:[UIImage imageNamed:@"head.jpg"]];
+    ((UIImageView *)[cell viewWithTag:1001]).layer.cornerRadius = 35;
+    ((UIImageView *)[cell viewWithTag:1001]).clipsToBounds = YES;
     return cell;
 }
+//定义每个UICollectionView 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
+}
+//定义每个UICollectionView 的 margin
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(1, 0, 0, 0);
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    CGSize size = {[UIScreen mainScreen].bounds.size.width, 44};
+    return size;
+}
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *headerView =
-    [[UICollectionReusableView alloc] init];
-    
-    // Adds an activity indicator view to the section header
-    UIActivityIndicatorView *indicatorView =
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [headerView addSubview:indicatorView];
-    
-    indicatorView.frame = (CGRect){(CGPoint){205, 12}, indicatorView.frame.size};
-    
+    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerCell" forIndexPath:indexPath];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicatorView.frame = (CGRect){(CGPoint){210, 12}, indicatorView.frame.size};
     [indicatorView startAnimating];
-    
+    [headerView addSubview:indicatorView];
     return headerView;
 }
 #pragma mark - Location manager delegate methods

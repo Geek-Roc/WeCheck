@@ -19,6 +19,8 @@
 		FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5621AADA225000FA4CE /* Images.xcassets */; };
 		FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5641AADA225000FA4CE /* LaunchScreen.xib */; };
 		FE68B5721AADA226000FA4CE /* WeCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5711AADA226000FA4CE /* WeCheckTests.m */; };
+		FEA484E11ADE707C00DCE19D /* CACustomTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484DE1ADE707C00DCE19D /* CACustomTextLayer.m */; };
+		FEA484E21ADE707C00DCE19D /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E01ADE707C00DCE19D /* NJDBezierCurve.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		FE68B56B1AADA225000FA4CE /* WeCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5701AADA226000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE68B5711AADA226000FA4CE /* WeCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeCheckTests.m; sourceTree = "<group>"; };
+		FEA484DD1ADE707C00DCE19D /* CACustomTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACustomTextLayer.h; sourceTree = "<group>"; };
+		FEA484DE1ADE707C00DCE19D /* CACustomTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACustomTextLayer.m; sourceTree = "<group>"; };
+		FEA484DF1ADE707C00DCE19D /* NJDBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJDBezierCurve.h; sourceTree = "<group>"; };
+		FEA484E01ADE707C00DCE19D /* NJDBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDBezierCurve.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FEA484DC1ADE707C00DCE19D /* NJDNumberJump */,
 				FE6744591ADCC41B0009798A /* 头像 */,
 			);
 			path = Model;
@@ -189,6 +196,17 @@
 				FE68B5701AADA226000FA4CE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FEA484DC1ADE707C00DCE19D /* NJDNumberJump */ = {
+			isa = PBXGroup;
+			children = (
+				FEA484DD1ADE707C00DCE19D /* CACustomTextLayer.h */,
+				FEA484DE1ADE707C00DCE19D /* CACustomTextLayer.m */,
+				FEA484DF1ADE707C00DCE19D /* NJDBezierCurve.h */,
+				FEA484E01ADE707C00DCE19D /* NJDBezierCurve.m */,
+			);
+			path = NJDNumberJump;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +354,8 @@
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
+				FEA484E11ADE707C00DCE19D /* CACustomTextLayer.m in Sources */,
+				FEA484E21ADE707C00DCE19D /* NJDBezierCurve.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

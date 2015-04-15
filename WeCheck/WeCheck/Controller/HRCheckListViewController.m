@@ -17,7 +17,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 
 @interface HRCheckListViewController ()<CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
-
 @property (weak, nonatomic) IBOutlet UICollectionView *beaconsCollectionView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;

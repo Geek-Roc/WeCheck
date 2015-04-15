@@ -7,30 +7,43 @@
 //
 
 #import "HRViewController.h"
-
 @import CoreLocation;
 @import CoreBluetooth;
 
 static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
 static NSString *const CIdentifier = @"CheckIdentifier";
 
-@interface HRViewController ()<CBPeripheralManagerDelegate, UIAlertViewDelegate>
-
+@interface HRViewController ()<CBPeripheralManagerDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) CALayer *headLayer;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 
-//动画
+@property (nonatomic, strong) CAShapeLayer *arcLayer;
+@property (nonatomic, strong) UILabel *lbStatisticNumber;
+//签到动画
 @property (nonatomic, strong) UIView *viewAnimation;
 
 @end
 
 @implementation HRViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self drawLineAnimation:_arcLayer];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
+//定义动画过程
+-(void)drawLineAnimation:(CALayer*)layer
+{
+    CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    bas.duration = 1;
+    bas.delegate = self;
+    bas.fromValue = @0;
+    bas.toValue = @1;
+    [layer addAnimation:bas forKey:@"key"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -148,7 +161,45 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     }
     return TRUE;
 }
-
+#pragma mark - UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecentlyCheckRecordsCell" forIndexPath:indexPath];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *viewStatistics = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80)];
+    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/2, 40)
+                                                        radius:35
+                                                    startAngle:M_PI*0.5
+                                                      endAngle:M_PI*0.5+M_PI*2*1
+                                                     clockwise:YES];
+    _arcLayer = [CAShapeLayer layer];
+    _arcLayer.path=path.CGPath;
+    _arcLayer.fillColor = [UIColor clearColor].CGColor;
+    _arcLayer.strokeColor=[UIColor redColor].CGColor;
+    _arcLayer.lineWidth = 5;
+    [viewStatistics.layer addSublayer:_arcLayer];
+    
+    _lbStatisticNumber = [[UILabel alloc] initWithFrame:CGRectMake(viewStatistics.center.x, viewStatistics.center.y, 48, 21)];
+    _lbStatisticNumber.center = viewStatistics.center;
+    _lbStatisticNumber.text = @"100%";
+    _lbStatisticNumber.textAlignment = NSTextAlignmentCenter;
+    _lbStatisticNumber.font = [UIFont systemFontOfSize:17];
+    [viewStatistics addSubview:_lbStatisticNumber];
+    return viewStatistics;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 80;
+}
 #pragma mark - Alert view delegate methods
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {

@@ -7,6 +7,7 @@
 //
 
 #import "HRViewController.h"
+#import "UILabel+FlickerNumber.h"
 @import CoreLocation;
 @import CoreBluetooth;
 
@@ -18,7 +19,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 
-@property (nonatomic, strong) CAShapeLayer *arcLayer;
+@property (nonatomic, strong) CAShapeLayer *layerArc;
 @property (nonatomic, strong) UILabel *lbStatisticNumber;
 //签到动画
 @property (nonatomic, strong) UIView *viewAnimation;
@@ -29,7 +30,8 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self drawLineAnimation:_arcLayer];
+    [self drawLineAnimation:_layerArc];
+    [_lbStatisticNumber dd_setNumber:@(100) format:@"%@%%" formatter:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -182,12 +184,12 @@ static NSString *const CIdentifier = @"CheckIdentifier";
                                                     startAngle:M_PI*0.5
                                                       endAngle:M_PI*0.5+M_PI*2*1
                                                      clockwise:YES];
-    _arcLayer = [CAShapeLayer layer];
-    _arcLayer.path=path.CGPath;
-    _arcLayer.fillColor = [UIColor clearColor].CGColor;
-    _arcLayer.strokeColor=[UIColor redColor].CGColor;
-    _arcLayer.lineWidth = 5;
-    [viewStatistics.layer addSublayer:_arcLayer];
+    _layerArc = [CAShapeLayer layer];
+    _layerArc.path=path.CGPath;
+    _layerArc.fillColor = [UIColor clearColor].CGColor;
+    _layerArc.strokeColor=[UIColor blueColor].CGColor;
+    _layerArc.lineWidth = 5;
+    [viewStatistics.layer addSublayer:_layerArc];
     
     _lbStatisticNumber = [[UILabel alloc] initWithFrame:CGRectMake(viewStatistics.center.x, viewStatistics.center.y, 48, 21)];
     _lbStatisticNumber.center = viewStatistics.center;

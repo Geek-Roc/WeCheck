@@ -27,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WqI-Dg-nOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-1727"/>
+            <point key="canvasLocation" x="159" y="-959"/>
         </scene>
         <!--统计-->
         <scene sceneID="84c-mq-j3v">
@@ -48,7 +48,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRz-D1-wrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-1051"/>
+            <point key="canvasLocation" x="159" y="-283"/>
         </scene>
         <!--Item-->
         <scene sceneID="FQL-8h-z50">
@@ -69,7 +69,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zC6-Ms-jfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-377"/>
+            <point key="canvasLocation" x="159" y="391"/>
         </scene>
         <!--Check-->
         <scene sceneID="jAZ-Um-F2i">
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzS-fz-dCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="-1727"/>
+            <point key="canvasLocation" x="917" y="-959"/>
         </scene>
         <!--收集-->
         <scene sceneID="BYB-fs-1hg">
@@ -301,12 +301,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsk-3u-bFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1061" y="-1729"/>
+            <point key="canvasLocation" x="1581" y="-961"/>
         </scene>
         <!--统计-->
         <scene sceneID="OEx-cf-mQr">
             <objects>
-                <viewController id="f7C-vK-XSp" sceneMemberID="viewController">
+                <viewController id="f7C-vK-XSp" customClass="HRStatisticsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SBw-mT-Hce"/>
                         <viewControllerLayoutGuide type="bottom" id="fRa-Px-taA"/>
@@ -314,13 +314,69 @@
                     <view key="view" contentMode="scaleToFill" id="OjR-RU-88C">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stV-KU-8eJ" customClass="XYPieChart">
+                                <rect key="frame" x="400" y="64" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="jqp-g5-AOo"/>
+                                    <constraint firstAttribute="width" constant="200" id="vYu-ZX-Qwl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总体签到率：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG6-KX-t1W">
+                                <rect key="frame" x="16" y="81" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwV-CT-OlT">
+                                <rect key="frame" x="16" y="110" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geR-d6-my0">
+                                <rect key="frame" x="16" y="168" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lv7-59-MYw">
+                                <rect key="frame" x="16" y="226" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总体迟到率：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqK-7m-kqQ">
+                                <rect key="frame" x="16" y="139" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总体未到率：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fS-Dt-JmQ">
+                                <rect key="frame" x="16" y="197" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="stV-KU-8eJ" firstAttribute="top" secondItem="SBw-mT-Hce" secondAttribute="bottom" id="8JU-4M-Tc7"/>
+                            <constraint firstAttribute="trailing" secondItem="stV-KU-8eJ" secondAttribute="trailing" id="T0d-d6-f2d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="统计" id="LnN-CZ-5Uw"/>
+                    <connections>
+                        <outlet property="lbPercentage1" destination="vwV-CT-OlT" id="V9N-jY-WDi"/>
+                        <outlet property="lbPercentage2" destination="geR-d6-my0" id="x1h-TM-kVK"/>
+                        <outlet property="lbPercentage3" destination="Lv7-59-MYw" id="UsF-VF-ujZ"/>
+                        <outlet property="pieChartRight" destination="stV-KU-8eJ" id="dUG-iW-Bdf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7q-Of-HDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="-1051"/>
+            <point key="canvasLocation" x="917" y="-283"/>
         </scene>
         <!--我-->
         <scene sceneID="zt6-pB-pXN">
@@ -339,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE2-SE-a1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="-377"/>
+            <point key="canvasLocation" x="917" y="391"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ure-Cl-VpF">
@@ -359,7 +415,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMF-Lt-XaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1245" y="-942"/>
+            <point key="canvasLocation" x="-725" y="-174"/>
         </scene>
     </scenes>
     <resources>

@@ -20,6 +20,8 @@
 		FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5641AADA225000FA4CE /* LaunchScreen.xib */; };
 		FE68B5721AADA226000FA4CE /* WeCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5711AADA226000FA4CE /* WeCheckTests.m */; };
 		FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */; };
+		FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E91ADFB19200DCE19D /* XYPieChart.m */; };
+		FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		FE68B5711AADA226000FA4CE /* WeCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeCheckTests.m; sourceTree = "<group>"; };
 		FEA484E41ADE8F6900DCE19D /* UILabel+FlickerNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FlickerNumber.h"; sourceTree = "<group>"; };
 		FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FlickerNumber.m"; sourceTree = "<group>"; };
+		FEA484E81ADFB19200DCE19D /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		FEA484E91ADFB19200DCE19D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRStatisticsViewController.h; sourceTree = "<group>"; };
+		FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRStatisticsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 				FE6744481ADBA1730009798A /* HRCheckListViewController.m */,
 				FE6744491ADBA1730009798A /* HRViewController.h */,
 				FE67444A1ADBA1730009798A /* HRViewController.m */,
+				FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */,
+				FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FEA484E71ADFB19200DCE19D /* XYPieChart */,
 				FEA484E31ADE8F6900DCE19D /* FlickerNumber */,
 				FE6744591ADCC41B0009798A /* 头像 */,
 			);
@@ -202,6 +211,15 @@
 				FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */,
 			);
 			path = FlickerNumber;
+			sourceTree = "<group>";
+		};
+		FEA484E71ADFB19200DCE19D /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				FEA484E81ADFB19200DCE19D /* XYPieChart.h */,
+				FEA484E91ADFB19200DCE19D /* XYPieChart.m */,
+			);
+			path = XYPieChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,9 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
+				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
 			);

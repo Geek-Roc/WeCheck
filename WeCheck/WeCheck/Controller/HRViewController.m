@@ -23,6 +23,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 @property (nonatomic, strong) UILabel *lbStatisticNumber;
 //签到动画
 @property (nonatomic, strong) UIView *viewAnimation;
+@property (weak, nonatomic) IBOutlet UITableView *tableViewRecentlyStatistic;
+@property (weak, nonatomic) IBOutlet UIButton *btnCheck;
+@property (weak, nonatomic) IBOutlet UIButton *btnCollection;
 
 @end
 
@@ -30,21 +33,23 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self drawLineAnimation:_layerArc];
+    [self drawLineAnimation:_layerArc forKey:@"123"];
     [_lbStatisticNumber dd_setNumber:@(100) format:@"%@%%" formatter:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
+    [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
 }
 //定义动画过程
--(void)drawLineAnimation:(CALayer*)layer
+-(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key
 {
     CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     bas.duration = 1;
     bas.delegate = self;
     bas.fromValue = @0;
     bas.toValue = @1;
-    [layer addAnimation:bas forKey:@"key"];
+    [layer addAnimation:bas forKey:key];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -165,7 +170,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 20;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -175,10 +180,11 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 60;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *viewStatistics = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80)];
+    viewStatistics.backgroundColor = [UIColor whiteColor];
     UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/2, 40)
                                                         radius:35
                                                     startAngle:M_PI*0.5

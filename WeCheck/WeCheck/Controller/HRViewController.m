@@ -187,8 +187,8 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     viewStatistics.backgroundColor = [UIColor whiteColor];
     UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/2, 40)
                                                         radius:35
-                                                    startAngle:M_PI*0.5
-                                                      endAngle:M_PI*0.5+M_PI*2*1
+                                                    startAngle:M_PI_2
+                                                      endAngle:M_PI_2+M_PI*2*1
                                                      clockwise:YES];
     _layerArc = [CAShapeLayer layer];
     _layerArc.path=path.CGPath;

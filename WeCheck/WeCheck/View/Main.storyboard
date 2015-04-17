@@ -5,14 +5,15 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Check-->
+        <!--Navigation Controller-->
         <scene sceneID="lgb-Dw-lhR">
             <objects>
                 <navigationController id="M97-bH-gj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Check" id="zYD-3V-iGL"/>
+                    <tabBarItem key="tabBarItem" selectedImage="check2" systemItem="recents" id="zYD-3V-iGL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfq-cA-mMb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.011372007579999999" green="0.01269176631" blue="0.064883903349999994" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,14 +30,15 @@
             </objects>
             <point key="canvasLocation" x="159" y="-959"/>
         </scene>
-        <!--统计-->
+        <!--Navigation Controller-->
         <scene sceneID="84c-mq-j3v">
             <objects>
                 <navigationController id="mx4-Kp-Har" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="统计" id="oi3-CQ-ayp"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="oi3-CQ-ayp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="smj-dh-EW2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.011372007579999999" green="0.01269176631" blue="0.064883903349999994" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,14 +52,15 @@
             </objects>
             <point key="canvasLocation" x="159" y="-283"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="FQL-8h-z50">
             <objects>
                 <navigationController id="O4x-d3-gRN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="N0d-g0-8xb"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="N0d-g0-8xb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CbP-XI-CbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.011372007579999999" green="0.01269176631" blue="0.064883903349999994" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -420,5 +423,6 @@
     </scenes>
     <resources>
         <image name="Check-logo" width="340" height="340"/>
+        <image name="check2" width="15" height="22"/>
     </resources>
 </document>

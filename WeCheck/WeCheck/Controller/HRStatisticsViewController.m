@@ -24,22 +24,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _sliceColors =[NSArray arrayWithObjects:
-                       [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
-                       [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                       [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                       [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                       [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+                   [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
+                   [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
+                   [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
+                   [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
+                   [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
     _slices = [NSMutableArray array];
     for(int i = 0; i < 3; i ++)
     {
-        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
+        NSNumber *one = [NSNumber numberWithInt:random()%60+20];
         [_slices addObject:one];
     }
-    [self.pieChartRight setDelegate:self];
-    [self.pieChartRight setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:28]];
-    [self.pieChartRight setDataSource:self];
-    [self.pieChartRight setShowPercentage:YES];
-    [self.pieChartRight setLabelShadowColor:[UIColor blackColor]];
+    [_lbPercentage1 dd_setNumber:_slices[0] format:@"%@%%" formatter:nil];
+    [_lbPercentage2 dd_setNumber:_slices[1] format:@"%@%%" formatter:nil];
+    [_lbPercentage3 dd_setNumber:_slices[2] format:@"%@%%" formatter:nil];
+    
+    _pieChartRight.delegate = self;
+    _pieChartRight.labelFont =  [UIFont systemFontOfSize:28];
+    _pieChartRight.dataSource = self;
+    _pieChartRight.animationSpeed = 1.0;
+    _pieChartRight.startPieAngle = M_PI_2;
+    _pieChartRight.showPercentage = YES;
+    _pieChartRight.labelShadowColor = [UIColor blackColor];
     [self.view addSubview:_pieChartRight];
 }
 
@@ -47,10 +53,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.pieChartRight reloadData];
+    [_pieChartRight reloadData];
 }
 /*
 #pragma mark - Navigation
@@ -63,26 +68,23 @@
 */
 #pragma mark - XYPieChart Data Source
 
-- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
-{
+- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
     return _slices.count;
 }
-
-- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
-{
+- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
     return [_slices[index] intValue];
 }
-
-- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
-{
+- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index {
     return _sliceColors[index%self.sliceColors.count];
 }
+- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
+    return @"123";
+}
 #pragma mark - XYPieChart Delegate
-- (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
-{
+- (void)pieChart:(XYPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index {
     NSLog(@"did select slice at index %lu",(unsigned long)index);
     if (index == 0) {
-        [_lbPercentage1 dd_setNumber:_slices[index] duration:0.5 format:@"%@%%" formatter:nil];
+        [_lbPercentage1 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
     }
     if (index == 1) {
         [_lbPercentage2 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];

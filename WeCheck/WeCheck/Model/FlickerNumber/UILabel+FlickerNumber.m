@@ -123,7 +123,7 @@ static char flikcerNumberCurrentTimer;
 - (void)dd_setNumber:(NSNumber *)number duration:(NSTimeInterval)duration format:(NSString *)formatStr formatter:(NSNumberFormatter *)formatter{
     if(!formatter)
         formatter = [self defaultFormatter];
-    [self dd_setNumber:number duration:duration format:formatStr formatter:formatter];
+    [self dd_setNumber:number duration:duration format:formatStr numberFormatter:formatter attributes:nil];
 }
 
 - (void)dd_setNumber:(NSNumber *)number duration:(NSTimeInterval)duration formatter:(NSNumberFormatter *)formatter attributes:(id)attrs{

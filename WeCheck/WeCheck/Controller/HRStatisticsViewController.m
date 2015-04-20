@@ -10,11 +10,8 @@
 #import "XYPieChart.h"
 #import "UILabel+FlickerNumber.h"
 #import "UUChart.h"
-@interface HRStatisticsViewController ()<XYPieChartDelegate, XYPieChartDataSource, UUChartDataSource>
-@property (weak, nonatomic) IBOutlet XYPieChart *pieChartRight;
-@property (weak, nonatomic) IBOutlet UILabel *lbPercentage1;
-@property (weak, nonatomic) IBOutlet UILabel *lbPercentage2;
-@property (weak, nonatomic) IBOutlet UILabel *lbPercentage3;
+@interface HRStatisticsViewController ()<XYPieChartDelegate, XYPieChartDataSource, UUChartDataSource, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableViewStatistics;
 @property (nonatomic, strong) NSMutableArray *slices;
 @property (nonatomic, strong) NSArray *sliceColors;
 @end
@@ -36,23 +33,6 @@
         NSNumber *one = [NSNumber numberWithInt:random()%60+20];
         [_slices addObject:one];
     }
-    [_lbPercentage1 dd_setNumber:_slices[0] format:@"%@%%" formatter:nil];
-    [_lbPercentage2 dd_setNumber:_slices[1] format:@"%@%%" formatter:nil];
-    [_lbPercentage3 dd_setNumber:_slices[2] format:@"%@%%" formatter:nil];
-    
-    _pieChartRight.delegate = self;
-    _pieChartRight.labelFont =  [UIFont systemFontOfSize:28];
-    _pieChartRight.dataSource = self;
-    _pieChartRight.animationSpeed = 1.0;
-    _pieChartRight.startPieAngle = M_PI_2;
-    _pieChartRight.showPercentage = YES;
-    _pieChartRight.labelShadowColor = [UIColor blackColor];
-    [self.view addSubview:_pieChartRight];
-    
-    UUChart *chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(20, 300, [UIScreen mainScreen].bounds.size.width-20, 150)
-                                                       withSource:self
-                                                        withStyle:UUChartBarStyle];
-    [chartView showInView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +41,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [_pieChartRight reloadData];
+//    [(XYPieChart *)[_tableViewStatistics viewWithTag:1000] reloadData];
 }
 /*
 #pragma mark - Navigation
@@ -90,15 +70,16 @@
 - (void)pieChart:(XYPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index {
     NSLog(@"did select slice at index %lu",(unsigned long)index);
     if (index == 0) {
-        [_lbPercentage1 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1001] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
     }
     if (index == 1) {
-        [_lbPercentage2 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1002] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
     }
     if (index == 2) {
-        [_lbPercentage3 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1003] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
     }
 }
+#pragma mark - UUChartDataSource
 //横坐标标题数组
 - (NSArray *)UUChart_xLableArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
@@ -107,7 +88,6 @@
     }
     return arr;
 }
-
 //数值多重数组
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
@@ -119,6 +99,58 @@
 //颜色数组
 - (NSArray *)UUChart_ColorArray:(UUChart *)chart
 {
+    if (chart.tag == 0) {
+        return @[[UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1]];
+    }else if (chart.tag == 1) {
+        return @[[UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1]];
+    }else if (chart.tag == 2) {
+        return @[[UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1]];
+    }
     return @[UURed,UUGreen,UUBrown];
+}
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0)
+        return 1;
+    else if (section == 1)
+        return 3;
+    return 0;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"StatisticsTotalityCell" forIndexPath:indexPath];
+        [(UILabel *)[cell viewWithTag:1001] dd_setNumber:_slices[0] format:@"%@%%" formatter:nil];
+        [(UILabel *)[cell viewWithTag:1002] dd_setNumber:_slices[1] format:@"%@%%" formatter:nil];
+        [(UILabel *)[cell viewWithTag:1003] dd_setNumber:_slices[2] format:@"%@%%" formatter:nil];
+        
+        ((XYPieChart *)[cell viewWithTag:1000]).delegate = self;
+        ((XYPieChart *)[cell viewWithTag:1000]).labelFont =  [UIFont systemFontOfSize:28];
+        ((XYPieChart *)[cell viewWithTag:1000]).dataSource = self;
+        ((XYPieChart *)[cell viewWithTag:1000]).animationSpeed = 1.0;
+        ((XYPieChart *)[cell viewWithTag:1000]).startPieAngle = M_PI_2;
+        ((XYPieChart *)[cell viewWithTag:1000]).showPercentage = YES;
+        ((XYPieChart *)[cell viewWithTag:1000]).labelShadowColor = [UIColor blackColor];
+        [(XYPieChart *)[cell viewWithTag:1000] reloadData];
+    }
+    else if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"StatisticsEachCell" forIndexPath:indexPath];
+        UUChart *chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 0, [UIScreen mainScreen].bounds.size.width-20, 150)
+                                                           withSource:self
+                                                            withStyle:UUChartBarStyle];
+        chartView.tag = indexPath.row;
+        [chartView showInView:cell];
+    }
+    return cell;
+}
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0)
+        return 201;
+    else
+        return 164;
 }
 @end

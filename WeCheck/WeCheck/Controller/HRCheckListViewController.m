@@ -133,7 +133,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     
     return indexPaths;
 }
-#pragma mark - UICollectionViewDelegate
+#pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _findBeacons.count;
 }

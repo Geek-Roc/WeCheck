@@ -155,8 +155,8 @@
         //获取最大最小位置
         CGFloat max = [childAry[0] floatValue];
         CGFloat min = [childAry[0] floatValue];
-        NSInteger max_i;
-        NSInteger min_i;
+        NSInteger max_i = 0;
+        NSInteger min_i = 0;
         
         for (int j=0; j<childAry.count; j++){
             CGFloat num = [childAry[j] floatValue];

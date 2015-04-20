@@ -169,7 +169,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     }
     return TRUE;
 }
-#pragma mark - UITableViewDelegate
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }
@@ -180,6 +180,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecentlyCheckRecordsCell" forIndexPath:indexPath];
     return cell;
 }
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }

@@ -9,7 +9,8 @@
 #import "HRStatisticsViewController.h"
 #import "XYPieChart.h"
 #import "UILabel+FlickerNumber.h"
-@interface HRStatisticsViewController ()<XYPieChartDelegate, XYPieChartDataSource>
+#import "UUChart.h"
+@interface HRStatisticsViewController ()<XYPieChartDelegate, XYPieChartDataSource, UUChartDataSource>
 @property (weak, nonatomic) IBOutlet XYPieChart *pieChartRight;
 @property (weak, nonatomic) IBOutlet UILabel *lbPercentage1;
 @property (weak, nonatomic) IBOutlet UILabel *lbPercentage2;
@@ -47,6 +48,11 @@
     _pieChartRight.showPercentage = YES;
     _pieChartRight.labelShadowColor = [UIColor blackColor];
     [self.view addSubview:_pieChartRight];
+    
+    UUChart *chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(20, 300, [UIScreen mainScreen].bounds.size.width-20, 150)
+                                                       withSource:self
+                                                        withStyle:UUChartBarStyle];
+    [chartView showInView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,5 +98,27 @@
     if (index == 2) {
         [_lbPercentage3 dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
     }
+}
+//横坐标标题数组
+- (NSArray *)UUChart_xLableArray:(UUChart *)chart {
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 10; i < 100; i++) {
+        [arr addObject:[NSString stringWithFormat:@"1%d", i]];
+    }
+    return arr;
+}
+
+//数值多重数组
+- (NSArray *)UUChart_yValueArray:(UUChart *)chart {
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 10; i < 100; i++) {
+        [arr addObject:[NSString stringWithFormat:@"1%d", i]];
+    }
+    return @[arr];
+}
+//颜色数组
+- (NSArray *)UUChart_ColorArray:(UUChart *)chart
+{
+    return @[UURed,UUGreen,UUBrown];
 }
 @end

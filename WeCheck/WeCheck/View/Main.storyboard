@@ -9,7 +9,7 @@
         <scene sceneID="lgb-Dw-lhR">
             <objects>
                 <navigationController id="M97-bH-gj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="check2" systemItem="recents" id="zYD-3V-iGL"/>
+                    <tabBarItem key="tabBarItem" tag="1" selectedImage="check2" systemItem="recents" id="zYD-3V-iGL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfq-cA-mMb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -34,7 +34,7 @@
         <scene sceneID="84c-mq-j3v">
             <objects>
                 <navigationController id="mx4-Kp-Har" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="oi3-CQ-ayp"/>
+                    <tabBarItem key="tabBarItem" tag="2" systemItem="bookmarks" id="oi3-CQ-ayp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="smj-dh-EW2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -56,7 +56,7 @@
         <scene sceneID="FQL-8h-z50">
             <objects>
                 <navigationController id="O4x-d3-gRN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="N0d-g0-8xb"/>
+                    <tabBarItem key="tabBarItem" tag="3" systemItem="contacts" id="N0d-g0-8xb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CbP-XI-CbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

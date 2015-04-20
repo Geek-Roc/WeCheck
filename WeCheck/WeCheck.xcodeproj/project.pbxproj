@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		77C1334F0EA914A85FD333B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FB43DA1E8F11D8AC0515A6 /* libPods.a */; };
+		FE308F671AE4FCF900D0BDF6 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F5C1AE4FCF900D0BDF6 /* UUBar.m */; };
+		FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F5E1AE4FCF900D0BDF6 /* UUBarChart.m */; };
+		FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F601AE4FCF900D0BDF6 /* UUChart.m */; };
+		FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F621AE4FCF900D0BDF6 /* UUChartLabel.m */; };
+		FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F641AE4FCF900D0BDF6 /* UUColor.m */; };
+		FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F661AE4FCF900D0BDF6 /* UULineChart.m */; };
 		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
 		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
 		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
@@ -38,6 +44,18 @@
 		0E6E62048B787BE94CC4B6E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C88CDCD80646C23699CA936C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F2FB43DA1E8F11D8AC0515A6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE308F5B1AE4FCF900D0BDF6 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		FE308F5C1AE4FCF900D0BDF6 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		FE308F5D1AE4FCF900D0BDF6 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
+		FE308F5E1AE4FCF900D0BDF6 /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
+		FE308F5F1AE4FCF900D0BDF6 /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
+		FE308F601AE4FCF900D0BDF6 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
+		FE308F611AE4FCF900D0BDF6 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
+		FE308F621AE4FCF900D0BDF6 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
+		FE308F631AE4FCF900D0BDF6 /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
+		FE308F641AE4FCF900D0BDF6 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		FE308F651AE4FCF900D0BDF6 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
+		FE308F661AE4FCF900D0BDF6 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
 		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FE6744471ADBA1730009798A /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
@@ -104,6 +122,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FE308F5A1AE4FCF900D0BDF6 /* UUChart */ = {
+			isa = PBXGroup;
+			children = (
+				FE308F5B1AE4FCF900D0BDF6 /* UUBar.h */,
+				FE308F5C1AE4FCF900D0BDF6 /* UUBar.m */,
+				FE308F5D1AE4FCF900D0BDF6 /* UUBarChart.h */,
+				FE308F5E1AE4FCF900D0BDF6 /* UUBarChart.m */,
+				FE308F5F1AE4FCF900D0BDF6 /* UUChart.h */,
+				FE308F601AE4FCF900D0BDF6 /* UUChart.m */,
+				FE308F611AE4FCF900D0BDF6 /* UUChartLabel.h */,
+				FE308F621AE4FCF900D0BDF6 /* UUChartLabel.m */,
+				FE308F631AE4FCF900D0BDF6 /* UUColor.h */,
+				FE308F641AE4FCF900D0BDF6 /* UUColor.m */,
+				FE308F651AE4FCF900D0BDF6 /* UULineChart.h */,
+				FE308F661AE4FCF900D0BDF6 /* UULineChart.m */,
+			);
+			path = UUChart;
+			sourceTree = "<group>";
+		};
 		FE6744461ADBA1730009798A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +165,7 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE308F5A1AE4FCF900D0BDF6 /* UUChart */,
 				FEA484E71ADFB19200DCE19D /* XYPieChart */,
 				FEA484E31ADE8F6900DCE19D /* FlickerNumber */,
 				FE6744591ADCC41B0009798A /* 头像 */,
@@ -364,12 +402,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */,
+				FE308F671AE4FCF900D0BDF6 /* UUBar.m in Sources */,
+				FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
+				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
+				FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */,
+				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
+				FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

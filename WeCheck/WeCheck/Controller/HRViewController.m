@@ -38,6 +38,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ((UITabBarItem *)[self.view viewWithTag:1]).selectedImage = [[UIImage imageNamed:@"check2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
 }

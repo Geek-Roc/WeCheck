@@ -5,12 +5,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Check-->
         <scene sceneID="lgb-Dw-lhR">
             <objects>
                 <navigationController id="M97-bH-gj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" selectedImage="check2" systemItem="recents" id="zYD-3V-iGL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfq-cA-mMb">
+                    <tabBarItem key="tabBarItem" tag="1" title="Check" image="check" id="zYD-3V-iGL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Hfq-cA-mMb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,12 +30,12 @@
             </objects>
             <point key="canvasLocation" x="159" y="-959"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--统计-->
         <scene sceneID="84c-mq-j3v">
             <objects>
                 <navigationController id="mx4-Kp-Har" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" systemItem="bookmarks" id="oi3-CQ-ayp"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="smj-dh-EW2">
+                    <tabBarItem key="tabBarItem" tag="2" title="统计" image="statistics" id="oi3-CQ-ayp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="smj-dh-EW2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,12 +52,12 @@
             </objects>
             <point key="canvasLocation" x="159" y="-283"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--我-->
         <scene sceneID="FQL-8h-z50">
             <objects>
                 <navigationController id="O4x-d3-gRN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" systemItem="contacts" id="N0d-g0-8xb"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CbP-XI-CbM">
+                    <tabBarItem key="tabBarItem" tag="3" title="我" image="head" id="N0d-g0-8xb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="CbP-XI-CbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,6 +211,9 @@
                     <navigationItem key="navigationItem" title="Check" id="XKY-5W-SpX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="oAQ-E3-CO3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnMenu:" destination="s07-gk-MBg" id="wm5-Uc-Z6Z"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -319,10 +322,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aF2-vq-kHt">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticsTotalityCell" rowHeight="201" id="a2p-EH-1PW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StatisticsTotalityCell" rowHeight="201" id="a2p-EH-1PW">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a2p-EH-1PW" id="mXc-1Y-Tt5">
@@ -380,7 +383,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticsEachCell" rowHeight="164" id="cBT-HE-28X">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StatisticsEachCell" rowHeight="164" id="cBT-HE-28X">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cBT-HE-28X" id="0N1-Fa-xAQ">
@@ -399,7 +402,7 @@
                             <constraint firstItem="aF2-vq-kHt" firstAttribute="leading" secondItem="OjR-RU-88C" secondAttribute="leading" id="5d2-O8-dvo"/>
                             <constraint firstAttribute="trailing" secondItem="aF2-vq-kHt" secondAttribute="trailing" id="Gy5-kG-nDu"/>
                             <constraint firstItem="fRa-Px-taA" firstAttribute="top" secondItem="aF2-vq-kHt" secondAttribute="bottom" id="NxJ-Ia-6RH"/>
-                            <constraint firstItem="aF2-vq-kHt" firstAttribute="top" secondItem="SBw-mT-Hce" secondAttribute="bottom" id="sbB-Tu-5mC"/>
+                            <constraint firstItem="aF2-vq-kHt" firstAttribute="top" secondItem="SBw-mT-Hce" secondAttribute="bottom" constant="-64" id="sbB-Tu-5mC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="统计" id="LnN-CZ-5Uw"/>
@@ -414,7 +417,7 @@
         <!--我-->
         <scene sceneID="zt6-pB-pXN">
             <objects>
-                <viewController id="Tyz-9X-rhm" sceneMemberID="viewController">
+                <viewController id="Tyz-9X-rhm" customClass="HRMeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ha2-z4-nCq"/>
                         <viewControllerLayoutGuide type="bottom" id="jbx-em-nMR"/>
@@ -453,6 +456,8 @@
     </scenes>
     <resources>
         <image name="Check-logo" width="340" height="340"/>
-        <image name="check2" width="15" height="22"/>
+        <image name="check" width="17" height="25"/>
+        <image name="head" width="25" height="25"/>
+        <image name="statistics" width="30" height="25"/>
     </resources>
 </document>

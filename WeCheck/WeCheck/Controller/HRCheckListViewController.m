@@ -143,7 +143,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FindCheckCell" forIndexPath:indexPath];
-    [((UIImageView *)[cell viewWithTag:1001]) setImage:[UIImage imageNamed:@"head.jpg"]];
+    [((UIImageView *)[cell viewWithTag:1001]) setImage:[UIImage imageNamed:[NSString stringWithFormat:@"hrhead-%ld.jpg", (long)indexPath.row]]];
     ((UIImageView *)[cell viewWithTag:1001]).layer.cornerRadius = 35;
     ((UIImageView *)[cell viewWithTag:1001]).clipsToBounds = YES;
     return cell;

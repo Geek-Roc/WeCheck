@@ -83,7 +83,7 @@
 //横坐标标题数组
 - (NSArray *)UUChart_xLableArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 10; i < 100; i++) {
+    for (int i = 10; i < 20; i++) {
         [arr addObject:[NSString stringWithFormat:@"1%d", i]];
     }
     return arr;
@@ -91,7 +91,7 @@
 //数值多重数组
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 10; i < 100; i++) {
+    for (int i = 10; i < 20; i++) {
         [arr addObject:[NSString stringWithFormat:@"1%d", i]];
     }
     return @[arr];
@@ -126,6 +126,9 @@
         [(UILabel *)[cell viewWithTag:1001] dd_setNumber:_slices[0] format:@"%@%%" formatter:nil];
         [(UILabel *)[cell viewWithTag:1002] dd_setNumber:_slices[1] format:@"%@%%" formatter:nil];
         [(UILabel *)[cell viewWithTag:1003] dd_setNumber:_slices[2] format:@"%@%%" formatter:nil];
+        ((UILabel *)[cell viewWithTag:1001]).textColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
+        ((UILabel *)[cell viewWithTag:1002]).textColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
+        ((UILabel *)[cell viewWithTag:1003]).textColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
         
         ((XYPieChart *)[cell viewWithTag:1000]).delegate = self;
         ((XYPieChart *)[cell viewWithTag:1000]).labelFont =  [UIFont systemFontOfSize:28];

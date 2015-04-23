@@ -118,6 +118,10 @@
 		FE3090431AE7A40C00D0BDF6 /* hrhead-97.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FDE1AE7A40C00D0BDF6 /* hrhead-97.jpg */; };
 		FE3090441AE7A40C00D0BDF6 /* hrhead-98.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FDF1AE7A40C00D0BDF6 /* hrhead-98.jpg */; };
 		FE3090451AE7A40C00D0BDF6 /* hrhead-99.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FE01AE7A40C00D0BDF6 /* hrhead-99.jpg */; };
+		FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */; };
+		FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */; };
+		FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */; };
+		FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */; };
 		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
 		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
 		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
@@ -265,6 +269,14 @@
 		FE308FDE1AE7A40C00D0BDF6 /* hrhead-97.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-97.jpg"; sourceTree = "<group>"; };
 		FE308FDF1AE7A40C00D0BDF6 /* hrhead-98.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-98.jpg"; sourceTree = "<group>"; };
 		FE308FE01AE7A40C00D0BDF6 /* hrhead-99.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-99.jpg"; sourceTree = "<group>"; };
+		FE3090461AE892D200D0BDF6 /* HRSceneStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneStatisticViewController.h; sourceTree = "<group>"; };
+		FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneStatisticViewController.m; sourceTree = "<group>"; };
+		FE30904C1AE8D21400D0BDF6 /* HRSceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneListViewController.h; sourceTree = "<group>"; };
+		FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneListViewController.m; sourceTree = "<group>"; };
+		FE30904F1AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRScenePeopleStatisticViewController.h; sourceTree = "<group>"; };
+		FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRScenePeopleStatisticViewController.m; sourceTree = "<group>"; };
+		FE3090571AE8D5F700D0BDF6 /* BTSpiderPlotterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSpiderPlotterView.h; sourceTree = "<group>"; };
+		FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
 		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FE6744471ADBA1730009798A /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
@@ -468,6 +480,15 @@
 			path = "头像";
 			sourceTree = "<group>";
 		};
+		FE3090561AE8D5F700D0BDF6 /* BTSpiderPlotterView */ = {
+			isa = PBXGroup;
+			children = (
+				FE3090571AE8D5F700D0BDF6 /* BTSpiderPlotterView.h */,
+				FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */,
+			);
+			path = BTSpiderPlotterView;
+			sourceTree = "<group>";
+		};
 		FE6744461ADBA1730009798A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +498,12 @@
 				FE6744481ADBA1730009798A /* HRCheckListViewController.m */,
 				FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */,
 				FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */,
+				FE30904C1AE8D21400D0BDF6 /* HRSceneListViewController.h */,
+				FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */,
+				FE3090461AE892D200D0BDF6 /* HRSceneStatisticViewController.h */,
+				FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */,
+				FE30904F1AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.h */,
+				FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */,
 				FE308F6D1AE637C400D0BDF6 /* HRMeViewController.h */,
 				FE308F6E1AE637C400D0BDF6 /* HRMeViewController.m */,
 			);
@@ -499,6 +526,7 @@
 				FE308F5A1AE4FCF900D0BDF6 /* UUChart */,
 				FEA484E71ADFB19200DCE19D /* XYPieChart */,
 				FEA484E31ADE8F6900DCE19D /* FlickerNumber */,
+				FE3090561AE8D5F700D0BDF6 /* BTSpiderPlotterView */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -826,16 +854,20 @@
 			files = (
 				FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */,
 				FE308F671AE4FCF900D0BDF6 /* UUBar.m in Sources */,
+				FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */,
 				FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
 				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
+				FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
 				FE308F6F1AE637C400D0BDF6 /* HRMeViewController.m in Sources */,
 				FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */,
+				FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */,
 				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
+				FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
 				FE308F731AE790C000D0BDF6 /* HMSideMenu.m in Sources */,
 				FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */,

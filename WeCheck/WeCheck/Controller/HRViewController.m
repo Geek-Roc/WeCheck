@@ -238,6 +238,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 80;
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *viewStatistics = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80)];
     viewStatistics.backgroundColor = [UIColor whiteColor];
@@ -260,9 +263,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     _lbStatisticNumber.font = [UIFont systemFontOfSize:17];
     [viewStatistics addSubview:_lbStatisticNumber];
     return viewStatistics;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 80;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

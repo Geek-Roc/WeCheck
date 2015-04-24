@@ -122,6 +122,7 @@
 		FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */; };
 		FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */; };
 		FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */; };
+		FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */; };
 		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
 		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
 		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
@@ -277,6 +278,8 @@
 		FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRScenePeopleStatisticViewController.m; sourceTree = "<group>"; };
 		FE3090571AE8D5F700D0BDF6 /* BTSpiderPlotterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSpiderPlotterView.h; sourceTree = "<group>"; };
 		FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
+		FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckEditViewController.h; sourceTree = "<group>"; };
+		FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckEditViewController.m; sourceTree = "<group>"; };
 		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FE6744471ADBA1730009798A /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 			children = (
 				FE6744491ADBA1730009798A /* HRViewController.h */,
 				FE67444A1ADBA1730009798A /* HRViewController.m */,
+				FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */,
+				FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */,
 				FE6744471ADBA1730009798A /* HRCheckListViewController.h */,
 				FE6744481ADBA1730009798A /* HRCheckListViewController.m */,
 				FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */,
@@ -859,6 +864,7 @@
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
 				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
+				FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */,
 				FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,

@@ -49,12 +49,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 30);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.font = [UIFont systemFontOfSize:17];
     label.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.5];
-    label.text = @"单击某行改变签到状态";
+    label.text = @"单击按钮改变签到状态";
     return label;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

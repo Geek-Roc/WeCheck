@@ -67,6 +67,14 @@
         
     }else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ScenePeopleDetailCell" forIndexPath:indexPath];
+        if ([((UILabel *)[cell viewWithTag:2001]).text isEqualToString:@"签到"]) {
+            ((UILabel *)[cell viewWithTag:2001]).textColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
+        }else if ([((UILabel *)[cell viewWithTag:2001]).text isEqualToString:@"迟到"]) {
+            ((UILabel *)[cell viewWithTag:2001]).textColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
+        }else {
+            ((UILabel *)[cell viewWithTag:2001]).textColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
+        }
+        
     }
     return cell;
 }

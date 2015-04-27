@@ -634,27 +634,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckEditCell" rowHeight="60" id="VyQ-t5-c8q">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CheckEditCell" rowHeight="60" id="VyQ-t5-c8q">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyQ-t5-c8q" id="sQj-Op-bsN">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2S-Al-QcD">
-                                                    <rect key="frame" x="502" y="11" width="80" height="37"/>
-                                                    <color key="backgroundColor" red="0.098039215690000001" green="0.75294117650000003" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="5Qw-uf-Pbh"/>
-                                                        <constraint firstAttribute="height" constant="37" id="BOy-pc-AAP"/>
-                                                    </constraints>
-                                                    <state key="normal" title="签到"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张思那" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDG-EZ-k0g">
                                                     <rect key="frame" x="64" y="8" width="430" height="21"/>
                                                     <constraints>
@@ -664,8 +649,11 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20111111" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNh-2W-9zj">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20111111" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNh-2W-9zj">
                                                     <rect key="frame" x="64" y="30" width="430" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sVC-JN-tZZ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -680,21 +668,47 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="代号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2We-eo-FVf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2We-eo-FVf">
                                                     <rect key="frame" x="8" y="30" width="48" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="83a-tI-I0A"/>
+                                                        <constraint firstAttribute="height" constant="21" id="vXf-Si-aYV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2S-Al-QcD">
+                                                    <rect key="frame" x="507" y="16" width="74" height="28"/>
+                                                    <color key="backgroundColor" red="0.43529411764705883" green="0.72156862745098038" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="74" id="5Qw-uf-Pbh"/>
+                                                        <constraint firstAttribute="height" constant="28" id="BOy-pc-AAP"/>
+                                                    </constraints>
+                                                    <state key="normal" title="签到">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="S2S-Al-QcD" firstAttribute="leading" secondItem="zDG-EZ-k0g" secondAttribute="trailing" constant="8" id="38f-aT-sFH"/>
+                                                <constraint firstItem="S2S-Al-QcD" firstAttribute="leading" secondItem="zDG-EZ-k0g" secondAttribute="trailing" constant="13" id="38f-aT-sFH"/>
                                                 <constraint firstItem="zDG-EZ-k0g" firstAttribute="leading" secondItem="lJH-qb-7Dl" secondAttribute="trailing" constant="8" id="57p-uN-S7F"/>
+                                                <constraint firstItem="S2S-Al-QcD" firstAttribute="leading" secondItem="NNh-2W-9zj" secondAttribute="trailing" constant="13" id="Csi-vS-9Ve"/>
                                                 <constraint firstItem="zDG-EZ-k0g" firstAttribute="top" secondItem="sQj-Op-bsN" secondAttribute="top" constant="8" id="Cze-Bl-1Mb"/>
-                                                <constraint firstItem="S2S-Al-QcD" firstAttribute="top" secondItem="sQj-Op-bsN" secondAttribute="top" constant="11" id="OYu-bh-Jd7"/>
-                                                <constraint firstAttribute="trailing" secondItem="S2S-Al-QcD" secondAttribute="trailing" constant="18" id="Qkf-TR-xtA"/>
+                                                <constraint firstItem="NNh-2W-9zj" firstAttribute="top" secondItem="zDG-EZ-k0g" secondAttribute="bottom" constant="1" id="EfH-fk-KEl"/>
+                                                <constraint firstItem="S2S-Al-QcD" firstAttribute="top" secondItem="sQj-Op-bsN" secondAttribute="top" constant="16" id="OYu-bh-Jd7"/>
+                                                <constraint firstAttribute="trailing" secondItem="S2S-Al-QcD" secondAttribute="trailing" constant="19" id="Qkf-TR-xtA"/>
+                                                <constraint firstItem="NNh-2W-9zj" firstAttribute="leading" secondItem="2We-eo-FVf" secondAttribute="trailing" constant="8" id="e2h-Gh-cIs"/>
                                                 <constraint firstItem="lJH-qb-7Dl" firstAttribute="top" secondItem="sQj-Op-bsN" secondAttribute="top" constant="8" id="emj-Kw-iz0"/>
                                                 <constraint firstItem="lJH-qb-7Dl" firstAttribute="leading" secondItem="sQj-Op-bsN" secondAttribute="leading" constant="8" id="gLf-qX-LXP"/>
+                                                <constraint firstItem="2We-eo-FVf" firstAttribute="leading" secondItem="sQj-Op-bsN" secondAttribute="leading" constant="8" id="ola-7M-MLh"/>
+                                                <constraint firstItem="2We-eo-FVf" firstAttribute="top" secondItem="lJH-qb-7Dl" secondAttribute="bottom" constant="1" id="qyT-uJ-284"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -123,6 +123,7 @@
 		FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */; };
 		FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */; };
 		FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */; };
+		FE3F6BF61AEE31A300535781 /* HRFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6BF51AEE31A300535781 /* HRFMDB.m */; };
 		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
 		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
 		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
@@ -280,6 +281,8 @@
 		FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
 		FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckEditViewController.h; sourceTree = "<group>"; };
 		FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckEditViewController.m; sourceTree = "<group>"; };
+		FE3F6BF41AEE31A300535781 /* HRFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFMDB.h; sourceTree = "<group>"; };
+		FE3F6BF51AEE31A300535781 /* HRFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFMDB.m; sourceTree = "<group>"; };
 		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FE6744471ADBA1730009798A /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
@@ -492,6 +495,15 @@
 			path = BTSpiderPlotterView;
 			sourceTree = "<group>";
 		};
+		FE3F6BF31AEE319500535781 /* HRFMDB */ = {
+			isa = PBXGroup;
+			children = (
+				FE3F6BF41AEE31A300535781 /* HRFMDB.h */,
+				FE3F6BF51AEE31A300535781 /* HRFMDB.m */,
+			);
+			path = HRFMDB;
+			sourceTree = "<group>";
+		};
 		FE6744461ADBA1730009798A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +538,7 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE3F6BF31AEE319500535781 /* HRFMDB */,
 				FE308F7B1AE7A40B00D0BDF6 /* 头像 */,
 				FE308F701AE790C000D0BDF6 /* HMSideMenu */,
 				FE308F5A1AE4FCF900D0BDF6 /* UUChart */,
@@ -864,6 +877,7 @@
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
 				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
+				FE3F6BF61AEE31A300535781 /* HRFMDB.m in Sources */,
 				FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */,
 				FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,

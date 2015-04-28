@@ -23,7 +23,7 @@
 
 //根据ID查询数据
 - (NSMutableArray *)queryInTableName:(NSString *)tablename withID:(NSInteger )myID;
-//根据姓名查询数据
+//根据名字查询数据
 - (NSMutableArray *)queryInTableName:(NSString *)tablename withName:(NSString *)myName;
 //查询全部数据
 - (NSMutableArray *)queryInTableNameAll:(NSString *)tablename;
@@ -44,7 +44,7 @@
 
 //根据ID查询数据
 - (NSMutableArray *)queryWithID:(NSInteger )myID;
-//根据姓名查询数据
+//根据名字查询数据
 - (NSMutableArray *)queryWithName:(NSString *)myName;
 //查询全部数据
 - (NSMutableArray *)queryAll;

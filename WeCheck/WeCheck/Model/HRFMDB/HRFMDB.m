@@ -104,7 +104,7 @@
     }
     return peopleArr;
 }
-//根据姓名查询数据
+//根据名字查询数据
 - (NSMutableArray *)queryInTableName:(NSString *)tablename withName:(NSString *)myName{
     NSMutableArray *peopleArr = [NSMutableArray array];
     if ([_db open]) {
@@ -285,7 +285,7 @@
     }
     return peopleArr;
 }
-//根据姓名查询数据
+//根据名字查询数据
 - (NSMutableArray *)queryWithName:(NSString *)myName{
     NSMutableArray *peopleArr = [NSMutableArray array];
     if ([_db open]) {

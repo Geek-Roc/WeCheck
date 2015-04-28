@@ -20,9 +20,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 @property (nonatomic, strong) CALayer *headLayer;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
-//菜单
-@property (nonatomic, strong) HMSideMenu *sideMenu;
-@property (nonatomic, strong) UIView *screenView;
 
 @property (nonatomic, strong) CAShapeLayer *layerArc;
 @property (nonatomic, strong) UILabel *lbStatisticNumber;
@@ -46,8 +43,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     ((UITabBarItem *)[self.view viewWithTag:1]).selectedImage = [[UIImage imageNamed:@"check2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
-    //加载菜单
-    [self loadMenu];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key
@@ -74,54 +69,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 */
 #pragma mark - function
-- (IBAction)btnMenu:(UIBarButtonItem *)sender {
-    if (_sideMenu.isOpen) {
-        [_sideMenu close];
-    }
-    else {
-        [[UIApplication sharedApplication].keyWindow addSubview:_screenView];
-        [_sideMenu open];
-    }
-}
-- (void)loadMenu {
-    _screenView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    _screenView.backgroundColor = [UIColor clearColor];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    [_screenView addGestureRecognizer:tap];
-    
-    UIView *addItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-    addItem.backgroundColor = [UIColor blackColor];
-    addItem.layer.cornerRadius = 5;
-    [addItem setMenuActionWithBlock:^{
-        NSLog(@"添加情景");
-    }];
-    UILabel *labAdd = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-    labAdd.text = @"添加情景";
-    labAdd.textColor = [UIColor whiteColor];
-    labAdd.textAlignment = NSTextAlignmentCenter;
-    [addItem addSubview:labAdd];
-    
-    UIView *setNameItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-    setNameItem.backgroundColor = [UIColor blackColor];
-    setNameItem.layer.cornerRadius = 5;
-    [setNameItem setMenuActionWithBlock:^{
-        NSLog(@"设定签到");
-    }];
-    UILabel *labSetName = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-    labSetName.text = @"设定签到";
-    labSetName.textColor = [UIColor whiteColor];
-    labSetName.textAlignment = NSTextAlignmentCenter;
-    [setNameItem addSubview:labSetName];
-    
-    _sideMenu = [[HMSideMenu alloc] initWithItems:@[addItem, setNameItem]];
-    _sideMenu.itemSpacing = 5.0f;
-    [_screenView addSubview:_sideMenu];
-}
-- (void)tap:(UITapGestureRecognizer *)recognizer {
-    [_sideMenu close];
-    [_screenView removeFromSuperview];
-}
 - (void)animationShow {
     _viewAnimation = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     _viewAnimation.backgroundColor = [UIColor blackColor];

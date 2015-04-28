@@ -10,16 +10,16 @@
 
 @interface HRCheckEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewCheckEdit;
-@property (nonatomic, strong) NSMutableArray *mutArray;
+@property (nonatomic, strong) NSMutableArray *mutArrCheckState;
 @end
 
 @implementation HRCheckEditViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _mutArray = [NSMutableArray array];
+    _mutArrCheckState = [NSMutableArray array];
     for (int i = 0; i < 20; i++) {
-        [_mutArray addObject:@"签到"];
+        [_mutArrCheckState addObject:@"签到"];
     }
     // Do any additional setup after loading the view.
 }
@@ -43,23 +43,23 @@
     if ([sender.titleLabel.text isEqualToString:@"签到"]) {
         [sender setTitle:@"迟到" forState:UIControlStateNormal];
         NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArray replaceObjectAtIndex:indexPath.row withObject:@"迟到"];
+        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"迟到"];
         sender.backgroundColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
     }else if ([sender.titleLabel.text isEqualToString:@"迟到"]) {
         [sender setTitle:@"缺席" forState:UIControlStateNormal];
         NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArray replaceObjectAtIndex:indexPath.row withObject:@"缺席"];
+        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"缺席"];
         sender.backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
     }else {
         [sender setTitle:@"签到" forState:UIControlStateNormal];
         NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArray replaceObjectAtIndex:indexPath.row withObject:@"签到"];
+        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"签到"];
         sender.backgroundColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
     }
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _mutArray.count;
+    return _mutArrCheckState.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -67,10 +67,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckEditCell" forIndexPath:indexPath];
     [((UIButton *)[cell viewWithTag:1002]) addTarget:self action:@selector(btnCheckAction:) forControlEvents:UIControlEventTouchUpInside];
-    [((UIButton *)[cell viewWithTag:1002]) setTitle:_mutArray[indexPath.row] forState:UIControlStateNormal];
-    if ([_mutArray[indexPath.row] isEqualToString:@"签到"]) {
+    [((UIButton *)[cell viewWithTag:1002]) setTitle:_mutArrCheckState[indexPath.row] forState:UIControlStateNormal];
+    if ([_mutArrCheckState[indexPath.row] isEqualToString:@"签到"]) {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
-    }else if ([_mutArray[indexPath.row] isEqualToString:@"迟到"]) {
+    }else if ([_mutArrCheckState[indexPath.row] isEqualToString:@"迟到"]) {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
     }else {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];

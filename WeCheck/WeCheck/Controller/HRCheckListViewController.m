@@ -8,18 +8,19 @@
 
 #import "HRCheckListViewController.h"
 @import CoreLocation;
-
+@import CoreBluetooth;
 static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
 static NSString *const CIdentifier = @"CheckIdentifier";
 
 static void * const kMonitoringOperationContext = (void *)&kMonitoringOperationContext;
 static void * const kRangingOperationContext = (void *)&kRangingOperationContext;
 
-@interface HRCheckListViewController ()<CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HRCheckListViewController ()<CBPeripheralManagerDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *beaconsCollectionView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
+@property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 @property (nonatomic, unsafe_unretained) void *operationContext;
 @property (nonatomic, strong) NSArray *findBeacons;
 
@@ -35,7 +36,11 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
         _locationManager.delegate = self;
     }
     [self checkLocationAccess];
-    
+    if (_peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未开蓝牙" message:@"请打开蓝牙！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
     NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
     if (!_beaconRegion)
         _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:CIdentifier];
@@ -59,6 +64,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - function
 - (void)checkLocationAccess {
     if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
@@ -73,6 +79,15 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
             return;
         }
         [_locationManager requestAlwaysAuthorization];
+    }
+}
+#pragma mark - CBPeripheralManagerDelegate
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
+{
+    if (peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未开蓝牙" message:@"请打开蓝牙！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
     }
 }
 #pragma mark - Index path management

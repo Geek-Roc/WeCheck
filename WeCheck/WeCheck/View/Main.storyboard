@@ -396,7 +396,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="添加情景" id="inQ-md-enq">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="OKy-7H-Gbg"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="OKy-7H-Gbg">
+                            <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -628,7 +630,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="收集" id="vAP-7w-etp">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="XIX-D8-GAQ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -752,7 +754,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="签到编辑" id="QDy-aT-MeP">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Dee-68-vPc">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1125,16 +1127,92 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableViewMeSetting" destination="laX-pt-fed" id="lAl-ih-8On"/>
+                        <segue destination="Jwv-cT-r4o" kind="show" identifier="MyCheckInfoEditSegue" id="Qdp-8f-pYc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE2-SE-a1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="917" y="391"/>
         </scene>
+        <!--名字-->
+        <scene sceneID="EZx-Y5-0D0">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Jwv-cT-r4o" customClass="HRMyCheckInfoEditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XIO-o2-KNG"/>
+                        <viewControllerLayoutGuide type="bottom" id="oXF-P3-pV7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6tV-RA-did">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="dot-v0-SDd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCheckInfoEditCell" id="i9z-Vc-Sj2">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9z-Vc-Sj2" id="e5N-5s-GIj">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="haQ-32-Xek">
+                                                    <rect key="frame" x="15" y="7" width="570" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="1t3-GR-gvy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="haQ-32-Xek" firstAttribute="top" secondItem="e5N-5s-GIj" secondAttribute="top" constant="7" id="7Ig-Gx-a8U"/>
+                                                <constraint firstItem="haQ-32-Xek" firstAttribute="leading" secondItem="e5N-5s-GIj" secondAttribute="leading" constant="15" id="969-6a-oVN"/>
+                                                <constraint firstAttribute="trailing" secondItem="haQ-32-Xek" secondAttribute="trailing" constant="15" id="kqh-pv-0Zz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jwv-cT-r4o" id="Ctz-zP-GvG"/>
+                                    <outlet property="delegate" destination="Jwv-cT-r4o" id="V9O-0B-Gxn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dot-v0-SDd" secondAttribute="trailing" id="SFG-LR-LlG"/>
+                            <constraint firstItem="oXF-P3-pV7" firstAttribute="top" secondItem="dot-v0-SDd" secondAttribute="bottom" id="aN1-yH-jXo"/>
+                            <constraint firstItem="dot-v0-SDd" firstAttribute="top" secondItem="6tV-RA-did" secondAttribute="top" id="csb-fl-PYd"/>
+                            <constraint firstItem="dot-v0-SDd" firstAttribute="leading" secondItem="6tV-RA-did" secondAttribute="leading" id="uRP-f6-m6K"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="名字" id="uxU-n7-ciu">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="XfT-lm-byk">
+                            <connections>
+                                <action selector="btnCancleAction:" destination="Jwv-cT-r4o" id="Rht-fq-4wn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="nmp-OF-4Ra">
+                            <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="btnSaveCheckInfoAction:" destination="Jwv-cT-r4o" id="RB8-fk-rUh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableViewCheckInfoEdit" destination="dot-v0-SDd" id="xtD-Qh-bbI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wrq-ev-Hl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="917" y="1136"/>
+        </scene>
         <!--添加签到-->
         <scene sceneID="2xK-Xw-o04">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Jnc-XL-Yv0" customClass="HRMySettingAddViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Jnc-XL-Yv0" customClass="HRMyCheckInfoAddViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Va-i2-nZV"/>
                         <viewControllerLayoutGuide type="bottom" id="jt7-i6-MVe"/>
@@ -1265,9 +1343,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="添加签到" id="aSo-G0-BH9">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="IuO-YU-X1E"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="IuO-YU-X1E">
+                            <color key="tintColor" red="0.16078431904315948" green="0.87058830261230469" blue="0.15686275064945221" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="btnSaveCheckInfoAction:" destination="Jnc-XL-Yv0" id="OhR-ue-XFT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableViewAddCheckInfo" destination="heN-nP-RGx" id="Hq4-sX-lsD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gm9-fx-RZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

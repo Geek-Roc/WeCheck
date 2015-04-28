@@ -8,7 +8,6 @@
 
 #import "HRViewController.h"
 #import "UILabel+FlickerNumber.h"
-#import "HMSideMenu.h"
 #import "HRFMDB.h"
 @import CoreLocation;
 @import CoreBluetooth;
@@ -123,8 +122,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     if (!_peripheralManager)
         _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
     
-    if (self.peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
-        NSLog(@"蓝牙关闭");
+    if (_peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未开蓝牙" message:@"请打开蓝牙！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
         return;
     }
     
@@ -150,14 +150,6 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     [_headLayer removeAllAnimations];
     [_peripheralManager stopAdvertising];
 }
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
-{
-    if (peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
-        NSLog(@"蓝牙关闭");
-        return;
-    }
-}
-
 - (BOOL)checkPeripheralAccess {
     CBPeripheralManagerAuthorizationStatus authorizationStatus = [CBPeripheralManager authorizationStatus];
     if (authorizationStatus != CBPeripheralManagerAuthorizationStatusAuthorized) {
@@ -166,10 +158,20 @@ static NSString *const CIdentifier = @"CheckIdentifier";
                                                        delegate:self
                                               cancelButtonTitle:@"设置"
                                               otherButtonTitles:@"取消", nil];
+        alert.tag = 100;
         [alert show];
         return FALSE;
     }
     return TRUE;
+}
+#pragma mark - CBPeripheralManagerDelegate
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
+{
+    if (peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未开蓝牙" message:@"请打开蓝牙！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -218,7 +220,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 #pragma mark - Alert view delegate methods
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
+    if (buttonIndex == 0 && alertView.tag == 100) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }

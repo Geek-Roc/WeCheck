@@ -17,11 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.title = _dic[@"didSelectCell"];
-    if ([_dic[@"didSelectCell"] isEqualToString:@"名字"])
-        ((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text = _dic[@"checkInfo"][@"HRCheckInfoName"];
-    else
-        ((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text = _dic[@"checkInfo"][@"HRCheckInfoNumber"];
+    self.navigationItem.title = _dic[@"didSelectCell"];
     // Do any additional setup after loading the view.
 }
 
@@ -78,6 +74,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCheckInfoEditCell" forIndexPath:indexPath];
+    if ([_dic[@"didSelectCell"] isEqualToString:@"名字"])
+        ((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text = _dic[@"checkInfo"][@"HRCheckInfoName"];
+    else
+        ((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text = _dic[@"checkInfo"][@"HRCheckInfoNumber"];
     return cell;
 }
 #pragma mark - UITableViewDelegate

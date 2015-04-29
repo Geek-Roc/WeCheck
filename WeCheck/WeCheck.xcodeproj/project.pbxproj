@@ -147,6 +147,8 @@
 		FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5621AADA225000FA4CE /* Images.xcassets */; };
 		FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5641AADA225000FA4CE /* LaunchScreen.xib */; };
 		FE68B5721AADA226000FA4CE /* WeCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5711AADA226000FA4CE /* WeCheckTests.m */; };
+		FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */; };
+		FE8098981AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098971AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.m */; };
 		FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */; };
 		FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E91ADFB19200DCE19D /* XYPieChart.m */; };
 		FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */; };
@@ -341,6 +343,10 @@
 		FE68B56B1AADA225000FA4CE /* WeCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5701AADA226000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE68B5711AADA226000FA4CE /* WeCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeCheckTests.m; sourceTree = "<group>"; };
+		FE8098931AF08451001AA2D5 /* HRCheckSceneEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckSceneEditViewController.h; sourceTree = "<group>"; };
+		FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckSceneEditViewController.m; sourceTree = "<group>"; };
+		FE8098961AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeopleEditViewController.h; sourceTree = "<group>"; };
+		FE8098971AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeopleEditViewController.m; sourceTree = "<group>"; };
 		FEA484E41ADE8F6900DCE19D /* UILabel+FlickerNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FlickerNumber.h"; sourceTree = "<group>"; };
 		FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FlickerNumber.m"; sourceTree = "<group>"; };
 		FEA484E81ADFB19200DCE19D /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
@@ -622,6 +628,10 @@
 			children = (
 				FE6744491ADBA1730009798A /* HRViewController.h */,
 				FE67444A1ADBA1730009798A /* HRViewController.m */,
+				FE8098931AF08451001AA2D5 /* HRCheckSceneEditViewController.h */,
+				FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */,
+				FE8098961AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.h */,
+				FE8098971AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.m */,
 				FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */,
 				FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */,
 				FE6744471ADBA1730009798A /* HRCheckListViewController.h */,
@@ -1014,12 +1024,14 @@
 				FE3F6C241AEF3BE900535781 /* IQTextView.m in Sources */,
 				FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */,
 				FE3F6C261AEF3BE900535781 /* IQTitleBarButtonItem.m in Sources */,
+				FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */,
 				FE3F6C281AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
 				FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */,
 				FE3F6C251AEF3BE900535781 /* IQBarButtonItem.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
+				FE8098981AF08CDA001AA2D5 /* HRCheckScenePeopleEditViewController.m in Sources */,
 				FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

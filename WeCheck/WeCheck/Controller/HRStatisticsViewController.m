@@ -22,11 +22,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _sliceColors =[NSArray arrayWithObjects:
-                   [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                   [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                   [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
-                   [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                   [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+                   [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],/*绿色*/
+                   [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],/*蓝色*/
+                   [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],/*橙色*/
+                   [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],/*红色*/
+                   [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1]/*灰色*/,nil];
     _slices = [NSMutableArray array];
     for(int i = 0; i < 3; i ++)
     {

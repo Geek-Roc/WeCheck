@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRCheckScenePeopleEditViewController : UIViewController
-@property (nonatomic, strong) NSDictionary *dicPeople;
+@interface HRCheckScenePeoplesEditViewController : UIViewController
+@property (nonatomic, strong) NSDictionary *dicScene;
 @end

@@ -9,14 +9,42 @@
 #import <Foundation/Foundation.h>
 
 @interface HRFMDB : NSObject
-@property (nonatomic, strong) NSString *defaultTableName;
 
 //初始化fmdb对象
 + (instancetype)shareFMDBManager;
 
-//创建表
+/**
+ *  @author HaiRui
+ *
+ *  @brief  创建KeyValue表
+ *
+ *  @return YES创建成功
+ */
+- (BOOL)createKeyValueTable;
 - (BOOL)createTable:(NSString *)tableName;
 
+/**
+ *  @author HaiRui
+ *
+ *  @brief  插入KeyValue键值对
+ *
+ *  @param key   key值
+ *  @param value value值
+ *
+ *  @return YES创建成功
+ */
+- (BOOL)insertInToKeyValueTable:(NSString *)key
+                      withValue:(id)value;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  根据KEY查询键值对
+ *
+ *  @param key key值
+ *
+ *  @return object
+ */
+- (id)queryInKeyValueTable:(NSString *)key;
 //添加人员信息
 - (BOOL)insertInToTableName:(NSString *)tablename
              withParameters:(NSDictionary *)parameters;
@@ -35,24 +63,4 @@
 //删除指定表
 - (BOOL)dropTable:(NSString *)tablename;
 
-//默认tableName方法
-//创建表
-- (BOOL)createTable;
-
-//添加人员信息
-- (BOOL)insertWithParameters:(NSDictionary *)parameters;
-
-//根据ID查询数据
-- (NSMutableArray *)queryWithID:(NSInteger )myID;
-//根据名字查询数据
-- (NSMutableArray *)queryWithName:(NSString *)myName;
-//查询全部数据
-- (NSMutableArray *)queryAll;
-
-//根据ID删除数据
-- (BOOL)deleteDataWithID:(NSInteger )myID;
-//删除所有数据
-- (BOOL)deleteAllData;
-//删除默认表
-- (BOOL)dropTable;
 @end

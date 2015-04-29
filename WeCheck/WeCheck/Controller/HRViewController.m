@@ -8,7 +8,6 @@
 
 #import "HRViewController.h"
 #import "UILabel+FlickerNumber.h"
-#import "HRFMDB.h"
 @import CoreLocation;
 @import CoreBluetooth;
 

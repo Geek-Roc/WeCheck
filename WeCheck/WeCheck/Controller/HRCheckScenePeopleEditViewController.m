@@ -9,6 +9,7 @@
 #import "HRCheckScenePeopleEditViewController.h"
 
 @interface HRCheckScenePeopleEditViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableViewCheckScenePeopleEdit;
 
 @end
 
@@ -33,20 +34,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - function
+- (IBAction)btnSaveCheckScenePeopleAction:(UIBarButtonItem *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)btnCancleAction:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckSceneEditCell" forIndexPath:indexPath];
+    UITableViewCell *cell;
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PeopleNameSettingCell" forIndexPath:indexPath];
+    }else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PeopleNumberSettingCell" forIndexPath:indexPath];
+    }
     return cell;
 }
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"CheckScenePeopleEditSegue" sender:nil];
+    return 44;
 }
 @end

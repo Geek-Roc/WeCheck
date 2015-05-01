@@ -43,12 +43,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [paths objectAtIndex:0];
-    //dbPath： 数据库路径，在Document中。
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-//    AVFile *file = [AVFile fileWithName:@"wecheck.db" contentsAtPath:dbPath];
-//    [file saveInBackground];
+    
 //    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 //        NSLog(@"%@", error);
 //    } progressBlock:^(NSInteger percentDone) {
@@ -60,12 +55,51 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 //    [jobApplication saveInBackground];
 //    AVFile *applicantResume = [jobApplication objectForKey:@"applicantResumeFile"];
     
-    dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-    AVQuery *query = [AVQuery queryWithClassName:@"JobApplication"];
-    AVObject *object = [query getFirstObject];
-    AVFile *applicantResume1 = [object objectForKey:@"applicantResumeFile"];
-    NSData *data = [applicantResume1 getData];
-    [data writeToFile:dbPath atomically:YES];
+//    dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+    
+    
+    AVQuery *query1 = [AVQuery queryWithClassName:@"JobApplication"];
+    [query1 whereKey:@"applicantName" equalTo:@"Joe Smith"];
+    [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // 检索成功
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [paths objectAtIndex:0];
+            //dbPath： 数据库路径，在Document中。
+            NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"123.txt"];
+            AVFile *file = [AVFile fileWithName:@"123.txt" contentsAtPath:dbPath];
+            AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
+            [objects[0] setObject:file forKey:@"applicantResumeFile"];
+            [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"1");
+                [oldFile deleteInBackground];
+            }];
+        } else {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+//    AVQuery *query = [AVQuery queryWithClassName:@"_File"];
+//    [query whereKey:@"name" equalTo:@"123.txt"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            // 检索成功
+//            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+//            [objects[1] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                
+//            }];
+//        } else {
+//            // 输出错误信息
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+    
+//    AVObject *object = [query getFirstObject];
+//    AVFile *applicantResume1 = [object objectForKey:@"applicantResumeFile"];
+//    NSData *data = [applicantResume1 getData];
+//    [data writeToFile:dbPath atomically:YES];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key

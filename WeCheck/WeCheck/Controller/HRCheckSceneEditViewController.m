@@ -21,7 +21,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _mutArrScenes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"HRCheckSceneList"]];
+    _mutArrScenes = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"];
     [_tableViewCheckSceneEdit reloadData];
 }
 - (void)viewDidLoad {

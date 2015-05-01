@@ -8,6 +8,7 @@
 
 #import "HRViewController.h"
 #import "UILabel+FlickerNumber.h"
+#import <AVOSCloud/AVOSCloud.h>
 @import CoreLocation;
 @import CoreBluetooth;
 
@@ -41,6 +42,18 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     ((UITabBarItem *)[self.view viewWithTag:1]).selectedImage = [[UIImage imageNamed:@"check2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    //dbPath： 数据库路径，在Document中。
+    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+    
+//    AVFile *file = [AVFile fileWithName:@"wecheck.db" contentsAtPath:dbPath];
+//    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        NSLog(@"%@", error);
+//    } progressBlock:^(NSInteger percentDone) {
+//        
+//    }];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key

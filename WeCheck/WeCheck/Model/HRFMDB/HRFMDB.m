@@ -86,11 +86,24 @@
 }
 - (id)queryInKeyValueTable:(NSString *)key {
     NSMutableArray *peopleArr = [NSMutableArray array];
+    NSString *json;
     if ([_db open]) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT KEY, VALUE FROM KeyValue WHERE KEY = %@", key];
+        NSString * sql = [NSString stringWithFormat:@"SELECT KEY, VALUE FROM KeyValue WHERE KEY = '%@'", key];
         FMResultSet * rs = [_db executeQuery:sql];
-        peopleArr = rs objectForColumnName:<#(NSString *)#>
+        if ([rs next]) {
+            json = [rs stringForColumn:@"VALUE"];
+        }
         [_db close];
+    }
+    if (json) {
+        NSError * error;
+        id result = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
+                                                    options:NSJSONReadingAllowFragments error:&error];
+        if (error) {
+            NSLog(@"转化JSON失败");
+            return nil;
+        }
+        peopleArr = result;
     }
     return peopleArr;
 }

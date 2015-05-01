@@ -42,18 +42,30 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     ((UITabBarItem *)[self.view viewWithTag:1]).selectedImage = [[UIImage imageNamed:@"check2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths objectAtIndex:0];
     //dbPath： 数据库路径，在Document中。
     NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-    
 //    AVFile *file = [AVFile fileWithName:@"wecheck.db" contentsAtPath:dbPath];
+//    [file saveInBackground];
 //    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 //        NSLog(@"%@", error);
 //    } progressBlock:^(NSInteger percentDone) {
 //        
 //    }];
+//    AVObject *jobApplication = [AVObject objectWithClassName:@"JobApplication"];
+//    [jobApplication setObject:@"Joe Smith" forKey:@"applicantName"];
+//    [jobApplication setObject:file         forKey:@"applicantResumeFile"];
+//    [jobApplication saveInBackground];
+//    AVFile *applicantResume = [jobApplication objectForKey:@"applicantResumeFile"];
+    
+    dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+    AVQuery *query = [AVQuery queryWithClassName:@"JobApplication"];
+    AVObject *object = [query getFirstObject];
+    AVFile *applicantResume1 = [object objectForKey:@"applicantResumeFile"];
+    NSData *data = [applicantResume1 getData];
+    [data writeToFile:dbPath atomically:YES];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key

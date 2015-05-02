@@ -77,7 +77,9 @@
 }
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [AVUser logOut];  //清除缓存用户对象
-    [self.navigationController popViewControllerAnimated:YES];
+    if (buttonIndex == 1) {
+        [AVUser logOut];  //清除缓存用户对象
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 @end

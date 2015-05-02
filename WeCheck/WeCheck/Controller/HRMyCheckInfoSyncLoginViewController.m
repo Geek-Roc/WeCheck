@@ -57,7 +57,7 @@
     [AVUser logInWithUsernameInBackground:_tfLoginName.text password:_tfLoginPassword.text block:^(AVUser *user, NSError *error) {
         [_HUD removeFromSuperview];
         if (user != nil) {
-//            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];

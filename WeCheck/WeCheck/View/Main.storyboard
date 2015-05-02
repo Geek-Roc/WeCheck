@@ -1586,7 +1586,7 @@
                                     <constraint firstAttribute="height" constant="30" id="UDy-KL-3wB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="新密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NAc-MI-FzV">
                                 <rect key="frame" x="16" y="284" width="568" height="30"/>
@@ -1594,7 +1594,7 @@
                                     <constraint firstAttribute="height" constant="30" id="EB7-Qo-aAQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="0fB-yU-pWE">
                                 <rect key="frame" x="240" y="92" width="120" height="120"/>
@@ -1749,7 +1749,7 @@
                                     <constraint firstAttribute="height" constant="30" id="NuT-aU-5Yl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="sAq-BN-wgG">
                                 <rect key="frame" x="240" y="92" width="120" height="120"/>
@@ -1923,7 +1923,7 @@
                                     <constraint firstAttribute="height" constant="30" id="mxD-lp-Wob"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KGp-9J-1S0">
                                 <rect key="frame" x="240" y="92" width="120" height="120"/>

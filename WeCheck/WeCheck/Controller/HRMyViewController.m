@@ -48,48 +48,53 @@
 }
 #pragma mark - function
 - (IBAction)btnSyncAction:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"MyCheckInfoSyncLoginSegue" sender:nil];
-//        [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            NSLog(@"%@", error);
-//        } progressBlock:^(NSInteger percentDone) {
-//    
-//        }];
-//        AVObject *jobApplication = [AVObject objectWithClassName:@"JobApplication"];
-//        [jobApplication setObject:@"Joe Smith" forKey:@"applicantName"];
-//        [jobApplication setObject:file         forKey:@"applicantResumeFile"];
-//        [jobApplication saveInBackground];
-//        AVFile *applicantResume = [jobApplication objectForKey:@"applicantResumeFile"];
-//    
-//        dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-//    
-//    
-//        AVQuery *query1 = [AVQuery queryWithClassName:@"JobApplication"];
-//        [query1 whereKey:@"applicantName" equalTo:@"Joe Smith"];
-//        [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            if (!error) {
-//                // 检索成功
-//                NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-//                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//                NSString *documentDirectory = [paths objectAtIndex:0];
-//                //dbPath： 数据库路径，在Document中。
-//                NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"123.txt"];
-//                AVFile *file = [AVFile fileWithName:@"123.txt" contentsAtPath:dbPath];
-//                AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
-//                [objects[0] setObject:file forKey:@"applicantResumeFile"];
-//                [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                    NSLog(@"1");
-//                    [oldFile deleteInBackground];
-//                }];
-//            } else {
-//                // 输出错误信息
-//                NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            }
-//        }];
-//    
-//        AVObject *object = [query getFirstObject];
-//        AVFile *applicantResume1 = [object objectForKey:@"applicantResumeFile"];
-//        NSData *data = [applicantResume1 getData];
-//        [data writeToFile:dbPath atomically:YES];
+    AVUser *currentUser = [AVUser currentUser];
+    if (currentUser != nil) {
+        //        [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //            NSLog(@"%@", error);
+        //        } progressBlock:^(NSInteger percentDone) {
+        //
+        //        }];
+        //        AVObject *jobApplication = [AVObject objectWithClassName:@"JobApplication"];
+        //        [jobApplication setObject:@"Joe Smith" forKey:@"applicantName"];
+        //        [jobApplication setObject:file         forKey:@"applicantResumeFile"];
+        //        [jobApplication saveInBackground];
+        //        AVFile *applicantResume = [jobApplication objectForKey:@"applicantResumeFile"];
+        //
+        //        dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+        //
+        //
+        //        AVQuery *query1 = [AVQuery queryWithClassName:@"JobApplication"];
+        //        [query1 whereKey:@"applicantName" equalTo:@"Joe Smith"];
+        //        [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        //            if (!error) {
+        //                // 检索成功
+        //                NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+        //                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        //                NSString *documentDirectory = [paths objectAtIndex:0];
+        //                //dbPath： 数据库路径，在Document中。
+        //                NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"123.txt"];
+        //                AVFile *file = [AVFile fileWithName:@"123.txt" contentsAtPath:dbPath];
+        //                AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
+        //                [objects[0] setObject:file forKey:@"applicantResumeFile"];
+        //                [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //                    NSLog(@"1");
+        //                    [oldFile deleteInBackground];
+        //                }];
+        //            } else {
+        //                // 输出错误信息
+        //                NSLog(@"Error: %@ %@", error, [error userInfo]);
+        //            }
+        //        }];
+        //    
+        //        AVObject *object = [query getFirstObject];
+        //        AVFile *applicantResume1 = [object objectForKey:@"applicantResumeFile"];
+        //        NSData *data = [applicantResume1 getData];
+        //        [data writeToFile:dbPath atomically:YES];
+        NSLog(@"同步");
+    } else {
+        [self performSegueWithIdentifier:@"MyCheckInfoSyncLoginSegue" sender:nil];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -149,7 +154,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [self performSegueWithIdentifier:@"MyCheckInfoSettingSegue" sender:nil];
+            if ([AVUser currentUser])
+                [self performSegueWithIdentifier:@"MyCheckInfoSettingSegue" sender:nil];
+            else
+                [self performSegueWithIdentifier:@"MyCheckInfoSyncLoginSegue" sender:nil];
         }else if (indexPath.row == 1) {
             NSDictionary *dic = @{@"didSelectCell":@"名字",
                                   @"checkInfo":_dicCheckInfo};

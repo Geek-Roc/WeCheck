@@ -7,7 +7,7 @@
 //
 
 #import "MyCheckInfoChangePasswordViewController.h"
-
+#import <AVOSCloud/AVOSCloud.h>
 @interface MyCheckInfoChangePasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordOld;
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordNew;
@@ -36,6 +36,27 @@
 }
 */
 - (IBAction)btnChangePasswordAction:(UIButton *)sender {
+    if ([_tfChangePasswordOld.text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填写旧密码" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }else if ([_tfChangePasswordNew.text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填写新密码" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    AVUser *currentUser = [AVUser currentUser];
+    //请确保用户当前的有效登录状态
+    [AVUser logInWithUsernameInBackground:currentUser.username password:_tfChangePasswordOld.text block:^(AVUser *user, NSError *error) {
+        [[AVUser currentUser] updatePassword:_tfChangePasswordOld.text newPassword:_tfChangePasswordNew.text block:^(id object, NSError *error) {
+            if (!error) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"修改失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alertView show];
+            }
+        }];
+    }];
 }
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "MyCheckInfoResetPasswordViewController.h"
-
-@interface MyCheckInfoResetPasswordViewController ()
+#import <AVOSCloud/AVOSCloud.h>
+@interface MyCheckInfoResetPasswordViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfRegisteEmail;
 
 @end
@@ -35,6 +35,34 @@
 }
 */
 - (IBAction)btnResetPasswordAction:(UIButton *)sender {
+    if ([_tfRegisteEmail.text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填写邮箱" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }else if (![self isMatchesEmail:_tfRegisteEmail.text]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"邮箱格式不正确" message:@"请检查！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    [AVUser requestPasswordResetForEmailInBackground:_tfRegisteEmail.text block:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"重设成功" message:@"请查收邮件设置密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            alertView.delegate = self;
+            [alertView show];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"重设失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
 }
-
+#pragma mark - function
+- (BOOL)isMatchesEmail:(NSString *)string {
+    NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:string];
+}
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

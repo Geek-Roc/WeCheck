@@ -55,9 +55,10 @@
     user.email = _tfRegisteName.text;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
-            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注册失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alertView show];
         }
     }];
 }

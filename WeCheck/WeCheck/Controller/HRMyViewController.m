@@ -9,12 +9,15 @@
 #import "HRMyViewController.h"
 #import "HRMyCheckInfoEditViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "MBProgressHUD.h"
 @interface HRMyViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewMeSetting;
 
 //签到信息
 @property (nonatomic, strong) NSDictionary *dicCheckInfo;
 @property (nonatomic, strong) NSMutableArray *mutArrCheckInfo;
+//进度条
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation HRMyViewController
@@ -50,6 +53,10 @@
 - (IBAction)btnSyncAction:(UIBarButtonItem *)sender {
     AVUser *currentUser = [AVUser currentUser];
     if (currentUser != nil) {
+        _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:_HUD];
+        [_HUD show:YES];
+        [_HUD removeFromSuperview];
         //        [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         //            NSLog(@"%@", error);
         //        } progressBlock:^(NSInteger percentDone) {

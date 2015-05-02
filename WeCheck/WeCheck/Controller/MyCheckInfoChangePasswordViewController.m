@@ -8,10 +8,12 @@
 
 #import "MyCheckInfoChangePasswordViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "MBProgressHUD.h"
 @interface MyCheckInfoChangePasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordOld;
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordNew;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation MyCheckInfoChangePasswordViewController
@@ -45,10 +47,14 @@
         [alertView show];
         return;
     }
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
     AVUser *currentUser = [AVUser currentUser];
     //请确保用户当前的有效登录状态
     [AVUser logInWithUsernameInBackground:currentUser.username password:_tfChangePasswordOld.text block:^(AVUser *user, NSError *error) {
         [[AVUser currentUser] updatePassword:_tfChangePasswordOld.text newPassword:_tfChangePasswordNew.text block:^(id object, NSError *error) {
+            [_HUD removeFromSuperview];
             if (!error) {
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }else {

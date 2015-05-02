@@ -8,10 +8,12 @@
 
 #import "HRMyCheckInfoSyncLoginViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "MBProgressHUD.h"
 @interface HRMyCheckInfoSyncLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfLoginName;
 @property (weak, nonatomic) IBOutlet UITextField *tfLoginPassword;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation HRMyCheckInfoSyncLoginViewController
@@ -49,9 +51,13 @@
         [alertView show];
         return;
     }
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
     [AVUser logInWithUsernameInBackground:_tfLoginName.text password:_tfLoginPassword.text block:^(AVUser *user, NSError *error) {
+        [_HUD removeFromSuperview];
         if (user != nil) {
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];

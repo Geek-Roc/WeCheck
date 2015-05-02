@@ -8,9 +8,11 @@
 
 #import "MyCheckInfoResetPasswordViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "MBProgressHUD.h"
 @interface MyCheckInfoResetPasswordViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfRegisteEmail;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation MyCheckInfoResetPasswordViewController
@@ -44,7 +46,11 @@
         [alertView show];
         return;
     }
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
     [AVUser requestPasswordResetForEmailInBackground:_tfRegisteEmail.text block:^(BOOL succeeded, NSError *error) {
+        [_HUD removeFromSuperview];
         if (succeeded) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"重设成功" message:@"请查收邮件设置密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             alertView.delegate = self;

@@ -8,10 +8,12 @@
 
 #import "HRMyCheckInfoSyncSignupViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "MBProgressHUD.h"
 @interface HRMyCheckInfoSyncSignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfRegisteName;
 @property (weak, nonatomic) IBOutlet UITextField *tfRegistePassword;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation HRMyCheckInfoSyncSignupViewController
@@ -49,11 +51,15 @@
         [alertView show];
         return;
     }
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
     AVUser *user = [AVUser user];
     user.username = _tfRegisteName.text;
     user.password = _tfRegistePassword.text;
     user.email = _tfRegisteName.text;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [_HUD removeFromSuperview];
         if (succeeded) {
             [self.navigationController popToRootViewControllerAnimated:YES];
         } else {

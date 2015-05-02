@@ -9,6 +9,8 @@
 #import "MyCheckInfoChangePasswordViewController.h"
 
 @interface MyCheckInfoChangePasswordViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordOld;
+@property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordNew;
 
 @end
 
@@ -33,5 +35,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)btnChangePasswordAction:(UIButton *)sender {
+}
 
 @end

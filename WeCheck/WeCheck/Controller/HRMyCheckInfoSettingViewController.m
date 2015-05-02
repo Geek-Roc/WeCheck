@@ -66,7 +66,7 @@
     if (indexPath.section == 0 && indexPath.row == 2) {
             [self performSegueWithIdentifier:@"MyCheckInfoChangePasswordSegue" sender:nil];
     }else if (indexPath.section == 1) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出后无法同步，确定退出吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出后无法同步，确定退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alertView show];
     }
 }

@@ -5,11 +5,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Check-->
+        <!--签到-->
         <scene sceneID="lgb-Dw-lhR">
             <objects>
                 <navigationController id="M97-bH-gj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Check" image="check" id="zYD-3V-iGL"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="签到" image="check" id="zYD-3V-iGL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Hfq-cA-mMb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -683,7 +683,7 @@
             </objects>
             <point key="canvasLocation" x="917" y="-1631"/>
         </scene>
-        <!--Check-->
+        <!--签到-->
         <scene sceneID="jAZ-Um-F2i">
             <objects>
                 <viewController id="s07-gk-MBg" customClass="HRViewController" sceneMemberID="viewController">
@@ -817,7 +817,7 @@
                             <constraint firstItem="mPW-Zw-YJ7" firstAttribute="width" secondItem="D1G-zy-Jb3" secondAttribute="width" id="oMP-OA-jSe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Check" id="XKY-5W-SpX">
+                    <navigationItem key="navigationItem" title="签到" id="XKY-5W-SpX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="oAQ-E3-CO3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1618,6 +1618,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnChangePasswordAction:" destination="Rer-bZ-yE2" eventType="touchUpInside" id="BBz-qf-jOZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1636,6 +1639,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="修改密码" id="sRk-bI-nVL"/>
+                    <connections>
+                        <outlet property="tfChangePasswordNew" destination="NAc-MI-FzV" id="bil-Au-NE1"/>
+                        <outlet property="tfChangePasswordOld" destination="cCL-Rp-Qmt" id="hhL-q4-BU8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvD-ao-6Tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1766,6 +1773,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnLoginAction:" destination="SYf-eC-W5t" eventType="touchUpInside" id="AQ8-oI-CbF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzR-0i-TBe">
                                 <rect key="frame" x="484" y="382" width="100" height="30"/>
@@ -1807,6 +1817,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tfLoginName" destination="Agy-Ce-U3f" id="loy-Co-ZT5"/>
+                        <outlet property="tfLoginPassword" destination="JdU-RJ-q89" id="TKK-bO-I6z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2q-MO-hEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1847,6 +1861,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnResetPasswordAction:" destination="WuE-ec-Lz0" eventType="touchUpInside" id="6Jx-WM-QaD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重设密码邮件会发送至您的邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0o-Jk-0Wd">
                                 <rect key="frame" x="179" y="229" width="242" height="21"/>
@@ -1872,6 +1889,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="重设密码" id="F5Y-sz-FYN"/>
+                    <connections>
+                        <outlet property="tfRegisteEmail" destination="fsb-Jy-yLH" id="K2m-Z7-g02"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDL-In-Y2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1927,6 +1947,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnRegisteAction:" destination="Z7a-bz-NFo" eventType="touchUpInside" id="iEB-OI-IkZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1945,6 +1968,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="Sgj-Fh-ag9"/>
+                    <connections>
+                        <outlet property="tfRegisteName" destination="0Kt-ej-NEe" id="6vF-Xp-GK1"/>
+                        <outlet property="tfRegistePassword" destination="U99-qH-Mix" id="3Gf-ir-LYL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTF-xo-4WC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

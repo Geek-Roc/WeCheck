@@ -8,6 +8,8 @@
 
 #import "HRMyCheckInfoSyncLoginViewController.h"
 @interface HRMyCheckInfoSyncLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *tfLoginName;
+@property (weak, nonatomic) IBOutlet UITextField *tfLoginPassword;
 
 @end
 
@@ -32,5 +34,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)btnLoginAction:(UIButton *)sender {
+}
 
 @end

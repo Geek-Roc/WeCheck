@@ -9,6 +9,7 @@
 #import "MyCheckInfoResetPasswordViewController.h"
 
 @interface MyCheckInfoResetPasswordViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *tfRegisteEmail;
 
 @end
 
@@ -33,5 +34,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)btnResetPasswordAction:(UIButton *)sender {
+}
 
 @end

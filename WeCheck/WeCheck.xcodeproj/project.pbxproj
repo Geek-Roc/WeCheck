@@ -153,6 +153,11 @@
 		FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */; };
 		FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E91ADFB19200DCE19D /* XYPieChart.m */; };
 		FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */; };
+		FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */; };
+		FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */; };
+		FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */; };
+		FEE275E21AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */; };
+		FEE275E51AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +361,16 @@
 		FEA484E91ADFB19200DCE19D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRStatisticsViewController.h; sourceTree = "<group>"; };
 		FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRStatisticsViewController.m; sourceTree = "<group>"; };
+		FEE275D71AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncLoginViewController.h; sourceTree = "<group>"; };
+		FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncLoginViewController.m; sourceTree = "<group>"; };
+		FEE275DA1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncSignupViewController.h; sourceTree = "<group>"; };
+		FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncSignupViewController.m; sourceTree = "<group>"; };
+		FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSettingViewController.h; sourceTree = "<group>"; };
+		FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSettingViewController.m; sourceTree = "<group>"; };
+		FEE275E01AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCheckInfoChangePasswordViewController.h; sourceTree = "<group>"; };
+		FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCheckInfoChangePasswordViewController.m; sourceTree = "<group>"; };
+		FEE275E31AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCheckInfoResetPasswordViewController.h; sourceTree = "<group>"; };
+		FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCheckInfoResetPasswordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,6 +670,16 @@
 				FE3F6BFB1AEF313600535781 /* HRMyCheckInfoAddViewController.m */,
 				FE3F6C2A1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.h */,
 				FE3F6C2B1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m */,
+				FEE275D71AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.h */,
+				FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */,
+				FEE275DA1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.h */,
+				FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */,
+				FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */,
+				FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */,
+				FEE275E01AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.h */,
+				FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */,
+				FEE275E31AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.h */,
+				FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1007,6 +1032,7 @@
 				FE308F671AE4FCF900D0BDF6 /* UUBar.m in Sources */,
 				FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */,
 				FE3F6BFC1AEF313600535781 /* HRMyCheckInfoAddViewController.m in Sources */,
+				FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */,
 				FE3F6C1F1AEF3BE900535781 /* IQUIView+Hierarchy.m in Sources */,
 				FE3F6C1E1AEF3BE900535781 /* IQNSArray+Sort.m in Sources */,
 				FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */,
@@ -1022,6 +1048,7 @@
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
 				FE308F6F1AE637C400D0BDF6 /* HRMyViewController.m in Sources */,
+				FEE275E51AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m in Sources */,
 				FE3F6C231AEF3BE900535781 /* IQSegmentedNextPrevious.m in Sources */,
 				FE3F6C271AEF3BE900535781 /* IQToolbar.m in Sources */,
 				FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */,
@@ -1030,10 +1057,13 @@
 				FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */,
 				FE8E623E1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m in Sources */,
 				FE3F6C261AEF3BE900535781 /* IQTitleBarButtonItem.m in Sources */,
+				FEE275E21AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m in Sources */,
+				FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */,
 				FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */,
 				FE3F6C281AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
+				FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */,
 				FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */,
 				FE3F6C251AEF3BE900535781 /* IQBarButtonItem.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,

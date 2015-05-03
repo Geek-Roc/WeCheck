@@ -7,7 +7,7 @@
 //
 
 #import "HRCheckScenePeopleEditViewController.h"
-
+#import "HRFMDB.h"
 @interface HRCheckScenePeopleEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewCheckScenePeopleEdit;
 
@@ -36,7 +36,18 @@
 */
 #pragma mark - function
 - (IBAction)btnSaveCheckScenePeopleAction:(UIBarButtonItem *)sender {
-    
+    if ([((UITextField *)[_tableViewCheckScenePeopleEdit viewWithTag:1000]).text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填名字" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }else if ([((UITextField *)[_tableViewCheckScenePeopleEdit viewWithTag:2000]).text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填代号" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    NSDictionary *dicPeopleNew = @{@"peopleName":((UITextField *)[_tableViewCheckScenePeopleEdit viewWithTag:1000]).text,
+                                   @"peopleNumber":((UITextField *)[_tableViewCheckScenePeopleEdit viewWithTag:2000]).text};
+    [[HRFMDB shareFMDBManager] updateCheckSceneTable:dicPeopleNew withOld:_dicPeople];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)btnCancleAction:(UIBarButtonItem *)sender {
@@ -50,8 +61,10 @@
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"PeopleNameSettingCell" forIndexPath:indexPath];
+        ((UITextField *)[cell viewWithTag:1000]).text = _dicPeople[@"peopleName"];
     }else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"PeopleNumberSettingCell" forIndexPath:indexPath];
+        ((UITextField *)[cell viewWithTag:2000]).text = _dicPeople[@"peopleNumber"];
     }
     return cell;
 }

@@ -36,7 +36,7 @@
 - (BOOL)createTable {
     if ([_db open]) {
         NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS KeyValue (KEY TEXT PRIMARY KEY NOT NULL, VALUE TEXT NOT NULL)"];
-        NSString *sqlCreateTable1 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckScene (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL)"];
+        NSString *sqlCreateTable1 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckScene (CHECKSCENE TEXT PRIMARY KEY NOT NULL, PEOPLENAME PRIMARY KEY TEXT NOT NULL, PEOPLENUMBER PRIMARY KEY TEXT NOT NULL)"];
         NSString *sqlCreateTable2 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckRecord (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL, PEOPLESTATE TEXT NOT NULL, CHECKTIME TEXT NOT NULL)"];
         BOOL res = [_db executeUpdate:sqlCreateTable];
         BOOL res1 = [_db executeUpdate:sqlCreateTable1];
@@ -124,7 +124,7 @@
 }
 - (BOOL)insertInToCheckSceneTable:(NSDictionary *)dic objectForKey:(NSString *)key {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO CheckScene (CHECKSCENE, PEOPLENAME, PEOPLENUMBER) VALUES (?, ?, ?)"];
+        NSString *sql = [NSString stringWithFormat:@"INSERT OR IGNORE INTO CheckScene (CHECKSCENE, PEOPLENAME, PEOPLENUMBER) VALUES (?, ?, ?)"];
         BOOL res = [_db executeUpdate:sql,key,dic[@"peopleName"],dic[@"peopleNumber"]];
         if (!res) {
             NSLog(@"插入CheckScene失败");
@@ -136,14 +136,68 @@
     }
     return YES;
 }
+- (NSString *)queryInCheckSceneTableNum:(NSString *)key {
+    NSString *num;
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT count(*) FROM CheckScene WHERE CHECKSCENE = '%@'", key];
+        FMResultSet *rs = [_db executeQuery:sql];
+        if ([rs next]) {
+            num = [NSString stringWithFormat:@"%d", [rs intForColumn:@"count(*)"]];
+        }
+        [_db close];
+    }
+    return num;
+}
+- (id)queryInCheckSceneTable:(NSString *)key {
+    NSMutableArray *peopleArr = [NSMutableArray array];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM CheckScene WHERE CHECKSCENE = '%@'", key];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
+            [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
+            [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
+            [peopleArr addObject:dicPeople];
+        }
+        [_db close];
+    }
+    return peopleArr;
+}
+- (BOOL)updateCheckSceneTable:(NSDictionary *)dicNew withOld:(NSDictionary *)dicOld {
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckScene SET PEOPLENAME = '%@', PEOPLENUMBER = '%@' WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicNew[@"peopleName"], dicNew[@"peopleNumber"], dicOld[@"sceneName"], dicOld[@"peopleName"], dicOld[@"peopleNumber"]];
+        BOOL res = [_db executeUpdate:sql];
+        if (!res) {
+            NSLog(@"修改CheckScene失败");
+            return NO;
+        } else {
+            NSLog(@"修改CheckScene成功");
+        }
+        [_db close];
+    }
+    return YES;
+}
 - (BOOL)deleteCheckSceneTable:(NSDictionary *)dic {
     if ([_db open]) {
-        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"peopleName"], dic[@"peopleNumber"]];
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"sceneName"], dic[@"peopleName"], dic[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:deleteSql];
         if (!res) {
             NSLog(@"删除CheckScene:%@出错", dic);
         } else {
             NSLog(@"删除CheckScene:%@成功", dic);
+        }
+        [_db close];
+    }
+    return YES;
+}
+- (BOOL)deleteCheckSceneTableAll:(NSString *)key {
+    if ([_db open]) {
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@'", key];
+        BOOL res = [_db executeUpdate:deleteSql];
+        if (!res) {
+            NSLog(@"删除CheckScene:%@出错", key);
+        } else {
+            NSLog(@"删除CheckScene:%@成功", key);
         }
         [_db close];
     }

@@ -10,6 +10,7 @@
 #import "HRMyCheckInfoEditViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "MBProgressHUD.h"
+#import "HRFMDB.h"
 @interface HRMyViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewMeSetting;
 
@@ -24,8 +25,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _dicCheckInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"HRCheckInfo"];
-    _mutArrCheckInfo = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"HRCheckInfoList"]];
+    _dicCheckInfo = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfo"];
+    _mutArrCheckInfo = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfoList"]];
     [_tableViewMeSetting reloadData];
 }
 - (void)viewDidLoad {
@@ -123,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [_mutArrCheckInfo removeObjectAtIndex:indexPath.row];
     [_tableViewMeSetting deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [[NSUserDefaults standardUserDefaults] setObject:_mutArrCheckInfo forKey:@"HRCheckInfoList"];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrCheckInfo forKey:@"HRCheckInfoList"];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
@@ -175,7 +176,7 @@
             [self performSegueWithIdentifier:@"MyCheckInfoEditSegue" sender:dic];
         }
     }else if (indexPath.section == 1) {
-        [[NSUserDefaults standardUserDefaults] setObject:_mutArrCheckInfo[indexPath.row] forKey:@"HRCheckInfo"];
+        [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrCheckInfo[indexPath.row] forKey:@"HRCheckInfo"];
         _dicCheckInfo = _mutArrCheckInfo[indexPath.row];
         [_tableViewMeSetting reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }

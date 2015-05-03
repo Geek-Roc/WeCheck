@@ -27,43 +27,45 @@
         NSString *documentDirectory = [paths objectAtIndex:0];
         //dbPath： 数据库路径，在Document中。
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-        NSLog(@"数据库路径：%@", dbPath);
+//        NSLog(@"数据库路径：%@", dbPath);
         _db = [FMDatabase databaseWithPath:dbPath];
     }
     return self;
 }
 
-- (BOOL)createKeyValueTable {
+- (BOOL)createTable {
     if ([_db open]) {
         NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS KeyValue (KEY TEXT PRIMARY KEY NOT NULL, VALUE TEXT NOT NULL)"];
+        NSString *sqlCreateTable1 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckScene (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL)"];
+        NSString *sqlCreateTable2 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckRecord (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL, PEOPLESTATE TEXT NOT NULL, CHECKTIME TEXT NOT NULL)"];
         BOOL res = [_db executeUpdate:sqlCreateTable];
+        BOOL res1 = [_db executeUpdate:sqlCreateTable1];
+        BOOL res2 = [_db executeUpdate:sqlCreateTable2];
         if (!res) {
-            NSLog(@"建表失败");
+            NSLog(@"建表KeyValue失败");
             return NO;
         } else {
-            NSLog(@"建表成功");
+            NSLog(@"建表KeyValue成功");
+        }
+        if (!res1) {
+            NSLog(@"建表CheckScene失败");
+            return NO;
+        } else {
+            NSLog(@"建表CheckScene成功");
+        }
+        if (!res2) {
+            NSLog(@"建表CheckRecord失败");
+            return NO;
+        } else {
+            NSLog(@"建表CheckRecord成功");
         }
         [_db close];
     }
     return YES;
 }
-//创建表
-- (BOOL) createTable:(NSString *)tableName{
-    if ([_db open]) {
-        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (ID INTEGER PRIMARY KEY AUTOINCREMENT,HEADIMG BLOB,NAME TEXT,GENDER TEXT,AGE TEXT,NATION TEXT,NATIVEPLA TEXT,ISMARRIED TEXT,PHONENUM TEXT,QQNUM TEXT,EMAILADDR TEXT,COMPANYNAME TEXT,COMPANYADDR TEXT)",tableName];
-        BOOL res = [_db executeUpdate:sqlCreateTable];
-        if (!res) {
-            NSLog(@"error when creating db table");
-            return NO;
-        } else {
-            NSLog(@"success to creating db table");
-        }
-        [_db close];
-    }
-    return YES;
-}
-- (BOOL)insertInToKeyValueTable:(NSString *)key
-                      withValue:(id)value {
+
+- (BOOL)setInToKeyValueTable:(id)value
+                      forKey:(NSString *)key {
     NSError * error;
     NSData * data = [NSJSONSerialization dataWithJSONObject:value options:0 error:&error];
     if (error) {
@@ -107,165 +109,41 @@
     }
     return peopleArr;
 }
-//添加人员信息
-- (BOOL)insertInToTableName:(NSString *)tablename
-             withParameters:(NSDictionary *)parameters{
+- (BOOL)deleteKeyValueTable:(NSString *)key{
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (HEADIMG, NAME, GENDER, AGE, NATION, NATIVEPLA, ISMARRIED, PHONENUM, QQNUM, EMAILADDR, COMPANYNAME, COMPANYADDR) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                         tablename];
-        BOOL res = [_db executeUpdate:sql,
-                    [parameters objectForKey:@"headImg"],
-                    [parameters objectForKey:@"name"],
-                    [parameters objectForKey:@"gender"],
-                    [parameters objectForKey:@"age"],
-                    [parameters objectForKey:@"nation"],
-                    [parameters objectForKey:@"nativePla"],
-                    [parameters objectForKey:@"isMarried"],
-                    [parameters objectForKey:@"phoneNum"],
-                    [parameters objectForKey:@"qqNum"],
-                    [parameters objectForKey:@"emailAddr"],
-                    [parameters objectForKey:@"companyName"],
-                    [parameters objectForKey:@"companyAddr"]];
-        
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from KeyValue WHERE KEY = '%@'", key];
+        BOOL res = [_db executeUpdate:deleteSql];
         if (!res) {
-            NSLog(@"error when insert db table");
+            NSLog(@"删除KeyValue:%@出错", key);
         } else {
-            NSLog(@"success to insert db table");
+            NSLog(@"删除KeyValue:%@成功", key);
         }
         [_db close];
     }
     return YES;
 }
-//根据ID查询数据
-- (NSMutableArray *)queryInTableName:(NSString *)tablename withID:(NSInteger )myID{
-    NSMutableArray *peopleArr = [NSMutableArray array];
+- (BOOL)insertInToCheckSceneTable:(NSDictionary *)dic objectForKey:(NSString *)key {
     if ([_db open]) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE ID = %ld",tablename,myID];
-        FMResultSet * rs = [_db executeQuery:sql];
-        while ([rs next]) {
-            NSMutableDictionary *peopleDic = [NSMutableDictionary dictionary];
-            [peopleDic setObject:[rs stringForColumn:@"ID"] forKey:@"id"];
-            [peopleDic setObject:[rs dataForColumn:@"HEADIMG"] forKey:@"headImg"];
-            [peopleDic setObject:[rs stringForColumn:@"NAME"] forKey:@"name"];
-            [peopleDic setObject:[rs stringForColumn:@"GENDER"] forKey:@"gender"];
-            [peopleDic setObject:[rs stringForColumn:@"AGE"] forKey:@"age"];
-            [peopleDic setObject:[rs stringForColumn:@"NATION"] forKey:@"nation"];
-            [peopleDic setObject:[rs stringForColumn:@"NATIVEPLA"] forKey:@"nativePla"];
-            [peopleDic setObject:[rs stringForColumn:@"ISMARRIED"] forKey:@"isMarried"];
-            [peopleDic setObject:[rs stringForColumn:@"PHONENUM"] forKey:@"phoneNum"];
-            [peopleDic setObject:[rs stringForColumn:@"QQNUM"] forKey:@"qqNum"];
-            [peopleDic setObject:[rs stringForColumn:@"EMAILADDR"] forKey:@"emailAddr"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYNAME"] forKey:@"companyName"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYADDR"] forKey:@"companyAddr"];
-            [peopleArr addObject:peopleDic];
-        }
-        [_db close];
-    }
-    return peopleArr;
-}
-//根据名字查询数据
-- (NSMutableArray *)queryInTableName:(NSString *)tablename withName:(NSString *)myName{
-    NSMutableArray *peopleArr = [NSMutableArray array];
-    if ([_db open]) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE NAME = %@",tablename,myName];
-        FMResultSet * rs = [_db executeQuery:sql];
-        while ([rs next]) {
-            NSMutableDictionary *peopleDic = [NSMutableDictionary dictionary];
-            [peopleDic setObject:[rs stringForColumn:@"ID"] forKey:@"id"];
-            [peopleDic setObject:[rs dataForColumn:@"HEADIMG"] forKey:@"headImg"];
-            [peopleDic setObject:[rs stringForColumn:@"NAME"] forKey:@"name"];
-            [peopleDic setObject:[rs stringForColumn:@"GENDER"] forKey:@"gender"];
-            [peopleDic setObject:[rs stringForColumn:@"AGE"] forKey:@"age"];
-            [peopleDic setObject:[rs stringForColumn:@"NATION"] forKey:@"nation"];
-            [peopleDic setObject:[rs stringForColumn:@"NATIVEPLA"] forKey:@"nativePla"];
-            [peopleDic setObject:[rs stringForColumn:@"ISMARRIED"] forKey:@"isMarried"];
-            [peopleDic setObject:[rs stringForColumn:@"PHONENUM"] forKey:@"phoneNum"];
-            [peopleDic setObject:[rs stringForColumn:@"QQNUM"] forKey:@"qqNum"];
-            [peopleDic setObject:[rs stringForColumn:@"EMAILADDR"] forKey:@"emailAddr"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYNAME"] forKey:@"companyName"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYADDR"] forKey:@"companyAddr"];
-            [peopleArr addObject:peopleDic];
-        }
-        [_db close];
-    }
-    return peopleArr;
-}
-//查询全部数据
-- (NSMutableArray *)queryInTableNameAll:(NSString *)tablename{
-    NSMutableArray *peopleArr = [NSMutableArray array];
-    if ([_db open]) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@",tablename];
-        FMResultSet * rs = [_db executeQuery:sql];
-        while ([rs next]) {
-            NSMutableDictionary *peopleDic = [NSMutableDictionary dictionary];
-            [peopleDic setObject:[rs stringForColumn:@"ID"] forKey:@"id"];
-            [peopleDic setObject:[rs dataForColumn:@"HEADIMG"] forKey:@"headImg"];
-            [peopleDic setObject:[rs stringForColumn:@"NAME"] forKey:@"name"];
-            [peopleDic setObject:[rs stringForColumn:@"GENDER"] forKey:@"gender"];
-            [peopleDic setObject:[rs stringForColumn:@"AGE"] forKey:@"age"];
-            [peopleDic setObject:[rs stringForColumn:@"NATION"] forKey:@"nation"];
-            [peopleDic setObject:[rs stringForColumn:@"NATIVEPLA"] forKey:@"nativePla"];
-            [peopleDic setObject:[rs stringForColumn:@"ISMARRIED"] forKey:@"isMarried"];
-            [peopleDic setObject:[rs stringForColumn:@"PHONENUM"] forKey:@"phoneNum"];
-            [peopleDic setObject:[rs stringForColumn:@"QQNUM"] forKey:@"qqNum"];
-            [peopleDic setObject:[rs stringForColumn:@"EMAILADDR"] forKey:@"emailAddr"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYNAME"] forKey:@"companyName"];
-            [peopleDic setObject:[rs stringForColumn:@"COMPANYADDR"] forKey:@"companyAddr"];
-            [peopleArr addObject:peopleDic];
-        }
-        [_db close];
-    }
-    return peopleArr;
-}
-//根据ID删除数据
-- (BOOL)deleteTableData:(NSString *)tablename withID:(NSInteger )myID{
-    if ([_db open]) {
-        
-        NSString *deleteSql = [NSString stringWithFormat:
-                               @"DELETE from %@ WHERE 1 = 1",
-                               tablename];
-        BOOL res = [_db executeUpdate:deleteSql];
-        
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO CheckScene (CHECKSCENE, PEOPLENAME, PEOPLENUMBER) VALUES (?, ?, ?)"];
+        BOOL res = [_db executeUpdate:sql,key,dic[@"peopleName"],dic[@"peopleNumber"]];
         if (!res) {
-            NSLog(@"删除ID:%ld出错",myID);
+            NSLog(@"插入CheckScene失败");
+            return NO;
         } else {
-            NSLog(@"删除ID:%ld成功",myID);
+            NSLog(@"插入CheckScene成功");
         }
         [_db close];
     }
     return YES;
 }
-//删除所有数据
-- (BOOL)deleteTableAllData:(NSString *)tablename{
+- (BOOL)deleteCheckSceneTable:(NSDictionary *)dic {
     if ([_db open]) {
-        
-        NSString *deleteSql = [NSString stringWithFormat:
-                               @"DELETE from %@ WHERE 1 = 1",
-                               tablename];
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"peopleName"], dic[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:deleteSql];
-        
         if (!res) {
-            NSLog(@"删除所有数据出错");
+            NSLog(@"删除CheckScene:%@出错", dic);
         } else {
-            NSLog(@"删除所有数据成功");
-        }
-        [_db close];
-    }
-    return YES;
-}
-//删除指定表
-- (BOOL)dropTable:(NSString *)tablename{
-    if ([_db open]) {
-        
-        NSString *deleteSql = [NSString stringWithFormat:
-                               @"DROP TABLE %@",
-                               tablename];
-        BOOL res = [_db executeUpdate:deleteSql];
-        
-        if (!res) {
-            NSLog(@"删除所有数据出错");
-        } else {
-            NSLog(@"删除所有数据成功");
+            NSLog(@"删除CheckScene:%@成功", dic);
         }
         [_db close];
     }

@@ -26,7 +26,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[HRFMDB shareFMDBManager] createKeyValueTable];
     _mutArrScenes = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
@@ -55,8 +54,7 @@
                                @"sceneNumber":@"0"};
     [_mutArrScenes insertObject:dicScene atIndex:0];
     [_tableViewCheckSceneEdit insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-//    [[NSUserDefaults standardUserDefaults] setObject:_mutArrScenes forKey:@"HRCheckSceneList"];
-    [[HRFMDB shareFMDBManager] insertInToKeyValueTable:@"HRCheckSceneList" withValue:_mutArrScenes];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrScenes forKey:@"HRCheckSceneList"];
     _tfSceneName.text = @"";
 }
 
@@ -70,7 +68,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [_mutArrScenes removeObjectAtIndex:indexPath.row];
     [_tableViewCheckSceneEdit deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [[NSUserDefaults standardUserDefaults] setObject:_mutArrScenes forKey:@"HRCheckSceneList"];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrScenes forKey:@"HRCheckSceneList"];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckSceneEditCell" forIndexPath:indexPath];

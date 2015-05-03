@@ -149,14 +149,14 @@
 		FE68B5721AADA226000FA4CE /* WeCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5711AADA226000FA4CE /* WeCheckTests.m */; };
 		FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */; };
 		FE8098981AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098971AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m */; };
-		FE88ED3E1AF60B2500B1C7D7 /* DHcell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED271AF60B2500B1C7D7 /* DHcell.m */; };
-		FE88ED3F1AF60B2500B1C7D7 /* DHxlsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED2A1AF60B2500B1C7D7 /* DHxlsReader.m */; };
-		FE88ED401AF60B2500B1C7D7 /* XlsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED2D1AF60B2500B1C7D7 /* XlsReader.cpp */; };
-		FE88ED411AF60B2500B1C7D7 /* endian.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED3A1AF60B2500B1C7D7 /* endian.c */; };
-		FE88ED421AF60B2500B1C7D7 /* ole.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED3B1AF60B2500B1C7D7 /* ole.c */; };
-		FE88ED431AF60B2500B1C7D7 /* xls.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED3C1AF60B2500B1C7D7 /* xls.c */; };
-		FE88ED441AF60B2500B1C7D7 /* xlstool.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED3D1AF60B2500B1C7D7 /* xlstool.c */; };
 		FE88ED461AF60B4F00B1C7D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE88ED451AF60B4F00B1C7D7 /* libiconv.dylib */; };
+		FE88ED621AF6102A00B1C7D7 /* DHcell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED4B1AF6102A00B1C7D7 /* DHcell.m */; };
+		FE88ED631AF6102A00B1C7D7 /* DHxlsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED4E1AF6102A00B1C7D7 /* DHxlsReader.m */; };
+		FE88ED641AF6102A00B1C7D7 /* XlsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED511AF6102A00B1C7D7 /* XlsReader.cpp */; };
+		FE88ED651AF6102A00B1C7D7 /* endian.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED5E1AF6102A00B1C7D7 /* endian.c */; };
+		FE88ED661AF6102A00B1C7D7 /* ole.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED5F1AF6102A00B1C7D7 /* ole.c */; };
+		FE88ED671AF6102A00B1C7D7 /* xls.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED601AF6102A00B1C7D7 /* xls.c */; };
+		FE88ED681AF6102A00B1C7D7 /* xlstool.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED611AF6102A00B1C7D7 /* xlstool.c */; };
 		FE8E623E1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8E623D1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m */; };
 		FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */; };
 		FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E91ADFB19200DCE19D /* XYPieChart.m */; };
@@ -164,8 +164,8 @@
 		FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */; };
 		FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */; };
 		FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */; };
-		FEE275E21AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */; };
-		FEE275E51AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */; };
+		FEE275E21AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */; };
+		FEE275E51AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,28 +361,28 @@
 		FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckSceneEditViewController.m; sourceTree = "<group>"; };
 		FE8098961AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeoplesEditViewController.h; sourceTree = "<group>"; };
 		FE8098971AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeoplesEditViewController.m; sourceTree = "<group>"; };
-		FE88ED251AF60B2500B1C7D7 /* DHcell-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHcell-Private.h"; sourceTree = "<group>"; };
-		FE88ED261AF60B2500B1C7D7 /* DHcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHcell.h; sourceTree = "<group>"; };
-		FE88ED271AF60B2500B1C7D7 /* DHcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHcell.m; sourceTree = "<group>"; };
-		FE88ED281AF60B2500B1C7D7 /* DHxlsReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHxlsReader-Prefix.pch"; sourceTree = "<group>"; };
-		FE88ED291AF60B2500B1C7D7 /* DHxlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHxlsReader.h; sourceTree = "<group>"; };
-		FE88ED2A1AF60B2500B1C7D7 /* DHxlsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHxlsReader.m; sourceTree = "<group>"; };
-		FE88ED2D1AF60B2500B1C7D7 /* XlsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XlsReader.cpp; sourceTree = "<group>"; };
-		FE88ED2E1AF60B2500B1C7D7 /* XlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XlsReader.h; sourceTree = "<group>"; };
-		FE88ED2F1AF60B2500B1C7D7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		FE88ED311AF60B2500B1C7D7 /* brdb.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.c.h; sourceTree = "<group>"; };
-		FE88ED321AF60B2500B1C7D7 /* brdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.h; sourceTree = "<group>"; };
-		FE88ED331AF60B2500B1C7D7 /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
-		FE88ED341AF60B2500B1C7D7 /* ole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ole.h; sourceTree = "<group>"; };
-		FE88ED351AF60B2500B1C7D7 /* xls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xls.h; sourceTree = "<group>"; };
-		FE88ED361AF60B2500B1C7D7 /* xlsstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlsstruct.h; sourceTree = "<group>"; };
-		FE88ED371AF60B2500B1C7D7 /* xlstool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstool.h; sourceTree = "<group>"; };
-		FE88ED381AF60B2500B1C7D7 /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
-		FE88ED3A1AF60B2500B1C7D7 /* endian.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = endian.c; sourceTree = "<group>"; };
-		FE88ED3B1AF60B2500B1C7D7 /* ole.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ole.c; sourceTree = "<group>"; };
-		FE88ED3C1AF60B2500B1C7D7 /* xls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xls.c; sourceTree = "<group>"; };
-		FE88ED3D1AF60B2500B1C7D7 /* xlstool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xlstool.c; sourceTree = "<group>"; };
 		FE88ED451AF60B4F00B1C7D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		FE88ED491AF6102A00B1C7D7 /* DHcell-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHcell-Private.h"; sourceTree = "<group>"; };
+		FE88ED4A1AF6102A00B1C7D7 /* DHcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHcell.h; sourceTree = "<group>"; };
+		FE88ED4B1AF6102A00B1C7D7 /* DHcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHcell.m; sourceTree = "<group>"; };
+		FE88ED4C1AF6102A00B1C7D7 /* DHxlsReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHxlsReader-Prefix.pch"; sourceTree = "<group>"; };
+		FE88ED4D1AF6102A00B1C7D7 /* DHxlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHxlsReader.h; sourceTree = "<group>"; };
+		FE88ED4E1AF6102A00B1C7D7 /* DHxlsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHxlsReader.m; sourceTree = "<group>"; };
+		FE88ED511AF6102A00B1C7D7 /* XlsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XlsReader.cpp; sourceTree = "<group>"; };
+		FE88ED521AF6102A00B1C7D7 /* XlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XlsReader.h; sourceTree = "<group>"; };
+		FE88ED531AF6102A00B1C7D7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		FE88ED551AF6102A00B1C7D7 /* brdb.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.c.h; sourceTree = "<group>"; };
+		FE88ED561AF6102A00B1C7D7 /* brdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.h; sourceTree = "<group>"; };
+		FE88ED571AF6102A00B1C7D7 /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
+		FE88ED581AF6102A00B1C7D7 /* ole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ole.h; sourceTree = "<group>"; };
+		FE88ED591AF6102A00B1C7D7 /* xls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xls.h; sourceTree = "<group>"; };
+		FE88ED5A1AF6102A00B1C7D7 /* xlsstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlsstruct.h; sourceTree = "<group>"; };
+		FE88ED5B1AF6102A00B1C7D7 /* xlstool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstool.h; sourceTree = "<group>"; };
+		FE88ED5C1AF6102A00B1C7D7 /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
+		FE88ED5E1AF6102A00B1C7D7 /* endian.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = endian.c; sourceTree = "<group>"; };
+		FE88ED5F1AF6102A00B1C7D7 /* ole.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ole.c; sourceTree = "<group>"; };
+		FE88ED601AF6102A00B1C7D7 /* xls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xls.c; sourceTree = "<group>"; };
+		FE88ED611AF6102A00B1C7D7 /* xlstool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xlstool.c; sourceTree = "<group>"; };
 		FE8E623C1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeopleEditViewController.h; sourceTree = "<group>"; };
 		FE8E623D1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeopleEditViewController.m; sourceTree = "<group>"; };
 		FEA484E41ADE8F6900DCE19D /* UILabel+FlickerNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FlickerNumber.h"; sourceTree = "<group>"; };
@@ -397,10 +397,10 @@
 		FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncSignupViewController.m; sourceTree = "<group>"; };
 		FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSettingViewController.h; sourceTree = "<group>"; };
 		FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSettingViewController.m; sourceTree = "<group>"; };
-		FEE275E01AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCheckInfoChangePasswordViewController.h; sourceTree = "<group>"; };
-		FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCheckInfoChangePasswordViewController.m; sourceTree = "<group>"; };
-		FEE275E31AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCheckInfoResetPasswordViewController.h; sourceTree = "<group>"; };
-		FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCheckInfoResetPasswordViewController.m; sourceTree = "<group>"; };
+		FEE275E01AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoChangePasswordViewController.h; sourceTree = "<group>"; };
+		FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoChangePasswordViewController.m; sourceTree = "<group>"; };
+		FEE275E31AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoResetPasswordViewController.h; sourceTree = "<group>"; };
+		FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoResetPasswordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -708,10 +708,10 @@
 				FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */,
 				FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */,
 				FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */,
-				FEE275E01AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.h */,
-				FEE275E11AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m */,
-				FEE275E31AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.h */,
-				FEE275E41AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m */,
+				FEE275E01AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.h */,
+				FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */,
+				FEE275E31AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.h */,
+				FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -727,8 +727,7 @@
 		FE6744581ADBC8830009798A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED241AF60B2500B1C7D7 /* DHxlsReader */,
-				FE88ED2B1AF60B2500B1C7D7 /* libxls */,
+				FE88ED471AF6102A00B1C7D7 /* HRXlsRead */,
 				FE3F6BFD1AEF3BE900535781 /* IQKeyBoardManager */,
 				FE3F6BF31AEE319500535781 /* HRFMDB */,
 				FE308F7B1AE7A40B00D0BDF6 /* 头像 */,
@@ -801,61 +800,70 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FE88ED241AF60B2500B1C7D7 /* DHxlsReader */ = {
+		FE88ED471AF6102A00B1C7D7 /* HRXlsRead */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED251AF60B2500B1C7D7 /* DHcell-Private.h */,
-				FE88ED261AF60B2500B1C7D7 /* DHcell.h */,
-				FE88ED271AF60B2500B1C7D7 /* DHcell.m */,
-				FE88ED281AF60B2500B1C7D7 /* DHxlsReader-Prefix.pch */,
-				FE88ED291AF60B2500B1C7D7 /* DHxlsReader.h */,
-				FE88ED2A1AF60B2500B1C7D7 /* DHxlsReader.m */,
+				FE88ED481AF6102A00B1C7D7 /* DHxlsReader */,
+				FE88ED4F1AF6102A00B1C7D7 /* libxls */,
+			);
+			path = HRXlsRead;
+			sourceTree = "<group>";
+		};
+		FE88ED481AF6102A00B1C7D7 /* DHxlsReader */ = {
+			isa = PBXGroup;
+			children = (
+				FE88ED491AF6102A00B1C7D7 /* DHcell-Private.h */,
+				FE88ED4A1AF6102A00B1C7D7 /* DHcell.h */,
+				FE88ED4B1AF6102A00B1C7D7 /* DHcell.m */,
+				FE88ED4C1AF6102A00B1C7D7 /* DHxlsReader-Prefix.pch */,
+				FE88ED4D1AF6102A00B1C7D7 /* DHxlsReader.h */,
+				FE88ED4E1AF6102A00B1C7D7 /* DHxlsReader.m */,
 			);
 			path = DHxlsReader;
 			sourceTree = "<group>";
 		};
-		FE88ED2B1AF60B2500B1C7D7 /* libxls */ = {
+		FE88ED4F1AF6102A00B1C7D7 /* libxls */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED2C1AF60B2500B1C7D7 /* C++ */,
-				FE88ED2F1AF60B2500B1C7D7 /* config.h */,
-				FE88ED301AF60B2500B1C7D7 /* include */,
-				FE88ED391AF60B2500B1C7D7 /* src */,
+				FE88ED501AF6102A00B1C7D7 /* C++ */,
+				FE88ED531AF6102A00B1C7D7 /* config.h */,
+				FE88ED541AF6102A00B1C7D7 /* include */,
+				FE88ED5D1AF6102A00B1C7D7 /* src */,
 			);
 			path = libxls;
 			sourceTree = "<group>";
 		};
-		FE88ED2C1AF60B2500B1C7D7 /* C++ */ = {
+		FE88ED501AF6102A00B1C7D7 /* C++ */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED2D1AF60B2500B1C7D7 /* XlsReader.cpp */,
-				FE88ED2E1AF60B2500B1C7D7 /* XlsReader.h */,
+				FE88ED511AF6102A00B1C7D7 /* XlsReader.cpp */,
+				FE88ED521AF6102A00B1C7D7 /* XlsReader.h */,
 			);
 			path = "C++";
 			sourceTree = "<group>";
 		};
-		FE88ED301AF60B2500B1C7D7 /* include */ = {
+		FE88ED541AF6102A00B1C7D7 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED311AF60B2500B1C7D7 /* brdb.c.h */,
-				FE88ED321AF60B2500B1C7D7 /* brdb.h */,
-				FE88ED331AF60B2500B1C7D7 /* endian.h */,
-				FE88ED341AF60B2500B1C7D7 /* ole.h */,
-				FE88ED351AF60B2500B1C7D7 /* xls.h */,
-				FE88ED361AF60B2500B1C7D7 /* xlsstruct.h */,
-				FE88ED371AF60B2500B1C7D7 /* xlstool.h */,
-				FE88ED381AF60B2500B1C7D7 /* xlstypes.h */,
+				FE88ED551AF6102A00B1C7D7 /* brdb.c.h */,
+				FE88ED561AF6102A00B1C7D7 /* brdb.h */,
+				FE88ED571AF6102A00B1C7D7 /* endian.h */,
+				FE88ED581AF6102A00B1C7D7 /* ole.h */,
+				FE88ED591AF6102A00B1C7D7 /* xls.h */,
+				FE88ED5A1AF6102A00B1C7D7 /* xlsstruct.h */,
+				FE88ED5B1AF6102A00B1C7D7 /* xlstool.h */,
+				FE88ED5C1AF6102A00B1C7D7 /* xlstypes.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		FE88ED391AF60B2500B1C7D7 /* src */ = {
+		FE88ED5D1AF6102A00B1C7D7 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FE88ED3A1AF60B2500B1C7D7 /* endian.c */,
-				FE88ED3B1AF60B2500B1C7D7 /* ole.c */,
-				FE88ED3C1AF60B2500B1C7D7 /* xls.c */,
-				FE88ED3D1AF60B2500B1C7D7 /* xlstool.c */,
+				FE88ED5E1AF6102A00B1C7D7 /* endian.c */,
+				FE88ED5F1AF6102A00B1C7D7 /* ole.c */,
+				FE88ED601AF6102A00B1C7D7 /* xls.c */,
+				FE88ED611AF6102A00B1C7D7 /* xlstool.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1128,7 +1136,7 @@
 				FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */,
 				FE3F6C1F1AEF3BE900535781 /* IQUIView+Hierarchy.m in Sources */,
 				FE3F6C1E1AEF3BE900535781 /* IQNSArray+Sort.m in Sources */,
-				FE88ED431AF60B2500B1C7D7 /* xls.c in Sources */,
+				FE88ED671AF6102A00B1C7D7 /* xls.c in Sources */,
 				FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
 				FE3F6C2C1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m in Sources */,
@@ -1136,15 +1144,15 @@
 				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
 				FE3F6C211AEF3BE900535781 /* IQKeyboardManager.m in Sources */,
 				FE3F6BF61AEE31A300535781 /* HRFMDB.m in Sources */,
-				FE88ED3F1AF60B2500B1C7D7 /* DHxlsReader.m in Sources */,
+				FE88ED631AF6102A00B1C7D7 /* DHxlsReader.m in Sources */,
 				FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */,
 				FE3F6C221AEF3BE900535781 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */,
-				FE88ED3E1AF60B2500B1C7D7 /* DHcell.m in Sources */,
+				FE88ED621AF6102A00B1C7D7 /* DHcell.m in Sources */,
 				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
 				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
 				FE308F6F1AE637C400D0BDF6 /* HRMyViewController.m in Sources */,
-				FEE275E51AF4C283005BE7FD /* MyCheckInfoResetPasswordViewController.m in Sources */,
+				FEE275E51AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m in Sources */,
 				FE3F6C231AEF3BE900535781 /* IQSegmentedNextPrevious.m in Sources */,
 				FE3F6C271AEF3BE900535781 /* IQToolbar.m in Sources */,
 				FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */,
@@ -1153,14 +1161,14 @@
 				FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */,
 				FE8E623E1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m in Sources */,
 				FE3F6C261AEF3BE900535781 /* IQTitleBarButtonItem.m in Sources */,
-				FEE275E21AF4C273005BE7FD /* MyCheckInfoChangePasswordViewController.m in Sources */,
-				FE88ED421AF60B2500B1C7D7 /* ole.c in Sources */,
-				FE88ED401AF60B2500B1C7D7 /* XlsReader.cpp in Sources */,
+				FEE275E21AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m in Sources */,
+				FE88ED661AF6102A00B1C7D7 /* ole.c in Sources */,
+				FE88ED641AF6102A00B1C7D7 /* XlsReader.cpp in Sources */,
 				FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */,
 				FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */,
 				FE3F6C281AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
-				FE88ED411AF60B2500B1C7D7 /* endian.c in Sources */,
+				FE88ED651AF6102A00B1C7D7 /* endian.c in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
 				FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */,
 				FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */,
@@ -1168,7 +1176,7 @@
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
 				FE8098981AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m in Sources */,
 				FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */,
-				FE88ED441AF60B2500B1C7D7 /* xlstool.c in Sources */,
+				FE88ED681AF6102A00B1C7D7 /* xlstool.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

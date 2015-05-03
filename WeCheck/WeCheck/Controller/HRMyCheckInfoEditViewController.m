@@ -7,7 +7,7 @@
 //
 
 #import "HRMyCheckInfoEditViewController.h"
-
+#import "HRFMDB.h"
 @interface HRMyCheckInfoEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewCheckInfoEdit;
 
@@ -57,12 +57,13 @@
                          @"HRCheckInfoNumber":((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text,
                          @"HRCheckInfoScene":_dic[@"checkInfo"][@"HRCheckInfoScene"]};
     }
+    
     //替换本地CheckInfo
-    [[NSUserDefaults standardUserDefaults] setObject:dicCheckInfo forKey:@"HRCheckInfo"];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:dicCheckInfo forKey:@"HRCheckInfo"];
     //替换本地CheckInfoList
-    NSMutableArray *mutArrCheckInfo = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"HRCheckInfoList"]];
+    NSMutableArray *mutArrCheckInfo = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfoList"]];
     [mutArrCheckInfo replaceObjectAtIndex:[mutArrCheckInfo indexOfObject:_dic[@"checkInfo"]] withObject:dicCheckInfo];
-    [[NSUserDefaults standardUserDefaults] setObject:mutArrCheckInfo forKey:@"HRCheckInfoList"];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:mutArrCheckInfo forKey:@"HRCheckInfoList"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)btnCancleAction:(UIBarButtonItem *)sender {

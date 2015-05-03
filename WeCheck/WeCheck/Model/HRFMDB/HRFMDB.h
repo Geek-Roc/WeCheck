@@ -16,25 +16,25 @@
 /**
  *  @author HaiRui
  *
- *  @brief  创建KeyValue表
+ *  @brief  创建KeyValue,CheckScene,CheckRecord表
  *
  *  @return YES创建成功
  */
-- (BOOL)createKeyValueTable;
-- (BOOL)createTable:(NSString *)tableName;
+- (BOOL)createTable;
 
+#pragma mark - KeyValue表方法
 /**
  *  @author HaiRui
  *
  *  @brief  插入KeyValue键值对
  *
- *  @param key   key值
  *  @param value value值
+ *  @param key   key值
  *
  *  @return YES创建成功
  */
-- (BOOL)insertInToKeyValueTable:(NSString *)key
-                      withValue:(id)value;
+- (BOOL)setInToKeyValueTable:(id)value
+                      forKey:(NSString *)key;
 /**
  *  @author HaiRui
  *
@@ -45,22 +45,40 @@
  *  @return object
  */
 - (id)queryInKeyValueTable:(NSString *)key;
-//添加人员信息
-- (BOOL)insertInToTableName:(NSString *)tablename
-             withParameters:(NSDictionary *)parameters;
 
-//根据ID查询数据
-- (NSMutableArray *)queryInTableName:(NSString *)tablename withID:(NSInteger )myID;
-//根据名字查询数据
-- (NSMutableArray *)queryInTableName:(NSString *)tablename withName:(NSString *)myName;
-//查询全部数据
-- (NSMutableArray *)queryInTableNameAll:(NSString *)tablename;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  根据key删除KeyValue表中值
+ *
+ *  @param key key值
+ *
+ *  @return YES删除成功
+ */
+- (BOOL)deleteKeyValueTable:(NSString *)key;
 
-//根据ID删除数据
-- (BOOL)deleteTableData:(NSString *)tablename withID:(NSInteger )myID;
-//删除所有数据
-- (BOOL)deleteTableAllData:(NSString *)tablename;
-//删除指定表
-- (BOOL)dropTable:(NSString *)tablename;
+#pragma mark - CheckScene表方法
+/**
+ *  @author HaiRui
+ *
+ *  @brief  插入people在一个情景中
+ *
+ *  @param dic people信息 名字和代号
+ *  @param key 情景名字
+ *
+ *  @return YES插入成功
+ */
+- (BOOL)insertInToCheckSceneTable:(NSDictionary *)dic objectForKey:(NSString *)key;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  删除情景中people
+ *
+ *  @param dic people信息 名字和代号
+ *
+ *  @return YES删除成功
+ */
+- (BOOL)deleteCheckSceneTable:(NSDictionary *)dic;
+#pragma mark - CheckRecord表方法
 
 @end

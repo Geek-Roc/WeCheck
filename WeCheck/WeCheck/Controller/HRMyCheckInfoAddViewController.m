@@ -7,7 +7,7 @@
 //
 
 #import "HRMyCheckInfoAddViewController.h"
-
+#import "HRFMDB.h"
 @interface HRMyCheckInfoAddViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewAddCheckInfo;
 
@@ -52,11 +52,11 @@
     NSDictionary *dicCheckInfo = @{@"HRCheckInfoName":((UITextField *)[_tableViewAddCheckInfo viewWithTag:1000]).text,
                                    @"HRCheckInfoNumber":((UITextField *)[_tableViewAddCheckInfo viewWithTag:2000]).text,
                                    @"HRCheckInfoScene":((UITextField *)[_tableViewAddCheckInfo viewWithTag:3000]).text};
-    [[NSUserDefaults standardUserDefaults] setObject:dicCheckInfo forKey:@"HRCheckInfo"];
-    NSMutableArray *mutArrCheckInfo = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"HRCheckInfoList"]];
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:dicCheckInfo forKey:@"HRCheckInfo"];
+    NSMutableArray *mutArrCheckInfo = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfoList"]];
     if (![mutArrCheckInfo containsObject:dicCheckInfo]) {
         [mutArrCheckInfo addObject:dicCheckInfo];
-        [[NSUserDefaults standardUserDefaults] setObject:mutArrCheckInfo forKey:@"HRCheckInfoList"];
+        [[HRFMDB shareFMDBManager] setInToKeyValueTable:mutArrCheckInfo forKey:@"HRCheckInfoList"];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

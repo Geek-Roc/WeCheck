@@ -8,6 +8,7 @@
 
 #import "HRViewController.h"
 #import "UILabel+FlickerNumber.h"
+#import "HRFMDB.h"
 @import CoreLocation;
 @import CoreBluetooth;
 
@@ -41,6 +42,8 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     ((UITabBarItem *)[self.view viewWithTag:1]).selectedImage = [[UIImage imageNamed:@"check2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_btnCheck setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
+    //创建数据库
+    [[HRFMDB shareFMDBManager] createTable];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key

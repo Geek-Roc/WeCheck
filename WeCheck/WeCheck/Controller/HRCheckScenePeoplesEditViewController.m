@@ -8,6 +8,7 @@
 
 #import "HRCheckScenePeoplesEditViewController.h"
 #import "HRCheckScenePeopleEditViewController.h"
+#import "HRFMDB.h"
 @interface HRCheckScenePeoplesEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewCheckScenePeoplesEdit;
 
@@ -45,8 +46,8 @@
     NSDictionary *dicPeople = @{@"peopleName":((UITextField *)[_tableViewCheckScenePeoplesEdit viewWithTag:1000]).text,
                                @"peopleNumber":((UITextField *)[_tableViewCheckScenePeoplesEdit viewWithTag:2000]).text};
     [_mutArrPeoples insertObject:dicPeople atIndex:0];
-    [_tableViewCheckScenePeoplesEdit insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    [[NSUserDefaults standardUserDefaults] setObject:_mutArrPeoples forKey:[NSString stringWithFormat:@"HRCheckScenePeopleList-%@", _dicScene[@"sceneName"]]];
+    [_tableViewCheckScenePeoplesEdit insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    [[HRFMDB shareFMDBManager] insertInToCheckSceneTable:dicPeople objectForKey:_dicScene[@"sceneName"]];
     ((UITextField *)[_tableViewCheckScenePeoplesEdit viewWithTag:1000]).text = @"";
     ((UITextField *)[_tableViewCheckScenePeoplesEdit viewWithTag:2000]).text = @"";
 }

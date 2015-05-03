@@ -6,16 +6,16 @@
 //  Copyright (c) 2015年 Geek-Roc. All rights reserved.
 //
 
-#import "MyCheckInfoResetPasswordViewController.h"
+#import "HRMyCheckInfoResetPasswordViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "MBProgressHUD.h"
-@interface MyCheckInfoResetPasswordViewController ()<UIAlertViewDelegate>
+@interface HRMyCheckInfoResetPasswordViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfRegisteEmail;
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
-@implementation MyCheckInfoResetPasswordViewController
+@implementation HRMyCheckInfoResetPasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

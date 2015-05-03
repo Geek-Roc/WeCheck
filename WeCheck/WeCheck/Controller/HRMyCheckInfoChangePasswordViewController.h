@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyCheckInfoChangePasswordViewController : UIViewController
+@interface HRMyCheckInfoChangePasswordViewController : UIViewController
 
 @end

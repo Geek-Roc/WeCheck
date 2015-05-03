@@ -6,17 +6,17 @@
 //  Copyright (c) 2015年 Geek-Roc. All rights reserved.
 //
 
-#import "MyCheckInfoChangePasswordViewController.h"
+#import "HRMyCheckInfoChangePasswordViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "MBProgressHUD.h"
-@interface MyCheckInfoChangePasswordViewController ()
+@interface HRMyCheckInfoChangePasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordOld;
 @property (weak, nonatomic) IBOutlet UITextField *tfChangePasswordNew;
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
-@implementation MyCheckInfoChangePasswordViewController
+@implementation HRMyCheckInfoChangePasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

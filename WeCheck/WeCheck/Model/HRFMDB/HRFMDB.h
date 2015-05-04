@@ -72,6 +72,16 @@
 /**
  *  @author HaiRui
  *
+ *  @brief  查询签到情景
+ *
+ *  @param key 签到人员数组
+ *
+ *  @return 签到情景
+ */
+- (NSString *)queryInCheckSceneTableCheckScene:(NSArray *)key;
+/**
+ *  @author HaiRui
+ *
  *  @brief  查询某个情景人数
  *
  *  @param key 情景名字
@@ -86,9 +96,20 @@
  *
  *  @param key 情景名字
  *
- *  @return object
+ *  @return 人员数组
  */
 - (id)queryInCheckSceneTable:(NSString *)key;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  根据人员代号查询名字
+ *
+ *  @param array 人员代号数组
+ *  @param key   签到情景
+ *
+ *  @return 人员数组
+ */
+- (id)queryInCheckSceneTableCheckPeople:(NSArray *)array objectForKey:(NSString *)key;
 /**
  *  @author HaiRui
  *
@@ -121,5 +142,72 @@
  */
 - (BOOL)deleteCheckSceneTableAll:(NSString *)key;
 #pragma mark - CheckRecord表方法
-
+/**
+ *  @author HaiRui
+ *
+ *  @brief  插入签到记录
+ *
+ *  @param array    签到人员数组
+ *  @param arrayAll 所有应签到人员
+ *  @param key      签到情景
+ *
+ *  @return YES插入成功
+ */
+- (BOOL)insertInToCheckRecordTable:(NSArray *)array allPeople:(NSArray *)arrayAll objectForKey:(NSString *)key;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询签到记录数组
+ *
+ *  @return 签到记录数组  字典包括 checkscene checktime
+ */
+- (id)queryInCheckRecordTable;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询所有签到状态详情
+ *
+ *  @return 状态字典
+ */
+- (id)queryInCheckRecordTableForAllScene;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询每种情景的状态详情
+ *
+ *  @return 情景数组
+ */
+- (id)queryInCheckRecordTableForEachScene;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询每次签到状态详情
+ *
+ *  @param checkTime 签到时间
+ *
+ *  @return 状态字典
+ */
+- (id)queryInCheckRecordTableForEachTime:(NSString *)checkTime;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询签到详情
+ *
+ *  @param checkTime 签到时间
+ *  @param key       签到情景
+ *
+ *  @return 签到详情
+ */
+- (id)queryInCheckRecordTableForEdit:(NSString *)checkTime  objectForKey:(NSString *)key;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  更新签到记录
+ *
+ *  @param dicCheck  原签到记录
+ *  @param checkTime 签到时间
+ *
+ *  @return YES修改成功
+ */
+- (BOOL)updateCheckRecordTableForEdit:(NSDictionary *)dicCheck objectForKey:(NSString *)checkTime;
 @end

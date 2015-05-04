@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HRCheckEditViewController : UIViewController
-
+@property (nonatomic, strong) NSDictionary *dicScene;
 @end

@@ -10,10 +10,18 @@
 #import "XYPieChart.h"
 #import "UILabel+FlickerNumber.h"
 #import "UUChart.h"
+#import "HRFMDB.h"
 @interface HRStatisticsViewController ()<XYPieChartDelegate, XYPieChartDataSource, UUChartDataSource, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewStatistics;
 @property (nonatomic, strong) NSMutableArray *slices;
 @property (nonatomic, strong) NSArray *sliceColors;
+
+//情景数组
+@property (nonatomic, strong) NSMutableArray *mutArrEachScenes;
+@property (nonatomic, strong) NSDictionary *dicScenes;
+@property (nonatomic, strong) NSString *stringNumber0;
+@property (nonatomic, strong) NSString *stringNumber1;
+@property (nonatomic, strong) NSString *stringNumber2;
 @end
 
 @implementation HRStatisticsViewController
@@ -28,11 +36,14 @@
                    [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],/*红色*/
                    [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1]/*灰色*/,nil];
     _slices = [NSMutableArray array];
-    for(int i = 0; i < 3; i ++)
-    {
-        NSNumber *one = [NSNumber numberWithInt:random()%60+20];
-        [_slices addObject:one];
-    }
+    _dicScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
+    [_slices addObject:@([_dicScenes[@"0"] integerValue])];
+    [_slices addObject:@([_dicScenes[@"1"] integerValue])];
+    [_slices addObject:@([_dicScenes[@"2"] integerValue])];
+    _stringNumber0 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"0"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+    _stringNumber1 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"1"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+    _stringNumber2 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"2"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+    _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachScene];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,29 +81,39 @@
 - (void)pieChart:(XYPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index {
     NSLog(@"did select slice at index %lu",(unsigned long)index);
     if (index == 0) {
-        [(UILabel *)[_tableViewStatistics viewWithTag:1001] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1001] dd_setNumber:@([_stringNumber0 floatValue]) format:@"%@%%" formatter:nil];
     }
     if (index == 1) {
-        [(UILabel *)[_tableViewStatistics viewWithTag:1002] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1002] dd_setNumber:@([_stringNumber1 floatValue]) format:@"%@%%" formatter:nil];
     }
     if (index == 2) {
-        [(UILabel *)[_tableViewStatistics viewWithTag:1003] dd_setNumber:_slices[index] format:@"%@%%" formatter:nil];
+        [(UILabel *)[_tableViewStatistics viewWithTag:1003] dd_setNumber:@([_stringNumber2 floatValue]) format:@"%@%%" formatter:nil];
     }
 }
 #pragma mark - UUChartDataSource
 //横坐标标题数组
 - (NSArray *)UUChart_xLableArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 10; i < 20; i++) {
-        [arr addObject:[NSString stringWithFormat:@"1%d", i]];
+    for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
+        [arr addObject:_mutArrEachScenes[i*3][@"checkScene"]];
     }
     return arr;
 }
 //数值多重数组
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 10; i < 20; i++) {
-        [arr addObject:[NSString stringWithFormat:@"1%d", i]];
+    if (chart.tag == 0) {
+        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
+            [arr addObject:_mutArrEachScenes[i][@"0"]];
+        }
+    }else if (chart.tag == 1) {
+        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
+            [arr addObject:_mutArrEachScenes[i*2][@"1"]];
+        }
+    }else if (chart.tag == 2) {
+        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
+            [arr addObject:_mutArrEachScenes[i*3][@"2"]];
+        }
     }
     return @[arr];
 }
@@ -123,9 +144,9 @@
     UITableViewCell *cell;
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"StatisticsTotalityCell" forIndexPath:indexPath];
-        [(UILabel *)[cell viewWithTag:1001] dd_setNumber:_slices[0] format:@"%@%%" formatter:nil];
-        [(UILabel *)[cell viewWithTag:1002] dd_setNumber:_slices[1] format:@"%@%%" formatter:nil];
-        [(UILabel *)[cell viewWithTag:1003] dd_setNumber:_slices[2] format:@"%@%%" formatter:nil];
+        [(UILabel *)[cell viewWithTag:1001] dd_setNumber:@([_stringNumber0 floatValue]) format:@"%@%%" formatter:nil];
+        [(UILabel *)[cell viewWithTag:1002] dd_setNumber:@([_stringNumber1 floatValue]) format:@"%@%%" formatter:nil];
+        [(UILabel *)[cell viewWithTag:1003] dd_setNumber:@([_stringNumber2 floatValue]) format:@"%@%%" formatter:nil];
         ((UILabel *)[cell viewWithTag:1001]).textColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
         ((UILabel *)[cell viewWithTag:1002]).textColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
         ((UILabel *)[cell viewWithTag:1003]).textColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];

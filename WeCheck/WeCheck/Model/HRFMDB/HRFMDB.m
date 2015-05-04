@@ -27,7 +27,7 @@
         NSString *documentDirectory = [paths objectAtIndex:0];
         //dbPath： 数据库路径，在Document中。
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-//        NSLog(@"数据库路径：%@", dbPath);
+        NSLog(@"数据库路径：%@", dbPath);
         _db = [FMDatabase databaseWithPath:dbPath];
     }
     return self;
@@ -36,7 +36,7 @@
 - (BOOL)createTable {
     if ([_db open]) {
         NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS KeyValue (KEY TEXT PRIMARY KEY NOT NULL, VALUE TEXT NOT NULL)"];
-        NSString *sqlCreateTable1 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckScene (CHECKSCENE TEXT PRIMARY KEY NOT NULL, PEOPLENAME PRIMARY KEY TEXT NOT NULL, PEOPLENUMBER PRIMARY KEY TEXT NOT NULL)"];
+        NSString *sqlCreateTable1 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckScene (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL, PRIMARY KEY (CHECKSCENE, PEOPLENAME, PEOPLENUMBER))"];
         NSString *sqlCreateTable2 =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS CheckRecord (CHECKSCENE TEXT NOT NULL, PEOPLENAME TEXT NOT NULL, PEOPLENUMBER TEXT NOT NULL, PEOPLESTATE TEXT NOT NULL, CHECKTIME TEXT NOT NULL)"];
         BOOL res = [_db executeUpdate:sqlCreateTable];
         BOOL res1 = [_db executeUpdate:sqlCreateTable1];
@@ -63,7 +63,7 @@
     }
     return YES;
 }
-
+#pragma mark - KeyValue表方法
 - (BOOL)setInToKeyValueTable:(id)value
                       forKey:(NSString *)key {
     NSError * error;
@@ -87,7 +87,6 @@
     return YES;
 }
 - (id)queryInKeyValueTable:(NSString *)key {
-    NSMutableArray *peopleArr = [NSMutableArray array];
     NSString *json;
     if ([_db open]) {
         NSString * sql = [NSString stringWithFormat:@"SELECT KEY, VALUE FROM KeyValue WHERE KEY = '%@'", key];
@@ -105,9 +104,9 @@
             NSLog(@"转化JSON失败");
             return nil;
         }
-        peopleArr = result;
+        return result;
     }
-    return peopleArr;
+    return nil;
 }
 - (BOOL)deleteKeyValueTable:(NSString *)key{
     if ([_db open]) {
@@ -122,6 +121,7 @@
     }
     return YES;
 }
+#pragma mark - CheckScene表方法
 - (BOOL)insertInToCheckSceneTable:(NSDictionary *)dic objectForKey:(NSString *)key {
     if ([_db open]) {
         NSString *sql = [NSString stringWithFormat:@"INSERT OR IGNORE INTO CheckScene (CHECKSCENE, PEOPLENAME, PEOPLENUMBER) VALUES (?, ?, ?)"];
@@ -135,6 +135,23 @@
         [_db close];
     }
     return YES;
+}
+- (NSString *)queryInCheckSceneTableCheckScene:(NSArray *)array {
+    NSString *checkScene;
+    NSString *string = @"";
+    for (NSString *s in array) {
+        string = [string stringByAppendingFormat:@"%@, ", s];
+    }
+    string = [string substringToIndex:string.length-2];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT CheckScene, count() AS A FROM CheckScene WHERE PEOPLENUMBER IN (%@) GROUP BY CHECKSCENE ORDER BY A DESC", string];
+        FMResultSet *rs = [_db executeQuery:sql];
+        if ([rs next]) {
+            checkScene = [rs stringForColumn:@"CHECKSCENE"];
+        }
+        [_db close];
+    }
+    return checkScene;
 }
 - (NSString *)queryInCheckSceneTableNum:(NSString *)key {
     NSString *num;
@@ -153,6 +170,26 @@
     if ([_db open]) {
         NSString * sql = [NSString stringWithFormat:@"SELECT * FROM CheckScene WHERE CHECKSCENE = '%@'", key];
         FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
+            [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
+            [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
+            [peopleArr addObject:dicPeople];
+        }
+        [_db close];
+    }
+    return peopleArr;
+}
+- (id)queryInCheckSceneTableCheckPeople:(NSArray *)array objectForKey:(NSString *)key {
+    NSMutableArray *peopleArr = [NSMutableArray array];
+    NSString *string = @"";
+    for (NSString *s in array) {
+        string = [string stringByAppendingFormat:@"%@, ", s];
+    }
+    string = [string substringToIndex:string.length-2];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM CheckScene WHERE PEOPLENUMBER IN (%@) AND CHECKSCENE = '%@'",string , key];
+        FMResultSet *rs = [_db executeQuery:sql];
         while ([rs next]) {
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
@@ -198,6 +235,116 @@
             NSLog(@"删除CheckScene:%@出错", key);
         } else {
             NSLog(@"删除CheckScene:%@成功", key);
+        }
+        [_db close];
+    }
+    return YES;
+}
+#pragma mark - CheckRecord表方法
+- (BOOL)insertInToCheckRecordTable:(NSArray *)array allPeople:(NSArray *)arrayAll objectForKey:(NSString *)key {
+    if ([_db open]) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSString *stringTime = [formatter stringFromDate:[NSDate date]];
+        for (NSDictionary *dic in arrayAll) {
+            NSString *sql = [NSString stringWithFormat:@"INSERT INTO CheckRecord (CHECKSCENE, PEOPLENAME, PEOPLENUMBER, PEOPLESTATE, CHECKTIME) VALUES (?, ?, ?, ?, ?)"];
+            BOOL res;
+            if ([array containsObject:dic])
+                //0签到 1迟到 2缺席
+                res = [_db executeUpdate:sql,key,dic[@"peopleName"],dic[@"peopleNumber"],@"0",stringTime];
+            else
+                res = [_db executeUpdate:sql,key,dic[@"peopleName"],dic[@"peopleNumber"],@"2",stringTime];
+            if (!res) {
+                NSLog(@"插入CheckScene失败");
+                return NO;
+            } else {
+                NSLog(@"插入CheckScene成功");
+            }
+        }
+        [_db close];
+    }
+    return YES;
+}
+- (id)queryInCheckRecordTable {
+    NSMutableArray *checkRecords = [NSMutableArray array];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT CHECKSCENE,CHECKTIME FROM CheckRecord GROUP BY CHECKTIME"];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];
+            [checkRecord setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
+            [checkRecord setObject:[rs stringForColumn:@"CHECKTIME"] forKey:@"checkTime"];
+            [checkRecords addObject:checkRecord];
+        }
+        [_db close];
+    }
+    return checkRecords;
+}
+- (id)queryInCheckRecordTableForAllScene {
+    NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT PEOPLESTATE, count() AS A FROM CheckRecord GROUP BY PEOPLESTATE"];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            [checkRecord setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
+        }
+        [_db close];
+    }
+    return checkRecord;
+}
+- (id)queryInCheckRecordTableForEachScene {
+    NSMutableArray *eachScenes = [NSMutableArray array];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT CHECKSCENE, PEOPLESTATE, count() AS A FROM CheckRecord GROUP BY CHECKSCENE, PEOPLESTATE"];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            NSMutableDictionary *dicEachScene = [NSMutableDictionary dictionary];
+            [dicEachScene setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
+            [dicEachScene setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
+            [eachScenes addObject:dicEachScene];
+        }
+        [_db close];
+    }
+    return eachScenes;
+}
+- (id)queryInCheckRecordTableForEachTime:(NSString *)checkTime {
+    NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT PEOPLESTATE, count() AS A FROM CheckRecord WHERE CHECKTIME = '%@'  GROUP BY PEOPLESTATE", checkTime];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            [checkRecord setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
+        }
+        [_db close];
+    }
+    return checkRecord;
+}
+- (id)queryInCheckRecordTableForEdit:(NSString *)checkTime  objectForKey:(NSString *)key {
+    NSMutableArray *checkRecords = [NSMutableArray array];
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM CheckRecord WHERE CHECKTIME = '%@' AND CHECKSCENE = '%@'", checkTime, key];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"checkName"];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLESTATE"] forKey:@"checkState"];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"checkNumber"];
+            [checkRecords addObject:checkRecord];
+        }
+        [_db close];
+    }
+    return checkRecords;
+}
+- (BOOL)updateCheckRecordTableForEdit:(NSDictionary *)dicCheck objectForKey:(NSString *)checkTime {
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckRecord SET PEOPLESTATE = '%@' WHERE CHECKTIME = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicCheck[@"checkState"], checkTime, dicCheck[@"checkName"], dicCheck[@"checkNumber"]];
+        BOOL res = [_db executeUpdate:sql];
+        if (!res) {
+            NSLog(@"修改CheckRecord失败");
+            return NO;
+        } else {
+            NSLog(@"修改CheckRecord成功");
         }
         [_db close];
     }

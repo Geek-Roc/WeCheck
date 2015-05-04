@@ -7,7 +7,7 @@
 //
 
 #import "HRCheckEditViewController.h"
-
+#import "HRFMDB.h"
 @interface HRCheckEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewCheckEdit;
 @property (nonatomic, strong) NSMutableArray *mutArrCheckState;
@@ -17,10 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _mutArrCheckState = [NSMutableArray array];
-    for (int i = 0; i < 20; i++) {
-        [_mutArrCheckState addObject:@"签到"];
-    }
+    _mutArrCheckState = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckRecordTableForEdit:_dicScene[@"checkTime"] objectForKey:_dicScene[@"checkScene"]]];
     // Do any additional setup after loading the view.
 }
 
@@ -40,22 +37,21 @@
 */
 #pragma mark - function
 - (void)btnCheckAction:(UIButton *)sender {
+    NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
     if ([sender.titleLabel.text isEqualToString:@"签到"]) {
         [sender setTitle:@"迟到" forState:UIControlStateNormal];
-        NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"迟到"];
+        [_mutArrCheckState[indexPath.row] setObject:@"1" forKey:@"checkState"];
         sender.backgroundColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
     }else if ([sender.titleLabel.text isEqualToString:@"迟到"]) {
         [sender setTitle:@"缺席" forState:UIControlStateNormal];
-        NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"缺席"];
+        [_mutArrCheckState[indexPath.row] setObject:@"2" forKey:@"checkState"];
         sender.backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
     }else {
         [sender setTitle:@"签到" forState:UIControlStateNormal];
-        NSIndexPath *indexPath = [_tableViewCheckEdit indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-        [_mutArrCheckState replaceObjectAtIndex:indexPath.row withObject:@"签到"];
+        [_mutArrCheckState[indexPath.row] setObject:@"0" forKey:@"checkState"];
         sender.backgroundColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
     }
+    [[HRFMDB shareFMDBManager] updateCheckRecordTableForEdit:_mutArrCheckState[indexPath.row] objectForKey:_dicScene[@"checkTime"]];
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,16 +63,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckEditCell" forIndexPath:indexPath];
     [((UIButton *)[cell viewWithTag:1002]) addTarget:self action:@selector(btnCheckAction:) forControlEvents:UIControlEventTouchUpInside];
-    [((UIButton *)[cell viewWithTag:1002]) setTitle:_mutArrCheckState[indexPath.row] forState:UIControlStateNormal];
-    if ([_mutArrCheckState[indexPath.row] isEqualToString:@"签到"]) {
+    if ([_mutArrCheckState[indexPath.row][@"checkState"] isEqualToString:@"0"]) {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
-    }else if ([_mutArrCheckState[indexPath.row] isEqualToString:@"迟到"]) {
+        [((UIButton *)[cell viewWithTag:1002]) setTitle:@"签到" forState:UIControlStateNormal];
+    }else if ([_mutArrCheckState[indexPath.row][@"checkState"] isEqualToString:@"1"]) {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
+        [((UIButton *)[cell viewWithTag:1002]) setTitle:@"迟到" forState:UIControlStateNormal];
     }else {
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
+        [((UIButton *)[cell viewWithTag:1002]) setTitle:@"缺席" forState:UIControlStateNormal];
     }
-    ((UILabel *)[cell viewWithTag:1000]).text = [NSString stringWithFormat:@"张思那%ld", (long)indexPath.row];
-    ((UILabel *)[cell viewWithTag:1001]).text = [NSString stringWithFormat:@"20000000%ld", (long)indexPath.row];
+    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrCheckState[indexPath.row][@"checkName"];
+    ((UILabel *)[cell viewWithTag:1001]).text = _mutArrCheckState[indexPath.row][@"checkNumber"];
     return cell;
 }
 #pragma mark - UITableViewDelegate

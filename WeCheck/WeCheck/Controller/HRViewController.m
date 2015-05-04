@@ -9,6 +9,7 @@
 #import "HRViewController.h"
 #import "UILabel+FlickerNumber.h"
 #import "HRFMDB.h"
+#import "HRCheckEditViewController.h"
 @import CoreLocation;
 @import CoreBluetooth;
 
@@ -27,7 +28,13 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 @property (weak, nonatomic) IBOutlet UITableView *tableViewRecentlyStatistic;
 @property (weak, nonatomic) IBOutlet UIButton *btnCheck;
 @property (weak, nonatomic) IBOutlet UIButton *btnCollection;
-
+//签到信息
+@property (nonatomic, strong) NSDictionary *dicCheckInfo;
+@property (nonatomic, strong) NSMutableArray *mutArrScenes;
+//情景统计
+@property (nonatomic, strong) NSMutableArray *mutArrSceneProbability;
+//总体签到率
+@property (nonatomic, strong) NSString *stringNumber;
 @end
 
 @implementation HRViewController
@@ -35,7 +42,10 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self drawLineAnimation:_layerArc forKey:@"123"];
-    [_lbStatisticNumber dd_setNumber:@(100) format:@"%@%%" formatter:nil];
+    NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
+    _stringNumber = [NSString stringWithFormat:@"%0.4f", [dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])];
+    [_lbStatisticNumber dd_setNumber:@([_stringNumber floatValue]*100) format:@"%@%%" formatter:nil];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +54,16 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     [_btnCollection setBackgroundImage:[UIImage imageNamed:@"blackbackground"] forState:UIControlStateHighlighted];
     //创建数据库
     [[HRFMDB shareFMDBManager] createTable];
+    
+    _dicCheckInfo = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfo"];
+    _mutArrScenes = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"]];
+    _mutArrSceneProbability = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckRecordTable]];
+    for (NSMutableDictionary *mutDic in _mutArrSceneProbability) {
+        [mutDic setObject:[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:mutDic[@"checkScene"]] forKey:@"sceneNumber"];
+        NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachTime:mutDic[@"checkTime"]];
+        [mutDic setObject:[NSString stringWithFormat:@"%0.2f", 100*[dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])] forKey:@"checkProbability"];
+    }
+    [_tableViewRecentlyStatistic reloadData];
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key
@@ -60,15 +80,17 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[HRCheckEditViewController class]]) {
+        HRCheckEditViewController *hrcevc = segue.destinationViewController;
+        hrcevc.dicScene = sender;
+    }
 }
-*/
+
 #pragma mark - function
 - (void)animationShow {
     _viewAnimation = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
@@ -118,9 +140,21 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     
     [[UIApplication sharedApplication].keyWindow addSubview:_viewAnimation];
 }
+- (IBAction)btnTurnOnCollectAction:(UIButton *)sender {
+    if (_mutArrScenes.count == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未设置情景信息" message:@"第一次使用请点击右上角+号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    [self performSegueWithIdentifier:@"CheckListSegue" sender:nil];
+}
 
 - (IBAction)turnOnCheck:(UIButton *)sender {
-    
+    if (!_dicCheckInfo) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未设置签到信息" message:@"请在'我'右上角添加设置！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
     if (!_peripheralManager)
         _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
     
@@ -135,11 +169,11 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     if ([self checkPeripheralAccess]) {
         time_t t;
         srand((unsigned) time(&t));
-//        CLBeaconMajorValue maj = 20152.0;
-//        CLBeaconMinorValue min = 00101.0;
+        CLBeaconMajorValue maj = [[_dicCheckInfo[@"HRCheckInfoNumber"] substringToIndex:5] intValue];
+        CLBeaconMinorValue min = [[_dicCheckInfo[@"HRCheckInfoNumber"] substringFromIndex:5] intValue];
         CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:CUUID]
-                                                                         major:rand()
-                                                                         minor:rand()
+                                                                         major:maj
+                                                                         minor:min
                                                                     identifier:CIdentifier];
         NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
         [_peripheralManager startAdvertising:beaconPeripheralData];
@@ -177,13 +211,17 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return _mutArrSceneProbability.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecentlyCheckRecordsCell" forIndexPath:indexPath];
+    ((UILabel *)[cell viewWithTag:1001]).text = _mutArrSceneProbability[indexPath.row][@"checkScene"];
+    ((UILabel *)[cell viewWithTag:1002]).text = [NSString stringWithFormat:@"签到率：%@%%",_mutArrSceneProbability[indexPath.row][@"checkProbability"]];
+    ((UILabel *)[cell viewWithTag:1003]).text = [NSString stringWithFormat:@"总人数：%@人", _mutArrSceneProbability[indexPath.row][@"sceneNumber"]];
+    ((UILabel *)[cell viewWithTag:1004]).text = [_mutArrSceneProbability[indexPath.row][@"checkTime"] substringToIndex:10];
     return cell;
 }
 #pragma mark - UITableViewDelegate
@@ -199,7 +237,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/2, 40)
                                                         radius:35
                                                     startAngle:M_PI_2
-                                                      endAngle:M_PI_2+M_PI*2*1
+                                                      endAngle:M_PI_2+M_PI*2*[_stringNumber floatValue]
                                                      clockwise:YES];
     _layerArc = [CAShapeLayer layer];
     _layerArc.path=path.CGPath;
@@ -208,9 +246,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     _layerArc.lineWidth = 5;
     [viewStatistics.layer addSublayer:_layerArc];
     
-    _lbStatisticNumber = [[UILabel alloc] initWithFrame:CGRectMake(viewStatistics.center.x, viewStatistics.center.y, 48, 21)];
+    _lbStatisticNumber = [[UILabel alloc] initWithFrame:CGRectMake(viewStatistics.center.x, viewStatistics.center.y, 60, 21)];
     _lbStatisticNumber.center = viewStatistics.center;
-    _lbStatisticNumber.text = @"100%";
+    _lbStatisticNumber.text = [NSString stringWithFormat:@"%0.2f%%", [_stringNumber floatValue]*100];
     _lbStatisticNumber.textAlignment = NSTextAlignmentCenter;
     _lbStatisticNumber.font = [UIFont systemFontOfSize:17];
     [viewStatistics addSubview:_lbStatisticNumber];
@@ -218,7 +256,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"CheckRecordEditSegue" sender:nil];
+    [self performSegueWithIdentifier:@"CheckRecordEditSegue" sender:_mutArrSceneProbability[indexPath.row]];
 }
 #pragma mark - Alert view delegate methods
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {

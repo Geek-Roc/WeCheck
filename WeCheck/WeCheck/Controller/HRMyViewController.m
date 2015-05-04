@@ -167,13 +167,17 @@
             else
                 [self performSegueWithIdentifier:@"MyCheckInfoSyncLoginSegue" sender:nil];
         }else if (indexPath.row == 1) {
-            NSDictionary *dic = @{@"didSelectCell":@"名字",
-                                  @"checkInfo":_dicCheckInfo};
-            [self performSegueWithIdentifier:@"MyCheckInfoEditSegue" sender:dic];
+            if (_dicCheckInfo) {
+                NSDictionary *dic = @{@"didSelectCell":@"名字",
+                                      @"checkInfo":_dicCheckInfo};
+                [self performSegueWithIdentifier:@"MyCheckInfoEditSegue" sender:dic];
+            }
         }else if (indexPath.row == 2) {
-            NSDictionary *dic = @{@"didSelectCell":@"代号",
-                                  @"checkInfo":_dicCheckInfo};
-            [self performSegueWithIdentifier:@"MyCheckInfoEditSegue" sender:dic];
+            if (_dicCheckInfo) {
+                NSDictionary *dic = @{@"didSelectCell":@"代号",
+                                      @"checkInfo":_dicCheckInfo};
+                [self performSegueWithIdentifier:@"MyCheckInfoEditSegue" sender:dic];
+            }
         }
     }else if (indexPath.section == 1) {
         [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrCheckInfo[indexPath.row] forKey:@"HRCheckInfo"];

@@ -7,6 +7,7 @@
 //
 
 #import "HRCheckListViewController.h"
+#import "HRFMDB.h"
 @import CoreLocation;
 @import CoreBluetooth;
 static NSString * const CUUID = @"8AEFB031-6C32-486F-825B-2011A193487D";
@@ -22,6 +23,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 @property (nonatomic, unsafe_unretained) void *operationContext;
+//签到人员
 @property (nonatomic, strong) NSArray *findBeacons;
 
 @end
@@ -39,7 +41,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     if (_peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未开蓝牙" message:@"请打开蓝牙！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
-        return;
     }
     NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:CUUID];
     if (!_beaconRegion)
@@ -65,6 +66,19 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 }
 */
 #pragma mark - function
+- (IBAction)btnSaveCheckListAction:(UIBarButtonItem *)sender {
+    //停止收集
+    [_locationManager stopMonitoringForRegion:_beaconRegion];
+    [_locationManager stopRangingBeaconsInRegion:_beaconRegion];
+    
+//    NSArray *arr = @[@"2011111101", @"2011111102", @"2011111103"];
+    NSArray *arr = @[@"2022222201", @"2022222202"];
+    NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:arr];
+    NSArray *array = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckPeople:arr objectForKey:sceneName];
+    NSArray *arrayAll = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:sceneName];
+    [[HRFMDB shareFMDBManager] insertInToCheckRecordTable:array allPeople:arrayAll objectForKey:sceneName];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)checkLocationAccess {
     if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
@@ -228,9 +242,9 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
                inRegion:(CLBeaconRegion *)region {
     NSArray *filteredBeacons = [self filteredBeacons:beacons];
     if (filteredBeacons.count == 0) {
-                NSLog(@"未找到小伙伴");
+        NSLog(@"未找到小伙伴");
     } else {
-                NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
+        NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
     }
     NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
     NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
@@ -300,7 +314,7 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     NSMutableSet *lookup = [[NSMutableSet alloc] init];
     for (int index = 0; index < [beacons count]; index++) {
         CLBeacon *curr = [beacons objectAtIndex:index];
-        NSString *identifier = [NSString stringWithFormat:@"%@/%@", curr.major, curr.minor];
+        NSString *identifier = [NSString stringWithFormat:@"%@%@", curr.major, curr.minor];
         
         // this is very fast constant time lookup in a hash table
         if ([lookup containsObject:identifier]) {
@@ -309,7 +323,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
             [lookup addObject:identifier];
         }
     }
-    
     return [mutableBeacons copy];
 }
 

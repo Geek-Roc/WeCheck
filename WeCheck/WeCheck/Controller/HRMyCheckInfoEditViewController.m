@@ -52,6 +52,10 @@
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"未填写代号" message:@"请填写！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
             return;
+        }else if (((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text.length != 10 || [[((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text substringToIndex:1] intValue] > 5 || [[((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text substringToIndex:1] intValue] < 1) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"代号规则不对" message:@"小于6开头的10位数字" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alertView show];
+            return;
         }
         dicCheckInfo = @{@"HRCheckInfoName":_dic[@"checkInfo"][@"HRCheckInfoName"],
                          @"HRCheckInfoNumber":((UITextField *)[_tableViewCheckInfoEdit viewWithTag:1000]).text,

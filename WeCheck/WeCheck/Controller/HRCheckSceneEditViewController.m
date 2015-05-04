@@ -28,6 +28,7 @@
                                    @"sceneNumber":[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:_mutArrScenes[i][@"sceneName"]]};
         [_mutArrScenes replaceObjectAtIndex:i withObject:dicScene];
     }
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrScenes forKey:@"HRCheckSceneList"];
     [_tableViewCheckSceneEdit reloadData];
 }
 - (void)viewDidLoad {

@@ -707,7 +707,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0Sc-aw-rPG" kind="show" id="6Vc-zY-rmT"/>
+                                    <action selector="btnTurnOnCollectAction:" destination="s07-gk-MBg" eventType="touchUpInside" id="Gel-EL-Hi7"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vx0-YM-6Cz">
@@ -721,7 +721,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000级00班" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6V-1a-r86">
-                                                    <rect key="frame" x="73" y="10" width="377" height="21"/>
+                                                    <rect key="frame" x="73" y="10" width="353" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="L0D-Mh-lnr"/>
                                                     </constraints>
@@ -755,10 +755,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到率：90%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmY-C3-Jgp">
-                                                    <rect key="frame" x="439" y="10" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到率：100.00%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmY-C3-Jgp">
+                                                    <rect key="frame" x="434" y="10" width="125" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="OWJ-K1-NDP"/>
+                                                        <constraint firstAttribute="width" constant="125" id="OWJ-K1-NDP"/>
                                                         <constraint firstAttribute="height" constant="21" id="yuR-M9-fkB"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -778,7 +778,7 @@
                                                 <constraint firstItem="aBk-lk-i6o" firstAttribute="top" secondItem="7lv-AM-TbW" secondAttribute="top" constant="34" id="s3T-M5-GJ1"/>
                                                 <constraint firstAttribute="trailing" secondItem="aBk-lk-i6o" secondAttribute="trailing" constant="8" id="sFp-Td-hP9"/>
                                                 <constraint firstItem="d8o-B2-ntB" firstAttribute="leading" secondItem="rCw-Ie-bwh" secondAttribute="trailing" constant="8" id="zTn-hA-LkN"/>
-                                                <constraint firstAttribute="trailing" secondItem="o6V-1a-r86" secondAttribute="trailing" constant="117" id="zeT-47-Mct"/>
+                                                <constraint firstAttribute="trailing" secondItem="o6V-1a-r86" secondAttribute="trailing" constant="141" id="zeT-47-Mct"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -830,6 +830,7 @@
                         <outlet property="btnCollection" destination="mPW-Zw-YJ7" id="4V6-pG-Qjj"/>
                         <outlet property="tableViewRecentlyStatistic" destination="Vx0-YM-6Cz" id="ikU-6i-Iyq"/>
                         <segue destination="FRu-nN-WAb" kind="show" identifier="CheckRecordEditSegue" id="Ny4-jo-j9H"/>
+                        <segue destination="0Sc-aw-rPG" kind="show" identifier="CheckListSegue" id="qFa-uP-8v4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzS-fz-dCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,6 +909,9 @@
                     <navigationItem key="navigationItem" title="收集" id="vAP-7w-etp">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="XIX-D8-GAQ">
                             <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="btnSaveCheckListAction:" destination="0Sc-aw-rPG" id="oIW-LC-ecM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1029,11 +1033,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="签到编辑" id="QDy-aT-MeP">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="Dee-68-vPc">
-                            <color key="tintColor" red="0.16078431900000001" green="0.87058830259999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="签到编辑" id="QDy-aT-MeP"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableViewCheckEdit" destination="sfr-xm-UCU" id="DVZ-AB-9UX"/>

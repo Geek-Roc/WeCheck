@@ -203,7 +203,7 @@
 }
 - (BOOL)updateCheckSceneTable:(NSDictionary *)dicNew withOld:(NSDictionary *)dicOld {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckScene SET PEOPLENAME = '%@', PEOPLENUMBER = '%@' WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicNew[@"peopleName"], dicNew[@"peopleNumber"], dicOld[@"checkName"], dicOld[@"peopleName"], dicOld[@"peopleNumber"]];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckScene SET PEOPLENAME = '%@', PEOPLENUMBER = '%@' WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicNew[@"peopleName"], dicNew[@"peopleNumber"], dicOld[@"checkScene"], dicOld[@"peopleName"], dicOld[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             NSLog(@"修改CheckScene失败");
@@ -217,7 +217,7 @@
 }
 - (BOOL)deleteCheckSceneTable:(NSDictionary *)dic {
     if ([_db open]) {
-        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"checkName"], dic[@"peopleName"], dic[@"peopleNumber"]];
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"checkScene"], dic[@"peopleName"], dic[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:deleteSql];
         if (!res) {
             NSLog(@"删除CheckScene:%@出错", dic);
@@ -369,9 +369,9 @@
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
             NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];
-            [checkRecord setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"checkName"];
-            [checkRecord setObject:[rs stringForColumn:@"PEOPLESTATE"] forKey:@"checkState"];
-            [checkRecord setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"checkNumber"];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLESTATE"] forKey:@"peopleState"];
+            [checkRecord setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
             [checkRecords addObject:checkRecord];
         }
         [_db close];
@@ -380,7 +380,7 @@
 }
 - (BOOL)updateCheckRecordTableForEdit:(NSDictionary *)dicCheck objectForKey:(NSString *)checkTime {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckRecord SET PEOPLESTATE = '%@' WHERE CHECKTIME = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicCheck[@"checkState"], checkTime, dicCheck[@"checkName"], dicCheck[@"checkNumber"]];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckRecord SET PEOPLESTATE = '%@' WHERE CHECKTIME = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicCheck[@"peopleState"], checkTime, dicCheck[@"checkScene"], dicCheck[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             NSLog(@"修改CheckRecord失败");

@@ -43,5 +43,6 @@ typedef enum { cellBlank=0, cellString, cellInteger, cellFloat, cellBool, cellEr
 // Debugging
 - (void)show;
 - (NSString *)dump;
+- (NSString *)colString;
 
 @end

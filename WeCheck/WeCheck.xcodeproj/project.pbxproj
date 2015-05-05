@@ -864,10 +864,10 @@
 				FEFAC07C1AF87FEF00356ABC /* HRCheckListViewController.m */,
 				FEFAC07D1AF87FEF00356ABC /* HRCheckSceneEditViewController.h */,
 				FEFAC07E1AF87FEF00356ABC /* HRCheckSceneEditViewController.m */,
-				FEFAC07F1AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.h */,
-				FEFAC0801AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m */,
 				FEFAC0811AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.h */,
 				FEFAC0821AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m */,
+				FEFAC07F1AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.h */,
+				FEFAC0801AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m */,
 			);
 			path = "签到";
 			sourceTree = "<group>";

@@ -73,8 +73,8 @@
         ((UIButton *)[cell viewWithTag:1002]).backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
         [((UIButton *)[cell viewWithTag:1002]) setTitle:@"缺席" forState:UIControlStateNormal];
     }
-    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrCheckState[indexPath.row][@"checkName"];
-    ((UILabel *)[cell viewWithTag:1001]).text = _mutArrCheckState[indexPath.row][@"checkNumber"];
+    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrCheckState[indexPath.row][@"peopleName"];
+    ((UILabel *)[cell viewWithTag:1001]).text = _mutArrCheckState[indexPath.row][@"peopleNumber"];
     return cell;
 }
 #pragma mark - UITableViewDelegate

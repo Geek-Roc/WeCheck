@@ -95,5 +95,7 @@
 	}
 	return s;
 }
-
+- (NSString *)colString {
+    return [NSString stringWithFormat:@"%s",colString];
+}
 @end

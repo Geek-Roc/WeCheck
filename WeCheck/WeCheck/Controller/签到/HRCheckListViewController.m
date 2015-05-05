@@ -36,7 +36,12 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
 @implementation HRCheckListViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
+    [super viewDidLoad];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicatorView.frame = (CGRect){(CGPoint){220, 12+64}, indicatorView.frame.size};
+    [indicatorView startAnimating];
+    [self.view addSubview:indicatorView];
+    
     // Do any additional setup after loading the view.
     if (!_locationManager) {
         _locationManager = [[CLLocationManager alloc] init];
@@ -132,7 +137,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
         if (!stillExists) {
             if (!indexPaths)
                 indexPaths = [NSMutableArray new];
-            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:_findBeacons.count inSection:0]];
         }
         row++;
     }
@@ -157,7 +162,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
         if (isNewBeacon) {
             if (!indexPaths)
                 indexPaths = [NSMutableArray new];
-            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:_findBeacons.count inSection:0]];
         }
         row++;
     }
@@ -169,7 +174,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
     for (NSUInteger row = 0; row < beacons.count; row++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
     }
     
     return indexPaths;
@@ -224,10 +229,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerCell" forIndexPath:indexPath];
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    indicatorView.frame = (CGRect){(CGPoint){220, 12}, indicatorView.frame.size};
-    [indicatorView startAnimating];
-    [headerView addSubview:indicatorView];
+    
     return headerView;
 }
 #pragma mark - Location manager delegate methods
@@ -282,20 +284,20 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     
 //    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
 //    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
-    NSArray *reloadedRows = nil;
+//    NSArray *reloadedRows = nil;
 //    if (!deletedRows && !insertedRows)
-        reloadedRows = [self indexPathsForBeacons:filteredBeacons];
+//        reloadedRows = [self indexPathsForBeacons:filteredBeacons];
     
     _findBeacons = filteredBeacons;
     ((UILabel *)[_beaconsCollectionView viewWithTag:1000]).text = [NSString stringWithFormat:@"耐心等待，收寻到%ld个小伙伴......", (unsigned long)_findBeacons.count];
     
-//    [_beaconsCollectionView reloadData];
+    [_beaconsCollectionView reloadData];
 //    if (insertedRows)
 //        [_beaconsCollectionView insertItemsAtIndexPaths:insertedRows];
 //    if (deletedRows)
 //        [_beaconsCollectionView deleteItemsAtIndexPaths:deletedRows];
 //    if (reloadedRows)
-        [_beaconsCollectionView reloadItemsAtIndexPaths:reloadedRows];
+//        [_beaconsCollectionView reloadItemsAtIndexPaths:reloadedRows];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region

@@ -27,7 +27,7 @@
         NSString *documentDirectory = [paths objectAtIndex:0];
         //dbPath： 数据库路径，在Document中。
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-        NSLog(@"数据库路径：%@", dbPath);
+//        NSLog(@"数据库路径：%@", dbPath);
         _db = [FMDatabase databaseWithPath:dbPath];
     }
     return self;
@@ -174,7 +174,7 @@
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
-            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
+            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"CHECKSCENE"];
             [peopleArr addObject:dicPeople];
         }
         [_db close];
@@ -195,6 +195,7 @@
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
+            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"CHECKSCENE"];
             [peopleArr addObject:dicPeople];
         }
         [_db close];
@@ -380,7 +381,7 @@
 }
 - (BOOL)updateCheckRecordTableForEdit:(NSDictionary *)dicCheck objectForKey:(NSString *)checkTime {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckRecord SET PEOPLESTATE = '%@' WHERE CHECKTIME = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicCheck[@"peopleState"], checkTime, dicCheck[@"checkScene"], dicCheck[@"peopleNumber"]];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckRecord SET PEOPLESTATE = '%@' WHERE CHECKTIME = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicCheck[@"peopleState"], checkTime, dicCheck[@"peopleName"], dicCheck[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             NSLog(@"修改CheckRecord失败");

@@ -219,9 +219,9 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     return YES;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[HRFMDB shareFMDBManager] deleteCheckRecordTable:_mutArrSceneProbability[indexPath.row]];
     [_mutArrSceneProbability removeObjectAtIndex:indexPath.row];
     [_tableViewRecentlyStatistic deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [[HRFMDB shareFMDBManager] deleteCheckRecordTable:_mutArrSceneProbability[indexPath.row]];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _mutArrSceneProbability.count;

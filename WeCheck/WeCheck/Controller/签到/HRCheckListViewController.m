@@ -16,6 +16,11 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 static void * const kMonitoringOperationContext = (void *)&kMonitoringOperationContext;
 static void * const kRangingOperationContext = (void *)&kRangingOperationContext;
 
+typedef NS_ENUM(NSUInteger, NTSectionType) {
+    NTOperationsSection,
+    NTDetectedBeaconsSection
+};
+
 @interface HRCheckListViewController ()<CBPeripheralManagerDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *beaconsCollectionView;
@@ -72,9 +77,14 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     [_locationManager stopRangingBeaconsInRegion:_beaconRegion];
     
 //    NSArray *arr = @[@"2011111101", @"2011111102", @"2011111103"];
-    NSArray *arr = @[@"2022222201", @"2022222202"];
-    NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:arr];
-    NSArray *array = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckPeople:arr objectForKey:sceneName];
+//    NSArray *arr = @[@"2022222201", @"2022222202"];
+    NSMutableArray *mutArr = [NSMutableArray array];
+    for (CLBeacon *existingBeacon in _findBeacons) {
+        NSString *identifier = [NSString stringWithFormat:@"%@%@", existingBeacon.major, existingBeacon.minor];
+        [mutArr addObject:identifier];
+    }
+    NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:mutArr];
+    NSArray *array = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckPeople:mutArr objectForKey:sceneName];
     NSArray *arrayAll = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:sceneName];
     [[HRFMDB shareFMDBManager] insertInToCheckRecordTable:array allPeople:arrayAll objectForKey:sceneName];
     [self.navigationController popViewControllerAnimated:YES];
@@ -122,22 +132,14 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
         if (!stillExists) {
             if (!indexPaths)
                 indexPaths = [NSMutableArray new];
-            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
         }
         row++;
     }
     
     return indexPaths;
 }
-- (NSArray *)indexPathsForBeacons:(NSArray *)beacons
-{
-    NSMutableArray *indexPaths = [NSMutableArray new];
-    for (NSUInteger row = 0; row < beacons.count; row++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
-    }
-    
-    return indexPaths;
-}
+
 - (NSArray *)indexPathsOfInsertedBeacons:(NSArray *)beacons
 {
     NSMutableArray *indexPaths = nil;
@@ -155,12 +157,43 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
         if (isNewBeacon) {
             if (!indexPaths)
                 indexPaths = [NSMutableArray new];
-            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+            [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
         }
         row++;
     }
     
     return indexPaths;
+}
+
+- (NSArray *)indexPathsForBeacons:(NSArray *)beacons
+{
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    for (NSUInteger row = 0; row < beacons.count; row++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:NTDetectedBeaconsSection]];
+    }
+    
+    return indexPaths;
+}
+
+- (NSArray *)filteredBeacons:(NSArray *)beacons
+{
+    // Filters duplicate beacons out; this may happen temporarily if the originating device changes its Bluetooth id
+    NSMutableArray *mutableBeacons = [beacons mutableCopy];
+    
+    NSMutableSet *lookup = [[NSMutableSet alloc] init];
+    for (int index = 0; index < [beacons count]; index++) {
+        CLBeacon *curr = [beacons objectAtIndex:index];
+        NSString *identifier = [NSString stringWithFormat:@"%@/%@", curr.major, curr.minor];
+        
+        // this is very fast constant time lookup in a hash table
+        if ([lookup containsObject:identifier]) {
+            [mutableBeacons removeObjectAtIndex:index];
+        } else {
+            [lookup addObject:identifier];
+        }
+    }
+    
+    return [mutableBeacons copy];
 }
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -246,19 +279,22 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
     } else {
         NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
     }
-    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
-    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
+    
+//    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
+//    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
     NSArray *reloadedRows = nil;
-    if (!deletedRows && !insertedRows)
+//    if (!deletedRows && !insertedRows)
         reloadedRows = [self indexPathsForBeacons:filteredBeacons];
     
     _findBeacons = filteredBeacons;
     ((UILabel *)[_beaconsCollectionView viewWithTag:1000]).text = [NSString stringWithFormat:@"耐心等待，收寻到%ld个小伙伴......", (unsigned long)_findBeacons.count];
-    if (insertedRows)
-        [_beaconsCollectionView insertItemsAtIndexPaths:insertedRows];
-    if (deletedRows)
-        [_beaconsCollectionView deleteItemsAtIndexPaths:deletedRows];
-    if (reloadedRows)
+    
+//    [_beaconsCollectionView reloadData];
+//    if (insertedRows)
+//        [_beaconsCollectionView insertItemsAtIndexPaths:insertedRows];
+//    if (deletedRows)
+//        [_beaconsCollectionView deleteItemsAtIndexPaths:deletedRows];
+//    if (reloadedRows)
         [_beaconsCollectionView reloadItemsAtIndexPaths:reloadedRows];
 }
 
@@ -306,24 +342,6 @@ static void * const kRangingOperationContext = (void *)&kRangingOperationContext
 }
 
 #pragma mark - Index path management
-- (NSArray *)filteredBeacons:(NSArray *)beacons
-{
-    // Filters duplicate beacons out; this may happen temporarily if the originating device changes its Bluetooth id
-    NSMutableArray *mutableBeacons = [beacons mutableCopy];
-    
-    NSMutableSet *lookup = [[NSMutableSet alloc] init];
-    for (int index = 0; index < [beacons count]; index++) {
-        CLBeacon *curr = [beacons objectAtIndex:index];
-        NSString *identifier = [NSString stringWithFormat:@"%@%@", curr.major, curr.minor];
-        
-        // this is very fast constant time lookup in a hash table
-        if ([lookup containsObject:identifier]) {
-            [mutableBeacons removeObjectAtIndex:index];
-        } else {
-            [lookup addObject:identifier];
-        }
-    }
-    return [mutableBeacons copy];
-}
+
 
 @end

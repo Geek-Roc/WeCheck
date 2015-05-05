@@ -109,9 +109,9 @@
         return NO;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrCheckInfo forKey:@"HRCheckInfoList"];
     [_mutArrCheckInfo removeObjectAtIndex:indexPath.row];
     [_tableViewMeSetting deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrCheckInfo forKey:@"HRCheckInfoList"];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;

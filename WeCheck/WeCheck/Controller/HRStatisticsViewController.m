@@ -44,6 +44,7 @@
     _stringNumber1 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"1"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
     _stringNumber2 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"2"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
     _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachScene];
+    _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachSceneDetail:_mutArrEachScenes];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,8 +95,8 @@
 //横坐标标题数组
 - (NSArray *)UUChart_xLableArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
-        [arr addObject:_mutArrEachScenes[i*3][@"checkScene"]];
+    for (int i = 0; i < _mutArrEachScenes.count; i++) {
+        [arr addObject:_mutArrEachScenes[i][@"checkScene"]];
     }
     return arr;
 }
@@ -103,16 +104,25 @@
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart {
     NSMutableArray *arr = [NSMutableArray array];
     if (chart.tag == 0) {
-        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
-            [arr addObject:_mutArrEachScenes[i][@"0"]];
+        for (int i = 0; i < _mutArrEachScenes.count; i++) {
+            if (_mutArrEachScenes[i][@"0"])
+                [arr addObject:_mutArrEachScenes[i][@"0"]];
+            else
+                [arr addObject:@"0"];
         }
     }else if (chart.tag == 1) {
-        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
-            [arr addObject:_mutArrEachScenes[i*2][@"1"]];
+        for (int i = 0; i < _mutArrEachScenes.count; i++) {
+            if (_mutArrEachScenes[i][@"1"])
+                [arr addObject:_mutArrEachScenes[i][@"1"]];
+            else
+                [arr addObject:@"0"];
         }
     }else if (chart.tag == 2) {
-        for (int i = 0; i < _mutArrEachScenes.count/3+1; i++) {
-            [arr addObject:_mutArrEachScenes[i*3][@"2"]];
+        for (int i = 0; i < _mutArrEachScenes.count; i++) {
+            if (_mutArrEachScenes[i][@"2"])
+                [arr addObject:_mutArrEachScenes[i][@"2"]];
+            else
+                [arr addObject:@"0"];
         }
     }
     return @[arr];

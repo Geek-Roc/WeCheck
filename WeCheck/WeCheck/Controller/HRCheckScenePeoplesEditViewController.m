@@ -20,14 +20,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _mutArrPeoples = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckSceneTable:_dicScene[@"sceneName"]]];
+    _mutArrPeoples = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckSceneTable:_dicScene[@"checkScene"]]];
     [_tableViewCheckScenePeoplesEdit reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = _dicScene[@"sceneName"];
+    self.navigationItem.title = _dicScene[@"checkScene"];
     // Do any additional setup after loading the view.
 }
 
@@ -63,7 +63,7 @@
     if (![_mutArrPeoples containsObject:dicPeople]) {
         [_mutArrPeoples insertObject:dicPeople atIndex:0];
         [_tableViewCheckScenePeoplesEdit insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
-        [[HRFMDB shareFMDBManager] insertInToCheckSceneTable:dicPeople objectForKey:_dicScene[@"sceneName"]];
+        [[HRFMDB shareFMDBManager] insertInToCheckSceneTable:dicPeople objectForKey:_dicScene[@"checkScene"]];
     }else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"已经存在的小伙伴" message:@"请更换！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
@@ -88,7 +88,7 @@
     return NO;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dic = @{@"sceneName":_dicScene[@"sceneName"],
+    NSDictionary *dic = @{@"checkScene":_dicScene[@"checkScene"],
                           @"peopleName":_mutArrPeoples[indexPath.row][@"peopleName"],
                           @"peopleNumber":_mutArrPeoples[indexPath.row][@"peopleNumber"]};
     [[HRFMDB shareFMDBManager] deleteCheckSceneTable:dic];
@@ -122,7 +122,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *dic = @{@"sceneName":_dicScene[@"sceneName"],
+    NSDictionary *dic = @{@"checkScene":_dicScene[@"checkScene"],
                           @"peopleName":_mutArrPeoples[indexPath.row][@"peopleName"],
                           @"peopleNumber":_mutArrPeoples[indexPath.row][@"peopleNumber"]};
     [self performSegueWithIdentifier:@"CheckScenePeopleEditSegue" sender:dic];

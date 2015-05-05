@@ -173,11 +173,21 @@
 /**
  *  @author HaiRui
  *
- *  @brief  查询每种情景的状态详情
+ *  @brief  查询每种情景的名字
  *
  *  @return 情景数组
  */
 - (id)queryInCheckRecordTableForEachScene;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询每种情景签到状态详情
+ *
+ *  @param mutArray 情景名字数组
+ *
+ *  @return 情景签到状态详情
+ */
+- (id)queryInCheckRecordTableForEachSceneDetail:(NSMutableArray *)mutArray;
 /**
  *  @author HaiRui
  *

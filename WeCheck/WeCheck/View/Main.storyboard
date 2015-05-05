@@ -1177,7 +1177,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000级00班" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-s3-NzX">
-                                                    <rect key="frame" x="73" y="10" width="377" height="21"/>
+                                                    <rect key="frame" x="73" y="10" width="353" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zfs-Ed-RV9"/>
                                                     </constraints>
@@ -1201,10 +1201,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到率：90%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAW-ba-nQo">
-                                                    <rect key="frame" x="439" y="19" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到率：100.00%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAW-ba-nQo">
+                                                    <rect key="frame" x="434" y="19" width="125" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="H0L-3e-72O"/>
+                                                        <constraint firstAttribute="width" constant="125" id="H0L-3e-72O"/>
                                                         <constraint firstAttribute="height" constant="21" id="si3-Ln-DI1"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1218,7 +1218,7 @@
                                                 <constraint firstItem="l5D-g6-xGy" firstAttribute="top" secondItem="aAW-ba-nQo" secondAttribute="bottom" constant="-6" id="SKG-kT-jim"/>
                                                 <constraint firstItem="aAW-ba-nQo" firstAttribute="top" secondItem="xBt-zz-5Km" secondAttribute="topMargin" constant="11" id="bS0-Mn-v4i"/>
                                                 <constraint firstAttribute="trailing" secondItem="l5D-g6-xGy" secondAttribute="trailing" constant="8" id="d6d-43-Cp0"/>
-                                                <constraint firstAttribute="trailing" secondItem="UTJ-s3-NzX" secondAttribute="trailing" constant="117" id="dF3-ow-ytD"/>
+                                                <constraint firstAttribute="trailing" secondItem="UTJ-s3-NzX" secondAttribute="trailing" constant="141" id="dF3-ow-ytD"/>
                                                 <constraint firstItem="l5D-g6-xGy" firstAttribute="leading" secondItem="d8o-dD-TII" secondAttribute="trailing" constant="8" id="hk8-zI-vKa"/>
                                                 <constraint firstItem="d8o-dD-TII" firstAttribute="top" secondItem="xBt-zz-5Km" secondAttribute="top" constant="5" id="k1S-F1-uEl"/>
                                                 <constraint firstItem="aAW-ba-nQo" firstAttribute="trailing" secondItem="xBt-zz-5Km" secondAttribute="trailingMargin" id="nzx-QA-8fP"/>

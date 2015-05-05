@@ -24,8 +24,8 @@
     _mutArrScenes = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"]];
     
     for (int i = 0; i < _mutArrScenes.count; i++) {
-        NSDictionary *dicScene = @{@"sceneName":_mutArrScenes[i][@"sceneName"],
-                                   @"sceneNumber":[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:_mutArrScenes[i][@"sceneName"]]};
+        NSDictionary *dicScene = @{@"checkScene":_mutArrScenes[i][@"checkScene"],
+                                   @"checkNumber":[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:_mutArrScenes[i][@"checkScene"]]};
         [_mutArrScenes replaceObjectAtIndex:i withObject:dicScene];
     }
     [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrScenes forKey:@"HRCheckSceneList"];
@@ -62,10 +62,10 @@
         [alertView show];
         return;
     }
-    NSDictionary *dicScene = @{@"sceneName":_tfSceneName.text,
-                               @"sceneNumber":@"0"};
+    NSDictionary *dicScene = @{@"checkScene":_tfSceneName.text,
+                               @"checkNumber":@"0"};
     for (NSDictionary *dic in _mutArrScenes) {
-        if ([dic[@"sceneName"] isEqualToString:_tfSceneName.text]) {
+        if ([dic[@"checkScene"] isEqualToString:_tfSceneName.text]) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"已经存在的情景名字" message:@"请更换！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
             return;
@@ -90,15 +90,15 @@
     return YES;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[HRFMDB shareFMDBManager] deleteCheckSceneTableAll:_mutArrScenes[indexPath.row][@"sceneName"]];
+    [[HRFMDB shareFMDBManager] deleteCheckSceneTableAll:_mutArrScenes[indexPath.row][@"checkScene"]];
     [_mutArrScenes removeObjectAtIndex:indexPath.row];
     [_tableViewCheckSceneEdit deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [[HRFMDB shareFMDBManager] setInToKeyValueTable:_mutArrScenes forKey:@"HRCheckSceneList"];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckSceneEditCell" forIndexPath:indexPath];
-    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrScenes[indexPath.row][@"sceneName"];
-    ((UILabel *)[cell viewWithTag:1001]).text = [NSString stringWithFormat:@"总人数：%@人", _mutArrScenes[indexPath.row][@"sceneNumber"]];
+    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrScenes[indexPath.row][@"checkScene"];
+    ((UILabel *)[cell viewWithTag:1001]).text = [NSString stringWithFormat:@"总人数：%@人", _mutArrScenes[indexPath.row][@"checkNumber"]];
     return cell;
 }
 #pragma mark - UITableViewDelegate

@@ -296,17 +296,29 @@
 - (id)queryInCheckRecordTableForEachScene {
     NSMutableArray *eachScenes = [NSMutableArray array];
     if ([_db open]) {
-        NSString * sql = [NSString stringWithFormat:@"SELECT CHECKSCENE, PEOPLESTATE, count() AS A FROM CheckRecord GROUP BY CHECKSCENE, PEOPLESTATE"];
+        NSString * sql = [NSString stringWithFormat:@"SELECT DISTINCT CHECKSCENE FROM CheckRecord"];
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
-            NSMutableDictionary *dicEachScene = [NSMutableDictionary dictionary];
-            [dicEachScene setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
-            [dicEachScene setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
-            [eachScenes addObject:dicEachScene];
+            NSMutableDictionary *eachScene = [NSMutableDictionary dictionary];
+            [eachScene setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
+            [eachScenes addObject:eachScene];
         }
         [_db close];
     }
     return eachScenes;
+}
+- (id)queryInCheckRecordTableForEachSceneDetail:(NSMutableArray *)mutArray {
+    if ([_db open]) {
+        for (NSMutableDictionary *mutDic in mutArray) {
+            NSString * sql = [NSString stringWithFormat:@"SELECT PEOPLESTATE, count() AS A FROM CheckRecord WHERE CHECKSCENE = '%@' GROUP BY CHECKSCENE, PEOPLESTATE", mutDic[@"checkScene"]];
+            FMResultSet * rs = [_db executeQuery:sql];
+            while ([rs next]) {
+                [mutDic setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
+            }
+        }
+        [_db close];
+    }
+    return mutArray;
 }
 - (id)queryInCheckRecordTableForEachTime:(NSString *)checkTime {
     NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];

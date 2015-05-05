@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HRSceneStatisticViewController : UIViewController
-
+@property (nonatomic, strong) NSDictionary *dicScene;
 @end

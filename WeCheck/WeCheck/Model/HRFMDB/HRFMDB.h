@@ -240,4 +240,14 @@
  *  @return YES修改成功
  */
 - (BOOL)updateCheckRecordTableForEdit:(NSDictionary *)dicCheck objectForKey:(NSString *)checkTime;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  删除签到记录
+ *
+ *  @param dic 签到信息
+ *
+ *  @return YES删除成功
+ */
+- (BOOL)deleteCheckRecordTable:(NSDictionary *)dic;
 @end

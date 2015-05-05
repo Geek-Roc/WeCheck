@@ -42,10 +42,23 @@ static NSString *const CIdentifier = @"CheckIdentifier";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self drawLineAnimation:_layerArc forKey:@"123"];
-    NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
-    _stringNumber = [NSString stringWithFormat:@"%0.4f", [dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])];
-    [_lbStatisticNumber dd_setNumber:@([_stringNumber floatValue]*100) format:@"%@%%" formatter:nil];
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
+        _stringNumber = [NSString stringWithFormat:@"%0.4f", [dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])];
+        _dicCheckInfo = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfo"];
+        _mutArrScenes = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"]];
+        _mutArrSceneProbability = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckRecordTable]];
+        for (NSMutableDictionary *mutDic in _mutArrSceneProbability) {
+            [mutDic setObject:[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:mutDic[@"checkScene"]] forKey:@"sceneNumber"];
+            NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachTime:mutDic[@"checkTime"]];
+            [mutDic setObject:[NSString stringWithFormat:@"%0.2f", 100*[dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])] forKey:@"checkProbability"];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_lbStatisticNumber dd_setNumber:@([_stringNumber floatValue]*100) format:@"%@%%" formatter:nil];
+            [_tableViewRecentlyStatistic reloadData];
+        });
+    });
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,15 +68,7 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     //创建数据库
     [[HRFMDB shareFMDBManager] createTable];
     
-    _dicCheckInfo = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfo"];
-    _mutArrScenes = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"]];
-    _mutArrSceneProbability = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckRecordTable]];
-    for (NSMutableDictionary *mutDic in _mutArrSceneProbability) {
-        [mutDic setObject:[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:mutDic[@"checkScene"]] forKey:@"sceneNumber"];
-        NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachTime:mutDic[@"checkTime"]];
-        [mutDic setObject:[NSString stringWithFormat:@"%0.2f", 100*[dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])] forKey:@"checkProbability"];
-    }
-    [_tableViewRecentlyStatistic reloadData];
+    
 }
 //定义动画过程
 -(void)drawLineAnimation:(CALayer*)layer forKey:(NSString *)key
@@ -210,6 +215,14 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     }
 }
 #pragma mark - UITableViewDataSource
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [_mutArrSceneProbability removeObjectAtIndex:indexPath.row];
+    [_tableViewRecentlyStatistic deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [[HRFMDB shareFMDBManager] deleteCheckRecordTable:_mutArrSceneProbability[indexPath.row]];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _mutArrSceneProbability.count;
 }
@@ -225,6 +238,12 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     return cell;
 }
 #pragma mark - UITableViewDelegate
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }

@@ -392,4 +392,17 @@
     }
     return YES;
 }
+- (BOOL)deleteCheckRecordTable:(NSDictionary *)dic {
+    if ([_db open]) {
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckRecord WHERE CHECKSCENE = '%@' AND CHECKTIME = '%@'", dic[@"checkScene"], dic[@"checkTime"]];
+        BOOL res = [_db executeUpdate:deleteSql];
+        if (!res) {
+            NSLog(@"删除CheckRecord:%@出错", dic);
+        } else {
+            NSLog(@"删除CheckRecord:%@成功", dic);
+        }
+        [_db close];
+    }
+    return YES;
+}
 @end

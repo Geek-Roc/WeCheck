@@ -55,9 +55,32 @@
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     [AVUser logInWithUsernameInBackground:_tfLoginName.text password:_tfLoginPassword.text block:^(AVUser *user, NSError *error) {
-        [_HUD removeFromSuperview];
         if (user != nil) {
-            [self.navigationController popViewControllerAnimated:YES];
+            AVQuery *query1 = [AVQuery queryWithClassName:@"WeCheckDBFile"];
+            [query1 whereKey:@"applicantName" equalTo:_tfLoginName.text];
+            [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                [_HUD removeFromSuperview];
+                if (!error) {
+                    // 检索成功
+                    NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+                    AVObject *WeCheckDBFile = [AVObject objectWithClassName:@"WeCheckDBFile"];
+                    [WeCheckDBFile setObject:_tfLoginName.text forKey:@"applicantName"];
+                    
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [paths objectAtIndex:0];
+                    //dbPath： 数据库路径，在Document中。
+                    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+                    
+                    AVFile *applicantResume1 = [objects[0] objectForKey:@"applicantResumeFile"];
+                    NSData *data = [applicantResume1 getData];
+                    [data writeToFile:dbPath atomically:YES];
+                    [self.navigationController popViewControllerAnimated:YES];
+                } else {
+                    // 输出错误信息
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+            
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];

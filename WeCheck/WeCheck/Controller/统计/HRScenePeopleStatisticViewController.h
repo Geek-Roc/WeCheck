@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HRScenePeopleStatisticViewController : UIViewController
-
+@property (nonatomic, strong) NSMutableDictionary *mutDicPeople;
 @end

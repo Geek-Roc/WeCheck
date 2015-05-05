@@ -14,7 +14,6 @@
 		FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F621AE4FCF900D0BDF6 /* UUChartLabel.m */; };
 		FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F641AE4FCF900D0BDF6 /* UUColor.m */; };
 		FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F661AE4FCF900D0BDF6 /* UULineChart.m */; };
-		FE308F6F1AE637C400D0BDF6 /* HRMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE308F6E1AE637C400D0BDF6 /* HRMyViewController.m */; };
 		FE308F751AE790EB00D0BDF6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE308F741AE790EB00D0BDF6 /* QuartzCore.framework */; };
 		FE308FE11AE7A40C00D0BDF6 /* hrhead-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308F7C1AE7A40B00D0BDF6 /* hrhead-0.jpg */; };
 		FE308FE21AE7A40C00D0BDF6 /* hrhead-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308F7D1AE7A40B00D0BDF6 /* hrhead-1.jpg */; };
@@ -117,13 +116,8 @@
 		FE3090431AE7A40C00D0BDF6 /* hrhead-97.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FDE1AE7A40C00D0BDF6 /* hrhead-97.jpg */; };
 		FE3090441AE7A40C00D0BDF6 /* hrhead-98.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FDF1AE7A40C00D0BDF6 /* hrhead-98.jpg */; };
 		FE3090451AE7A40C00D0BDF6 /* hrhead-99.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE308FE01AE7A40C00D0BDF6 /* hrhead-99.jpg */; };
-		FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */; };
-		FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */; };
-		FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */; };
 		FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */; };
-		FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */; };
 		FE3F6BF61AEE31A300535781 /* HRFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6BF51AEE31A300535781 /* HRFMDB.m */; };
-		FE3F6BFC1AEF313600535781 /* HRMyCheckInfoAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6BFB1AEF313600535781 /* HRMyCheckInfoAddViewController.m */; };
 		FE3F6C1E1AEF3BE900535781 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C001AEF3BE900535781 /* IQNSArray+Sort.m */; };
 		FE3F6C1F1AEF3BE900535781 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C021AEF3BE900535781 /* IQUIView+Hierarchy.m */; };
 		FE3F6C201AEF3BE900535781 /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C041AEF3BE900535781 /* IQUIWindow+Hierarchy.m */; };
@@ -136,19 +130,14 @@
 		FE3F6C271AEF3BE900535781 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C181AEF3BE900535781 /* IQToolbar.m */; };
 		FE3F6C281AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C1A1AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m */; };
 		FE3F6C291AEF3BE900535781 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FE3F6C1D1AEF3BE900535781 /* IQKeyboardManager.bundle */; };
-		FE3F6C2C1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3F6C2B1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m */; };
 		FE5C83401AD6168300A2AF7C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */; };
 		FE5C83421AD6168B00A2AF7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */; };
-		FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6744481ADBA1730009798A /* HRCheckListViewController.m */; };
-		FE6744521ADBA1730009798A /* HRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE67444A1ADBA1730009798A /* HRViewController.m */; };
 		FE6744541ADBA1730009798A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6744501ADBA1730009798A /* Main.storyboard */; };
 		FE68B5581AADA225000FA4CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5571AADA225000FA4CE /* main.m */; };
 		FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B55A1AADA225000FA4CE /* AppDelegate.m */; };
 		FE68B5631AADA225000FA4CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5621AADA225000FA4CE /* Images.xcassets */; };
 		FE68B5661AADA225000FA4CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE68B5641AADA225000FA4CE /* LaunchScreen.xib */; };
 		FE68B5721AADA226000FA4CE /* WeCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE68B5711AADA226000FA4CE /* WeCheckTests.m */; };
-		FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */; };
-		FE8098981AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8098971AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m */; };
 		FE88ED461AF60B4F00B1C7D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE88ED451AF60B4F00B1C7D7 /* libiconv.dylib */; };
 		FE88ED621AF6102A00B1C7D7 /* DHcell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED4B1AF6102A00B1C7D7 /* DHcell.m */; };
 		FE88ED631AF6102A00B1C7D7 /* DHxlsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED4E1AF6102A00B1C7D7 /* DHxlsReader.m */; };
@@ -157,15 +146,26 @@
 		FE88ED661AF6102A00B1C7D7 /* ole.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED5F1AF6102A00B1C7D7 /* ole.c */; };
 		FE88ED671AF6102A00B1C7D7 /* xls.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED601AF6102A00B1C7D7 /* xls.c */; };
 		FE88ED681AF6102A00B1C7D7 /* xlstool.c in Sources */ = {isa = PBXBuildFile; fileRef = FE88ED611AF6102A00B1C7D7 /* xlstool.c */; };
-		FE8E623E1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8E623D1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m */; };
 		FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */; };
 		FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484E91ADFB19200DCE19D /* XYPieChart.m */; };
-		FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */; };
-		FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */; };
-		FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */; };
-		FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */; };
-		FEE275E21AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */; };
-		FEE275E51AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */; };
+		FEFAC09F1AF87FEF00356ABC /* HRCheckEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC07A1AF87FEF00356ABC /* HRCheckEditViewController.m */; };
+		FEFAC0A01AF87FEF00356ABC /* HRCheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC07C1AF87FEF00356ABC /* HRCheckListViewController.m */; };
+		FEFAC0A11AF87FEF00356ABC /* HRCheckSceneEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC07E1AF87FEF00356ABC /* HRCheckSceneEditViewController.m */; };
+		FEFAC0A21AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0801AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m */; };
+		FEFAC0A31AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0821AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m */; };
+		FEFAC0A41AF87FEF00356ABC /* HRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0841AF87FEF00356ABC /* HRViewController.m */; };
+		FEFAC0A51AF87FEF00356ABC /* HRSceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0871AF87FEF00356ABC /* HRSceneListViewController.m */; };
+		FEFAC0A61AF87FEF00356ABC /* HRScenePeopleStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0891AF87FEF00356ABC /* HRScenePeopleStatisticViewController.m */; };
+		FEFAC0A71AF87FEF00356ABC /* HRSceneStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC08B1AF87FEF00356ABC /* HRSceneStatisticViewController.m */; };
+		FEFAC0A81AF87FEF00356ABC /* HRStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC08D1AF87FEF00356ABC /* HRStatisticsViewController.m */; };
+		FEFAC0A91AF87FEF00356ABC /* HRMyCheckInfoAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0901AF87FEF00356ABC /* HRMyCheckInfoAddViewController.m */; };
+		FEFAC0AA1AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0921AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.m */; };
+		FEFAC0AB1AF87FEF00356ABC /* HRMyCheckInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0941AF87FEF00356ABC /* HRMyCheckInfoEditViewController.m */; };
+		FEFAC0AC1AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0961AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.m */; };
+		FEFAC0AD1AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC0981AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.m */; };
+		FEFAC0AE1AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC09A1AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.m */; };
+		FEFAC0AF1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC09C1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.m */; };
+		FEFAC0B01AF87FEF00356ABC /* HRMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFAC09E1AF87FEF00356ABC /* HRMyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,8 +194,6 @@
 		FE308F641AE4FCF900D0BDF6 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
 		FE308F651AE4FCF900D0BDF6 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
 		FE308F661AE4FCF900D0BDF6 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
-		FE308F6D1AE637C400D0BDF6 /* HRMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyViewController.h; sourceTree = "<group>"; };
-		FE308F6E1AE637C400D0BDF6 /* HRMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyViewController.m; sourceTree = "<group>"; };
 		FE308F741AE790EB00D0BDF6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE308F7C1AE7A40B00D0BDF6 /* hrhead-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-0.jpg"; sourceTree = "<group>"; };
 		FE308F7D1AE7A40B00D0BDF6 /* hrhead-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-1.jpg"; sourceTree = "<group>"; };
@@ -298,20 +296,10 @@
 		FE308FDE1AE7A40C00D0BDF6 /* hrhead-97.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-97.jpg"; sourceTree = "<group>"; };
 		FE308FDF1AE7A40C00D0BDF6 /* hrhead-98.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-98.jpg"; sourceTree = "<group>"; };
 		FE308FE01AE7A40C00D0BDF6 /* hrhead-99.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hrhead-99.jpg"; sourceTree = "<group>"; };
-		FE3090461AE892D200D0BDF6 /* HRSceneStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneStatisticViewController.h; sourceTree = "<group>"; };
-		FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneStatisticViewController.m; sourceTree = "<group>"; };
-		FE30904C1AE8D21400D0BDF6 /* HRSceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneListViewController.h; sourceTree = "<group>"; };
-		FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneListViewController.m; sourceTree = "<group>"; };
-		FE30904F1AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRScenePeopleStatisticViewController.h; sourceTree = "<group>"; };
-		FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRScenePeopleStatisticViewController.m; sourceTree = "<group>"; };
 		FE3090571AE8D5F700D0BDF6 /* BTSpiderPlotterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSpiderPlotterView.h; sourceTree = "<group>"; };
 		FE3090581AE8D5F700D0BDF6 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
-		FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckEditViewController.h; sourceTree = "<group>"; };
-		FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckEditViewController.m; sourceTree = "<group>"; };
 		FE3F6BF41AEE31A300535781 /* HRFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFMDB.h; sourceTree = "<group>"; };
 		FE3F6BF51AEE31A300535781 /* HRFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFMDB.m; sourceTree = "<group>"; };
-		FE3F6BFA1AEF313600535781 /* HRMyCheckInfoAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoAddViewController.h; sourceTree = "<group>"; };
-		FE3F6BFB1AEF313600535781 /* HRMyCheckInfoAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoAddViewController.m; sourceTree = "<group>"; };
 		FE3F6BFF1AEF3BE900535781 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		FE3F6C001AEF3BE900535781 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		FE3F6C011AEF3BE900535781 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
@@ -338,14 +326,8 @@
 		FE3F6C1A1AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		FE3F6C1B1AEF3BE900535781 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		FE3F6C1D1AEF3BE900535781 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		FE3F6C2A1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoEditViewController.h; sourceTree = "<group>"; };
-		FE3F6C2B1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoEditViewController.m; sourceTree = "<group>"; };
 		FE5C833F1AD6168300A2AF7C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE5C83411AD6168B00A2AF7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FE6744471ADBA1730009798A /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
-		FE6744481ADBA1730009798A /* HRCheckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckListViewController.m; sourceTree = "<group>"; };
-		FE6744491ADBA1730009798A /* HRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRViewController.h; sourceTree = "<group>"; };
-		FE67444A1ADBA1730009798A /* HRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRViewController.m; sourceTree = "<group>"; };
 		FE6744501ADBA1730009798A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FE68B5521AADA225000FA4CE /* WeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5561AADA225000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -357,10 +339,6 @@
 		FE68B56B1AADA225000FA4CE /* WeCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE68B5701AADA226000FA4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE68B5711AADA226000FA4CE /* WeCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeCheckTests.m; sourceTree = "<group>"; };
-		FE8098931AF08451001AA2D5 /* HRCheckSceneEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckSceneEditViewController.h; sourceTree = "<group>"; };
-		FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckSceneEditViewController.m; sourceTree = "<group>"; };
-		FE8098961AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeoplesEditViewController.h; sourceTree = "<group>"; };
-		FE8098971AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeoplesEditViewController.m; sourceTree = "<group>"; };
 		FE88ED451AF60B4F00B1C7D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		FE88ED491AF6102A00B1C7D7 /* DHcell-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHcell-Private.h"; sourceTree = "<group>"; };
 		FE88ED4A1AF6102A00B1C7D7 /* DHcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHcell.h; sourceTree = "<group>"; };
@@ -383,24 +361,46 @@
 		FE88ED5F1AF6102A00B1C7D7 /* ole.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ole.c; sourceTree = "<group>"; };
 		FE88ED601AF6102A00B1C7D7 /* xls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xls.c; sourceTree = "<group>"; };
 		FE88ED611AF6102A00B1C7D7 /* xlstool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xlstool.c; sourceTree = "<group>"; };
-		FE8E623C1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeopleEditViewController.h; sourceTree = "<group>"; };
-		FE8E623D1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeopleEditViewController.m; sourceTree = "<group>"; };
 		FEA484E41ADE8F6900DCE19D /* UILabel+FlickerNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FlickerNumber.h"; sourceTree = "<group>"; };
 		FEA484E51ADE8F6900DCE19D /* UILabel+FlickerNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FlickerNumber.m"; sourceTree = "<group>"; };
 		FEA484E81ADFB19200DCE19D /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		FEA484E91ADFB19200DCE19D /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
-		FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRStatisticsViewController.h; sourceTree = "<group>"; };
-		FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRStatisticsViewController.m; sourceTree = "<group>"; };
-		FEE275D71AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncLoginViewController.h; sourceTree = "<group>"; };
-		FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncLoginViewController.m; sourceTree = "<group>"; };
-		FEE275DA1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncSignupViewController.h; sourceTree = "<group>"; };
-		FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncSignupViewController.m; sourceTree = "<group>"; };
-		FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSettingViewController.h; sourceTree = "<group>"; };
-		FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSettingViewController.m; sourceTree = "<group>"; };
-		FEE275E01AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoChangePasswordViewController.h; sourceTree = "<group>"; };
-		FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoChangePasswordViewController.m; sourceTree = "<group>"; };
-		FEE275E31AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoResetPasswordViewController.h; sourceTree = "<group>"; };
-		FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoResetPasswordViewController.m; sourceTree = "<group>"; };
+		FEFAC0791AF87FEF00356ABC /* HRCheckEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckEditViewController.h; sourceTree = "<group>"; };
+		FEFAC07A1AF87FEF00356ABC /* HRCheckEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckEditViewController.m; sourceTree = "<group>"; };
+		FEFAC07B1AF87FEF00356ABC /* HRCheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckListViewController.h; sourceTree = "<group>"; };
+		FEFAC07C1AF87FEF00356ABC /* HRCheckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckListViewController.m; sourceTree = "<group>"; };
+		FEFAC07D1AF87FEF00356ABC /* HRCheckSceneEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckSceneEditViewController.h; sourceTree = "<group>"; };
+		FEFAC07E1AF87FEF00356ABC /* HRCheckSceneEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckSceneEditViewController.m; sourceTree = "<group>"; };
+		FEFAC07F1AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeopleEditViewController.h; sourceTree = "<group>"; };
+		FEFAC0801AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeopleEditViewController.m; sourceTree = "<group>"; };
+		FEFAC0811AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCheckScenePeoplesEditViewController.h; sourceTree = "<group>"; };
+		FEFAC0821AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCheckScenePeoplesEditViewController.m; sourceTree = "<group>"; };
+		FEFAC0831AF87FEF00356ABC /* HRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRViewController.h; sourceTree = "<group>"; };
+		FEFAC0841AF87FEF00356ABC /* HRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRViewController.m; sourceTree = "<group>"; };
+		FEFAC0861AF87FEF00356ABC /* HRSceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneListViewController.h; sourceTree = "<group>"; };
+		FEFAC0871AF87FEF00356ABC /* HRSceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneListViewController.m; sourceTree = "<group>"; };
+		FEFAC0881AF87FEF00356ABC /* HRScenePeopleStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRScenePeopleStatisticViewController.h; sourceTree = "<group>"; };
+		FEFAC0891AF87FEF00356ABC /* HRScenePeopleStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRScenePeopleStatisticViewController.m; sourceTree = "<group>"; };
+		FEFAC08A1AF87FEF00356ABC /* HRSceneStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSceneStatisticViewController.h; sourceTree = "<group>"; };
+		FEFAC08B1AF87FEF00356ABC /* HRSceneStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSceneStatisticViewController.m; sourceTree = "<group>"; };
+		FEFAC08C1AF87FEF00356ABC /* HRStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRStatisticsViewController.h; sourceTree = "<group>"; };
+		FEFAC08D1AF87FEF00356ABC /* HRStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRStatisticsViewController.m; sourceTree = "<group>"; };
+		FEFAC08F1AF87FEF00356ABC /* HRMyCheckInfoAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoAddViewController.h; sourceTree = "<group>"; };
+		FEFAC0901AF87FEF00356ABC /* HRMyCheckInfoAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoAddViewController.m; sourceTree = "<group>"; };
+		FEFAC0911AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoChangePasswordViewController.h; sourceTree = "<group>"; };
+		FEFAC0921AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoChangePasswordViewController.m; sourceTree = "<group>"; };
+		FEFAC0931AF87FEF00356ABC /* HRMyCheckInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoEditViewController.h; sourceTree = "<group>"; };
+		FEFAC0941AF87FEF00356ABC /* HRMyCheckInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoEditViewController.m; sourceTree = "<group>"; };
+		FEFAC0951AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoResetPasswordViewController.h; sourceTree = "<group>"; };
+		FEFAC0961AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoResetPasswordViewController.m; sourceTree = "<group>"; };
+		FEFAC0971AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSettingViewController.h; sourceTree = "<group>"; };
+		FEFAC0981AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSettingViewController.m; sourceTree = "<group>"; };
+		FEFAC0991AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncLoginViewController.h; sourceTree = "<group>"; };
+		FEFAC09A1AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncLoginViewController.m; sourceTree = "<group>"; };
+		FEFAC09B1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyCheckInfoSyncSignupViewController.h; sourceTree = "<group>"; };
+		FEFAC09C1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyCheckInfoSyncSignupViewController.m; sourceTree = "<group>"; };
+		FEFAC09D1AF87FEF00356ABC /* HRMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMyViewController.h; sourceTree = "<group>"; };
+		FEFAC09E1AF87FEF00356ABC /* HRMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -676,42 +676,9 @@
 		FE6744461ADBA1730009798A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FE6744491ADBA1730009798A /* HRViewController.h */,
-				FE67444A1ADBA1730009798A /* HRViewController.m */,
-				FE8098931AF08451001AA2D5 /* HRCheckSceneEditViewController.h */,
-				FE8098941AF08451001AA2D5 /* HRCheckSceneEditViewController.m */,
-				FE8098961AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.h */,
-				FE8098971AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m */,
-				FE8E623C1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.h */,
-				FE8E623D1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m */,
-				FE3090911AEA45D500D0BDF6 /* HRCheckEditViewController.h */,
-				FE3090921AEA45D500D0BDF6 /* HRCheckEditViewController.m */,
-				FE6744471ADBA1730009798A /* HRCheckListViewController.h */,
-				FE6744481ADBA1730009798A /* HRCheckListViewController.m */,
-				FEA484EB1ADFB1D200DCE19D /* HRStatisticsViewController.h */,
-				FEA484EC1ADFB1D200DCE19D /* HRStatisticsViewController.m */,
-				FE30904C1AE8D21400D0BDF6 /* HRSceneListViewController.h */,
-				FE30904D1AE8D21400D0BDF6 /* HRSceneListViewController.m */,
-				FE3090461AE892D200D0BDF6 /* HRSceneStatisticViewController.h */,
-				FE3090471AE892D200D0BDF6 /* HRSceneStatisticViewController.m */,
-				FE30904F1AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.h */,
-				FE3090501AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m */,
-				FE308F6D1AE637C400D0BDF6 /* HRMyViewController.h */,
-				FE308F6E1AE637C400D0BDF6 /* HRMyViewController.m */,
-				FE3F6BFA1AEF313600535781 /* HRMyCheckInfoAddViewController.h */,
-				FE3F6BFB1AEF313600535781 /* HRMyCheckInfoAddViewController.m */,
-				FE3F6C2A1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.h */,
-				FE3F6C2B1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m */,
-				FEE275D71AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.h */,
-				FEE275D81AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m */,
-				FEE275DA1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.h */,
-				FEE275DB1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m */,
-				FEE275DD1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.h */,
-				FEE275DE1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m */,
-				FEE275E01AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.h */,
-				FEE275E11AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m */,
-				FEE275E31AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.h */,
-				FEE275E41AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m */,
+				FEFAC0781AF87FEF00356ABC /* 签到 */,
+				FEFAC0851AF87FEF00356ABC /* 统计 */,
+				FEFAC08E1AF87FEF00356ABC /* 我 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -884,6 +851,63 @@
 				FEA484E91ADFB19200DCE19D /* XYPieChart.m */,
 			);
 			path = XYPieChart;
+			sourceTree = "<group>";
+		};
+		FEFAC0781AF87FEF00356ABC /* 签到 */ = {
+			isa = PBXGroup;
+			children = (
+				FEFAC0831AF87FEF00356ABC /* HRViewController.h */,
+				FEFAC0841AF87FEF00356ABC /* HRViewController.m */,
+				FEFAC0791AF87FEF00356ABC /* HRCheckEditViewController.h */,
+				FEFAC07A1AF87FEF00356ABC /* HRCheckEditViewController.m */,
+				FEFAC07B1AF87FEF00356ABC /* HRCheckListViewController.h */,
+				FEFAC07C1AF87FEF00356ABC /* HRCheckListViewController.m */,
+				FEFAC07D1AF87FEF00356ABC /* HRCheckSceneEditViewController.h */,
+				FEFAC07E1AF87FEF00356ABC /* HRCheckSceneEditViewController.m */,
+				FEFAC07F1AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.h */,
+				FEFAC0801AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m */,
+				FEFAC0811AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.h */,
+				FEFAC0821AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m */,
+			);
+			path = "签到";
+			sourceTree = "<group>";
+		};
+		FEFAC0851AF87FEF00356ABC /* 统计 */ = {
+			isa = PBXGroup;
+			children = (
+				FEFAC08C1AF87FEF00356ABC /* HRStatisticsViewController.h */,
+				FEFAC08D1AF87FEF00356ABC /* HRStatisticsViewController.m */,
+				FEFAC0861AF87FEF00356ABC /* HRSceneListViewController.h */,
+				FEFAC0871AF87FEF00356ABC /* HRSceneListViewController.m */,
+				FEFAC08A1AF87FEF00356ABC /* HRSceneStatisticViewController.h */,
+				FEFAC08B1AF87FEF00356ABC /* HRSceneStatisticViewController.m */,
+				FEFAC0881AF87FEF00356ABC /* HRScenePeopleStatisticViewController.h */,
+				FEFAC0891AF87FEF00356ABC /* HRScenePeopleStatisticViewController.m */,
+			);
+			path = "统计";
+			sourceTree = "<group>";
+		};
+		FEFAC08E1AF87FEF00356ABC /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+				FEFAC09D1AF87FEF00356ABC /* HRMyViewController.h */,
+				FEFAC09E1AF87FEF00356ABC /* HRMyViewController.m */,
+				FEFAC08F1AF87FEF00356ABC /* HRMyCheckInfoAddViewController.h */,
+				FEFAC0901AF87FEF00356ABC /* HRMyCheckInfoAddViewController.m */,
+				FEFAC0931AF87FEF00356ABC /* HRMyCheckInfoEditViewController.h */,
+				FEFAC0941AF87FEF00356ABC /* HRMyCheckInfoEditViewController.m */,
+				FEFAC0911AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.h */,
+				FEFAC0921AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.m */,
+				FEFAC0951AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.h */,
+				FEFAC0961AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.m */,
+				FEFAC0971AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.h */,
+				FEFAC0981AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.m */,
+				FEFAC0991AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.h */,
+				FEFAC09A1AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.m */,
+				FEFAC09B1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.h */,
+				FEFAC09C1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.m */,
+			);
+			path = "我";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1129,53 +1153,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFAC0AC1AF87FEF00356ABC /* HRMyCheckInfoResetPasswordViewController.m in Sources */,
 				FEA484EA1ADFB19200DCE19D /* XYPieChart.m in Sources */,
 				FE308F671AE4FCF900D0BDF6 /* UUBar.m in Sources */,
-				FE30904E1AE8D21400D0BDF6 /* HRSceneListViewController.m in Sources */,
-				FE3F6BFC1AEF313600535781 /* HRMyCheckInfoAddViewController.m in Sources */,
-				FEE275D91AF4B43B005BE7FD /* HRMyCheckInfoSyncLoginViewController.m in Sources */,
 				FE3F6C1F1AEF3BE900535781 /* IQUIView+Hierarchy.m in Sources */,
+				FEFAC0AF1AF87FEF00356ABC /* HRMyCheckInfoSyncSignupViewController.m in Sources */,
+				FEFAC0AB1AF87FEF00356ABC /* HRMyCheckInfoEditViewController.m in Sources */,
 				FE3F6C1E1AEF3BE900535781 /* IQNSArray+Sort.m in Sources */,
+				FEFAC09F1AF87FEF00356ABC /* HRCheckEditViewController.m in Sources */,
+				FEFAC0A51AF87FEF00356ABC /* HRSceneListViewController.m in Sources */,
 				FE88ED671AF6102A00B1C7D7 /* xls.c in Sources */,
+				FEFAC0A41AF87FEF00356ABC /* HRViewController.m in Sources */,
+				FEFAC0AE1AF87FEF00356ABC /* HRMyCheckInfoSyncLoginViewController.m in Sources */,
+				FEFAC0A91AF87FEF00356ABC /* HRMyCheckInfoAddViewController.m in Sources */,
 				FE308F6A1AE4FCF900D0BDF6 /* UUChartLabel.m in Sources */,
 				FE68B55B1AADA225000FA4CE /* AppDelegate.m in Sources */,
-				FE3F6C2C1AEF8D8D00535781 /* HRMyCheckInfoEditViewController.m in Sources */,
-				FE6744511ADBA1730009798A /* HRCheckListViewController.m in Sources */,
+				FEFAC0A71AF87FEF00356ABC /* HRSceneStatisticViewController.m in Sources */,
 				FE308F6B1AE4FCF900D0BDF6 /* UUColor.m in Sources */,
+				FEFAC0A01AF87FEF00356ABC /* HRCheckListViewController.m in Sources */,
 				FE3F6C211AEF3BE900535781 /* IQKeyboardManager.m in Sources */,
 				FE3F6BF61AEE31A300535781 /* HRFMDB.m in Sources */,
 				FE88ED631AF6102A00B1C7D7 /* DHxlsReader.m in Sources */,
-				FE3090931AEA45D500D0BDF6 /* HRCheckEditViewController.m in Sources */,
 				FE3F6C221AEF3BE900535781 /* IQKeyboardReturnKeyHandler.m in Sources */,
-				FE3090511AE8D23C00D0BDF6 /* HRScenePeopleStatisticViewController.m in Sources */,
+				FEFAC0AA1AF87FEF00356ABC /* HRMyCheckInfoChangePasswordViewController.m in Sources */,
 				FE88ED621AF6102A00B1C7D7 /* DHcell.m in Sources */,
-				FE6744521ADBA1730009798A /* HRViewController.m in Sources */,
-				FEA484ED1ADFB1D200DCE19D /* HRStatisticsViewController.m in Sources */,
-				FE308F6F1AE637C400D0BDF6 /* HRMyViewController.m in Sources */,
-				FEE275E51AF4C283005BE7FD /* HRMyCheckInfoResetPasswordViewController.m in Sources */,
 				FE3F6C231AEF3BE900535781 /* IQSegmentedNextPrevious.m in Sources */,
 				FE3F6C271AEF3BE900535781 /* IQToolbar.m in Sources */,
 				FE308F691AE4FCF900D0BDF6 /* UUChart.m in Sources */,
 				FE3F6C201AEF3BE900535781 /* IQUIWindow+Hierarchy.m in Sources */,
+				FEFAC0A31AF87FEF00356ABC /* HRCheckScenePeoplesEditViewController.m in Sources */,
 				FE3F6C241AEF3BE900535781 /* IQTextView.m in Sources */,
-				FE3090481AE892D200D0BDF6 /* HRSceneStatisticViewController.m in Sources */,
-				FE8E623E1AF0BBE1003FA3B5 /* HRCheckScenePeopleEditViewController.m in Sources */,
 				FE3F6C261AEF3BE900535781 /* IQTitleBarButtonItem.m in Sources */,
-				FEE275E21AF4C273005BE7FD /* HRMyCheckInfoChangePasswordViewController.m in Sources */,
 				FE88ED661AF6102A00B1C7D7 /* ole.c in Sources */,
 				FE88ED641AF6102A00B1C7D7 /* XlsReader.cpp in Sources */,
-				FEE275DC1AF4B7CD005BE7FD /* HRMyCheckInfoSyncSignupViewController.m in Sources */,
-				FE8098951AF08451001AA2D5 /* HRCheckSceneEditViewController.m in Sources */,
 				FE3F6C281AEF3BE900535781 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FE308F6C1AE4FCF900D0BDF6 /* UULineChart.m in Sources */,
 				FE88ED651AF6102A00B1C7D7 /* endian.c in Sources */,
 				FE68B5581AADA225000FA4CE /* main.m in Sources */,
-				FEE275DF1AF4BA31005BE7FD /* HRMyCheckInfoSettingViewController.m in Sources */,
 				FE3090591AE8D5F700D0BDF6 /* BTSpiderPlotterView.m in Sources */,
+				FEFAC0A61AF87FEF00356ABC /* HRScenePeopleStatisticViewController.m in Sources */,
 				FE3F6C251AEF3BE900535781 /* IQBarButtonItem.m in Sources */,
 				FEA484E61ADE8F6900DCE19D /* UILabel+FlickerNumber.m in Sources */,
-				FE8098981AF08CDA001AA2D5 /* HRCheckScenePeoplesEditViewController.m in Sources */,
+				FEFAC0A81AF87FEF00356ABC /* HRStatisticsViewController.m in Sources */,
+				FEFAC0A11AF87FEF00356ABC /* HRCheckSceneEditViewController.m in Sources */,
+				FEFAC0A21AF87FEF00356ABC /* HRCheckScenePeopleEditViewController.m in Sources */,
+				FEFAC0AD1AF87FEF00356ABC /* HRMyCheckInfoSettingViewController.m in Sources */,
 				FE308F681AE4FCF900D0BDF6 /* UUBarChart.m in Sources */,
+				FEFAC0B01AF87FEF00356ABC /* HRMyViewController.m in Sources */,
 				FE88ED681AF6102A00B1C7D7 /* xlstool.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

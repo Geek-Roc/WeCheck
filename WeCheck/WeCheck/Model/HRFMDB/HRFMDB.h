@@ -191,6 +191,26 @@
 /**
  *  @author HaiRui
  *
+ *  @brief  查询每个人签到状态
+ *
+ *  @param mutArray 人员数组
+ *
+ *  @return 签到状态
+ */
+- (id)queryInCheckRecordTableForEachPeople:(NSMutableArray *)mutArray;
+/**
+ *  @author HaiRui
+ *
+ *  @brief  查询每个人签到详情
+ *
+ *  @param mutDic 人员信息
+ *
+ *  @return 签到详情
+ */
+- (id)queryInCheckRecordTableForEachPeopleDetail:(NSMutableDictionary *)mutDic;
+/**
+ *  @author HaiRui
+ *
  *  @brief  查询每次签到状态详情
  *
  *  @param checkTime 签到时间

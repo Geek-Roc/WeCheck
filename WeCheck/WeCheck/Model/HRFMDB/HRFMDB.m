@@ -174,6 +174,7 @@
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
+            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
             [peopleArr addObject:dicPeople];
         }
         [_db close];
@@ -202,7 +203,7 @@
 }
 - (BOOL)updateCheckSceneTable:(NSDictionary *)dicNew withOld:(NSDictionary *)dicOld {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckScene SET PEOPLENAME = '%@', PEOPLENUMBER = '%@' WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicNew[@"peopleName"], dicNew[@"peopleNumber"], dicOld[@"sceneName"], dicOld[@"peopleName"], dicOld[@"peopleNumber"]];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE CheckScene SET PEOPLENAME = '%@', PEOPLENUMBER = '%@' WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dicNew[@"peopleName"], dicNew[@"peopleNumber"], dicOld[@"checkName"], dicOld[@"peopleName"], dicOld[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             NSLog(@"修改CheckScene失败");
@@ -216,7 +217,7 @@
 }
 - (BOOL)deleteCheckSceneTable:(NSDictionary *)dic {
     if ([_db open]) {
-        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"sceneName"], dic[@"peopleName"], dic[@"peopleNumber"]];
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE from CheckScene WHERE CHECKSCENE = '%@' AND PEOPLENAME = '%@' AND PEOPLENUMBER = '%@'", dic[@"checkName"], dic[@"peopleName"], dic[@"peopleNumber"]];
         BOOL res = [_db executeUpdate:deleteSql];
         if (!res) {
             NSLog(@"删除CheckScene:%@出错", dic);
@@ -319,6 +320,35 @@
         [_db close];
     }
     return mutArray;
+}
+- (id)queryInCheckRecordTableForEachPeople:(NSMutableArray *)mutArray {
+    if ([_db open]) {
+        for (NSMutableDictionary *mutDic in mutArray) {
+            NSString * sql = [NSString stringWithFormat:@"SELECT PEOPLESTATE,count() AS A FROM CheckRecord WHERE CHECKSCENE = '%@' AND PEOPLENUMBER = '%@' GROUP BY PEOPLESTATE", mutDic[@"checkScene"], mutDic[@"peopleNumber"]];
+            FMResultSet * rs = [_db executeQuery:sql];
+            while ([rs next]) {
+                [mutDic setObject:[rs stringForColumn:@"A"] forKey:[rs stringForColumn:@"PEOPLESTATE"]];
+            }
+        }
+        [_db close];
+    }
+    return mutArray;
+}
+- (id)queryInCheckRecordTableForEachPeopleDetail:(NSMutableDictionary *)mutDic {
+    if ([_db open]) {
+        NSString * sql = [NSString stringWithFormat:@"SELECT PEOPLESTATE,CHECKTIME FROM CheckRecord WHERE CHECKSCENE = '%@' AND PEOPLENUMBER = '%@'", mutDic[@"checkScene"], mutDic[@"peopleNumber"]];
+        FMResultSet * rs = [_db executeQuery:sql];
+        NSMutableArray *mutArr = [NSMutableArray array];
+        while ([rs next]) {
+            NSMutableDictionary *mutDicTemp = [NSMutableDictionary dictionary];
+            [mutDicTemp setObject:[rs stringForColumn:@"CHECKTIME"] forKey:@"checkTime"];
+            [mutDicTemp setObject:[rs stringForColumn:@"PEOPLESTATE"] forKey:@"peopleState"];
+            [mutArr addObject:mutDicTemp];
+        }
+        [mutDic setObject:mutArr forKey:@"checkDetail"];
+        [_db close];
+    }
+    return mutDic;
 }
 - (id)queryInCheckRecordTableForEachTime:(NSString *)checkTime {
     NSMutableDictionary *checkRecord = [NSMutableDictionary dictionary];

@@ -7,6 +7,7 @@
 //
 
 #import "HRSceneStatisticViewController.h"
+#import "HRScenePeopleStatisticViewController.h"
 #import "UILabel+FlickerNumber.h"
 #import "HRFMDB.h"
 @interface HRSceneStatisticViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -18,11 +19,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *labAbsentRate;
 @property (nonatomic, strong) UIButton *btnAbsentRate;
 
+//签到状态数组
+@property (nonatomic, strong) NSMutableArray *mutArrPeoples;
 @end
 
 @implementation HRSceneStatisticViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = _dicScene[@"checkScene"];
     
     NSString *stringNumber0 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScene[@"0"] floatValue]/([_dicScene[@"0"] floatValue]+[_dicScene[@"1"] floatValue]+[_dicScene[@"2"] floatValue])];
     NSString *stringNumber1 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScene[@"1"] floatValue]/([_dicScene[@"0"] floatValue]+[_dicScene[@"1"] floatValue]+[_dicScene[@"2"] floatValue])];
@@ -50,6 +55,10 @@
     _labLateRate.textColor = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
     [_labAbsentRate dd_setNumber:@([stringNumber2 floatValue]) format:@"%@%%" formatter:nil];
     _labAbsentRate.textColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
+    
+    _mutArrPeoples = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:_dicScene[@"checkScene"]];
+    _mutArrPeoples = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachPeople:_mutArrPeoples];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -58,21 +67,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[HRScenePeopleStatisticViewController class]]) {
+        HRScenePeopleStatisticViewController *hrspsvc = segue.destinationViewController;
+        hrspsvc.mutDicPeople= sender;
+    }
 }
-*/
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return _mutArrPeoples.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScenePeopleCell" forIndexPath:indexPath];
+    ((UILabel *)[cell viewWithTag:1000]).text = _mutArrPeoples[indexPath.row][@"peopleName"];
+    if (_mutArrPeoples[indexPath.row][@"0"])
+        ((UILabel *)[cell viewWithTag:1001]).text = [NSString stringWithFormat:@"%@次",_mutArrPeoples[indexPath.row][@"0"]];
+    else
+        ((UILabel *)[cell viewWithTag:1001]).text = @"0次";
+    if (_mutArrPeoples[indexPath.row][@"1"])
+        ((UILabel *)[cell viewWithTag:1002]).text = [NSString stringWithFormat:@"%@次",_mutArrPeoples[indexPath.row][@"1"]];
+    else
+        ((UILabel *)[cell viewWithTag:1002]).text = @"0次";
+    if (_mutArrPeoples[indexPath.row][@"2"])
+        ((UILabel *)[cell viewWithTag:1003]).text = [NSString stringWithFormat:@"%@次",_mutArrPeoples[indexPath.row][@"2"]];
+    else
+        ((UILabel *)[cell viewWithTag:1003]).text = @"0次";
     return cell;
 }
 #pragma mark - UITableViewDelegate
@@ -81,6 +105,6 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"ScenePeopleStatisticSegue" sender:nil];
+    [self performSegueWithIdentifier:@"ScenePeopleStatisticSegue" sender:_mutArrPeoples[indexPath.row]];
 }
 @end

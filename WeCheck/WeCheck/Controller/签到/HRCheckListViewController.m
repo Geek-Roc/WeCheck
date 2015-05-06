@@ -288,16 +288,17 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
         NSLog(@"未找到小伙伴");
     } else {
         NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
-    }
-    if (!_mutArrPeoples) {
-        NSMutableArray *mutArr = [NSMutableArray array];
-        for (CLBeacon *existingBeacon in filteredBeacons) {
-            NSString *identifier = [NSString stringWithFormat:@"%@%@", existingBeacon.major, existingBeacon.minor];
-            [mutArr addObject:identifier];
+        if (!_mutArrPeoples) {
+            NSMutableArray *mutArr = [NSMutableArray array];
+            for (CLBeacon *existingBeacon in filteredBeacons) {
+                NSString *identifier = [NSString stringWithFormat:@"%@%@", existingBeacon.major, existingBeacon.minor];
+                [mutArr addObject:identifier];
+            }
+            NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:mutArr];
+            _mutArrPeoples = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:sceneName];
         }
-        NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:mutArr];
-        _mutArrPeoples = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:sceneName];
     }
+    
 //    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
 //    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
 //    NSArray *reloadedRows = nil;

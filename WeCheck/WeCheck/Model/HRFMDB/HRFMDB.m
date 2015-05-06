@@ -174,7 +174,7 @@
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
-            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"CHECKSCENE"];
+            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
             [peopleArr addObject:dicPeople];
         }
         [_db close];
@@ -195,7 +195,7 @@
             NSMutableDictionary *dicPeople = [NSMutableDictionary dictionary];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENAME"] forKey:@"peopleName"];
             [dicPeople setObject:[rs stringForColumn:@"PEOPLENUMBER"] forKey:@"peopleNumber"];
-            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"CHECKSCENE"];
+            [dicPeople setObject:[rs stringForColumn:@"CHECKSCENE"] forKey:@"checkScene"];
             [peopleArr addObject:dicPeople];
         }
         [_db close];

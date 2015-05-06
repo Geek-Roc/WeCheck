@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
 @property (nonatomic, unsafe_unretained) void *operationContext;
 //签到人员
 @property (nonatomic, strong) NSArray *findBeacons;
-
+@property (nonatomic, strong) NSMutableArray *mutArrPeoples;
 @end
 
 @implementation HRCheckListViewController
@@ -144,7 +144,6 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     
     return indexPaths;
 }
-
 - (NSArray *)indexPathsOfInsertedBeacons:(NSArray *)beacons
 {
     NSMutableArray *indexPaths = nil;
@@ -169,7 +168,6 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     
     return indexPaths;
 }
-
 - (NSArray *)indexPathsForBeacons:(NSArray *)beacons
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
@@ -179,7 +177,6 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     
     return indexPaths;
 }
-
 - (NSArray *)filteredBeacons:(NSArray *)beacons
 {
     // Filters duplicate beacons out; this may happen temporarily if the originating device changes its Bluetooth id
@@ -188,7 +185,7 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     NSMutableSet *lookup = [[NSMutableSet alloc] init];
     for (int index = 0; index < [beacons count]; index++) {
         CLBeacon *curr = [beacons objectAtIndex:index];
-        NSString *identifier = [NSString stringWithFormat:@"%@/%@", curr.major, curr.minor];
+        NSString *identifier = [NSString stringWithFormat:@"%@%@", curr.major, curr.minor];
         
         // this is very fast constant time lookup in a hash table
         if ([lookup containsObject:identifier]) {
@@ -211,8 +208,19 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FindCheckCell" forIndexPath:indexPath];
     [((UIImageView *)[cell viewWithTag:1001]) setImage:[UIImage imageNamed:[NSString stringWithFormat:@"hrhead-%ld.jpg", (long)indexPath.row]]];
-    ((UIImageView *)[cell viewWithTag:1001]).layer.cornerRadius = 35;
-    ((UIImageView *)[cell viewWithTag:1001]).clipsToBounds = YES;
+    
+    __block NSString *stringName;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        for (NSDictionary *dic in _mutArrPeoples) {
+            if ([dic[@"peopleNumber"] isEqualToString:[NSString stringWithFormat:@"%@%@", ((CLBeacon *)_findBeacons[indexPath.row]).major, ((CLBeacon *)_findBeacons[indexPath.row]).minor]]) {
+                stringName = dic[@"peopleName"];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ((UILabel *)[cell viewWithTag:1002]).text = stringName;
+        });
+    });
     return cell;
 }
 //定义每个UICollectionView 的大小
@@ -281,7 +289,15 @@ typedef NS_ENUM(NSUInteger, NTSectionType) {
     } else {
         NSLog(@"找到%lu个小伙伴", (unsigned long)[filteredBeacons count]);
     }
-    
+    if (!_mutArrPeoples) {
+        NSMutableArray *mutArr = [NSMutableArray array];
+        for (CLBeacon *existingBeacon in filteredBeacons) {
+            NSString *identifier = [NSString stringWithFormat:@"%@%@", existingBeacon.major, existingBeacon.minor];
+            [mutArr addObject:identifier];
+        }
+        NSString *sceneName = [[HRFMDB shareFMDBManager] queryInCheckSceneTableCheckScene:mutArr];
+        _mutArrPeoples = [[HRFMDB shareFMDBManager] queryInCheckSceneTable:sceneName];
+    }
 //    NSArray *deletedRows = [self indexPathsOfRemovedBeacons:filteredBeacons];
 //    NSArray *insertedRows = [self indexPathsOfInsertedBeacons:filteredBeacons];
 //    NSArray *reloadedRows = nil;

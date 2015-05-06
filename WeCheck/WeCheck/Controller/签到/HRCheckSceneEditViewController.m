@@ -55,6 +55,10 @@
     // Pass the selected object to the new view controller.
 }
 
+- (IBAction)btnImportSceneAction:(UIBarButtonItem *)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"使用说明" message:@"在QQ、浏览器中打开xls文件，选择其他应用使用WeCheck打开" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+}
 #pragma mark - function
 - (IBAction)btnAddSceneAction:(UIButton *)sender {
     if ([_tfSceneName.text isEqualToString:@""]) {

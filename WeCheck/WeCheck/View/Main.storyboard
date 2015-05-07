@@ -1580,7 +1580,7 @@
         <!--修改密码-->
         <scene sceneID="8YM-HW-Qis">
             <objects>
-                <viewController id="Rer-bZ-yE2" customClass="MyCheckInfoChangePasswordViewController" sceneMemberID="viewController">
+                <viewController id="Rer-bZ-yE2" customClass="HRMyCheckInfoChangePasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ovL-aE-ptN"/>
                         <viewControllerLayoutGuide type="bottom" id="dkd-pi-fz4"/>
@@ -1838,7 +1838,7 @@
         <!--重设密码-->
         <scene sceneID="56W-CZ-WNi">
             <objects>
-                <viewController id="WuE-ec-Lz0" customClass="MyCheckInfoResetPasswordViewController" sceneMemberID="viewController">
+                <viewController id="WuE-ec-Lz0" customClass="HRMyCheckInfoResetPasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yjA-Nu-L2l"/>
                         <viewControllerLayoutGuide type="bottom" id="fFJ-he-4w5"/>

@@ -25,7 +25,25 @@
 @end
 
 @implementation HRStatisticsViewController
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        _slices = [NSMutableArray array];
+        _dicScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
+        [_slices addObject:@([_dicScenes[@"0"] integerValue])];
+        [_slices addObject:@([_dicScenes[@"1"] integerValue])];
+        [_slices addObject:@([_dicScenes[@"2"] integerValue])];
+        _stringNumber0 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"0"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+        _stringNumber1 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"1"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+        _stringNumber2 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"2"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
+        _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachScene];
+        _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachSceneDetail:_mutArrEachScenes];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableViewStatistics reloadData];
+        });
+    });
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -35,16 +53,6 @@
                    [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],/*橙色*/
                    [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],/*红色*/
                    [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1]/*灰色*/,nil];
-    _slices = [NSMutableArray array];
-    _dicScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
-    [_slices addObject:@([_dicScenes[@"0"] integerValue])];
-    [_slices addObject:@([_dicScenes[@"1"] integerValue])];
-    [_slices addObject:@([_dicScenes[@"2"] integerValue])];
-    _stringNumber0 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"0"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
-    _stringNumber1 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"1"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
-    _stringNumber2 = [NSString stringWithFormat:@"%0.2f", 100*[_dicScenes[@"2"] floatValue]/([_dicScenes[@"0"] floatValue]+[_dicScenes[@"1"] floatValue]+[_dicScenes[@"2"] floatValue])];
-    _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachScene];
-    _mutArrEachScenes = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachSceneDetail:_mutArrEachScenes];
 }
 
 - (void)didReceiveMemoryWarning {

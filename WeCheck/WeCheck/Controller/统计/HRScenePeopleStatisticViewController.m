@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = _mutDicPeople[@"peopleName"];
     _mutDicPeople = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachPeopleDetail:_mutDicPeople];
 }
 

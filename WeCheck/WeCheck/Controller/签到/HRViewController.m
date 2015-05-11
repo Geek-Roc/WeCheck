@@ -222,6 +222,23 @@ static NSString *const CIdentifier = @"CheckIdentifier";
     [[HRFMDB shareFMDBManager] deleteCheckRecordTable:_mutArrSceneProbability[indexPath.row]];
     [_mutArrSceneProbability removeObjectAtIndex:indexPath.row];
     [_tableViewRecentlyStatistic deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForAllScene];
+        _stringNumber = [NSString stringWithFormat:@"%0.4f", [dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])];
+        _dicCheckInfo = [[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckInfo"];
+        _mutArrScenes = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInKeyValueTable:@"HRCheckSceneList"]];
+        _mutArrSceneProbability = [NSMutableArray arrayWithArray:[[HRFMDB shareFMDBManager] queryInCheckRecordTable]];
+        for (NSMutableDictionary *mutDic in _mutArrSceneProbability) {
+            [mutDic setObject:[[HRFMDB shareFMDBManager] queryInCheckSceneTableNum:mutDic[@"checkScene"]] forKey:@"sceneNumber"];
+            NSDictionary *dic = [[HRFMDB shareFMDBManager] queryInCheckRecordTableForEachTime:mutDic[@"checkTime"]];
+            [mutDic setObject:[NSString stringWithFormat:@"%0.2f", 100*[dic[@"0"] floatValue]/([dic[@"0"] floatValue]+[dic[@"1"] floatValue]+[dic[@"2"] floatValue])] forKey:@"checkProbability"];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_lbStatisticNumber dd_setNumber:@([_stringNumber floatValue]*100) format:@"%@%%" formatter:nil];
+            [_tableViewRecentlyStatistic reloadData];
+        });
+    });
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _mutArrSceneProbability.count;

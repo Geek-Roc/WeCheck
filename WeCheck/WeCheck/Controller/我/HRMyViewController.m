@@ -57,7 +57,7 @@
         _HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:_HUD];
         [_HUD show:YES];
-        
+        //服务器上检索文件
         AVQuery *query1 = [AVQuery queryWithClassName:@"WeCheckDBFile"];
         [query1 whereKey:@"applicantName" equalTo:currentUser.username];
         [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -72,11 +72,12 @@
                 //dbPath： 数据库路径，在Document中。
                 NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
                 AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"wecheck-%@.db", currentUser.username] contentsAtPath:dbPath];
-                
+                //旧文件
                 AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
                 [objects[0] setObject:file forKey:@"applicantResumeFile"];
                 [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     NSLog(@"1");
+                    //删除云端旧文件
                     [oldFile deleteInBackground];
                     [_HUD removeFromSuperview];
                 }];
@@ -88,6 +89,7 @@
         }];
         NSLog(@"同步");
     } else {
+        //未登录跳转登录页面
         [self performSegueWithIdentifier:@"MyCheckInfoSyncLoginSegue" sender:nil];
     }
 }

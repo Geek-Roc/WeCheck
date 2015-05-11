@@ -110,7 +110,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未到率：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-qq-YoK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="缺席率：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-qq-YoK">
                                 <rect key="frame" x="15" y="130" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -724,7 +724,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000级00班" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6V-1a-r86">
-                                                    <rect key="frame" x="73" y="10" width="353" height="21"/>
+                                                    <rect key="frame" x="64" y="10" width="370" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="L0D-Mh-lnr"/>
                                                     </constraints>
@@ -733,14 +733,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="rCw-Ie-bwh">
-                                                    <rect key="frame" x="15" y="5" width="50" height="50"/>
+                                                    <rect key="frame" x="13" y="5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="GKN-zT-f1i"/>
                                                         <constraint firstAttribute="width" constant="50" id="pHP-8h-vnz"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总人数：50人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8o-B2-ntB">
-                                                    <rect key="frame" x="73" y="34" width="377" height="21"/>
+                                                    <rect key="frame" x="64" y="34" width="386" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="1zj-hC-T33"/>
                                                     </constraints>
@@ -771,17 +771,17 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CmY-C3-Jgp" firstAttribute="trailing" secondItem="7lv-AM-TbW" secondAttribute="trailingMargin" id="8mW-yt-3vB"/>
-                                                <constraint firstItem="o6V-1a-r86" firstAttribute="leading" secondItem="rCw-Ie-bwh" secondAttribute="trailing" constant="8" id="Cco-vC-Lh8"/>
+                                                <constraint firstItem="o6V-1a-r86" firstAttribute="leading" secondItem="rCw-Ie-bwh" secondAttribute="trailing" constant="1" id="Cco-vC-Lh8"/>
                                                 <constraint firstItem="rCw-Ie-bwh" firstAttribute="top" secondItem="7lv-AM-TbW" secondAttribute="top" constant="5" id="Dq0-2r-K28"/>
                                                 <constraint firstItem="CmY-C3-Jgp" firstAttribute="top" secondItem="7lv-AM-TbW" secondAttribute="topMargin" constant="2" id="K1c-Ch-K9t"/>
                                                 <constraint firstItem="d8o-B2-ntB" firstAttribute="top" secondItem="CmY-C3-Jgp" secondAttribute="bottom" constant="3" id="KnB-Oz-4u9"/>
-                                                <constraint firstItem="rCw-Ie-bwh" firstAttribute="leading" secondItem="7lv-AM-TbW" secondAttribute="leading" constant="15" id="Pnu-Q2-ZFB"/>
+                                                <constraint firstItem="rCw-Ie-bwh" firstAttribute="leading" secondItem="7lv-AM-TbW" secondAttribute="leading" constant="13" id="Pnu-Q2-ZFB"/>
                                                 <constraint firstItem="o6V-1a-r86" firstAttribute="top" secondItem="7lv-AM-TbW" secondAttribute="top" constant="10" id="jBP-aC-ET9"/>
                                                 <constraint firstItem="aBk-lk-i6o" firstAttribute="leading" secondItem="d8o-B2-ntB" secondAttribute="trailing" constant="37" id="oOz-eA-qgj"/>
                                                 <constraint firstItem="aBk-lk-i6o" firstAttribute="top" secondItem="7lv-AM-TbW" secondAttribute="top" constant="34" id="s3T-M5-GJ1"/>
                                                 <constraint firstAttribute="trailing" secondItem="aBk-lk-i6o" secondAttribute="trailing" constant="8" id="sFp-Td-hP9"/>
-                                                <constraint firstItem="d8o-B2-ntB" firstAttribute="leading" secondItem="rCw-Ie-bwh" secondAttribute="trailing" constant="8" id="zTn-hA-LkN"/>
-                                                <constraint firstAttribute="trailing" secondItem="o6V-1a-r86" secondAttribute="trailing" constant="141" id="zeT-47-Mct"/>
+                                                <constraint firstItem="d8o-B2-ntB" firstAttribute="leading" secondItem="rCw-Ie-bwh" secondAttribute="trailing" constant="1" id="zTn-hA-LkN"/>
+                                                <constraint firstAttribute="trailing" secondItem="o6V-1a-r86" secondAttribute="trailing" constant="133" id="zeT-47-Mct"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1185,8 +1185,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQC-xB-fRC" id="xBt-zz-5Km">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="d8o-dD-TII">
+                                                    <rect key="frame" x="13" y="5" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="b1n-Uv-V1B"/>
+                                                        <constraint firstAttribute="width" constant="50" id="ui6-SP-xCS"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000级00班" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-s3-NzX">
-                                                    <rect key="frame" x="73" y="10" width="353" height="21"/>
+                                                    <rect key="frame" x="64" y="10" width="370" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zfs-Ed-RV9"/>
                                                     </constraints>
@@ -1194,15 +1201,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check-logo" translatesAutoresizingMaskIntoConstraints="NO" id="d8o-dD-TII">
-                                                    <rect key="frame" x="15" y="5" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="b1n-Uv-V1B"/>
-                                                        <constraint firstAttribute="width" constant="50" id="ui6-SP-xCS"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总人数：50人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5D-g6-xGy">
-                                                    <rect key="frame" x="73" y="34" width="486" height="21"/>
+                                                    <rect key="frame" x="64" y="34" width="495" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="nai-cx-qRg"/>
                                                     </constraints>
@@ -1222,16 +1222,16 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="d8o-dD-TII" firstAttribute="leading" secondItem="xBt-zz-5Km" secondAttribute="leading" constant="15" id="3Wl-ZR-xbX"/>
+                                                <constraint firstItem="d8o-dD-TII" firstAttribute="leading" secondItem="xBt-zz-5Km" secondAttribute="leading" constant="13" id="3Wl-ZR-xbX"/>
                                                 <constraint firstItem="UTJ-s3-NzX" firstAttribute="top" secondItem="xBt-zz-5Km" secondAttribute="top" constant="10" id="NYc-Ch-MMz"/>
                                                 <constraint firstItem="l5D-g6-xGy" firstAttribute="top" secondItem="aAW-ba-nQo" secondAttribute="bottom" constant="-6" id="SKG-kT-jim"/>
                                                 <constraint firstItem="aAW-ba-nQo" firstAttribute="top" secondItem="xBt-zz-5Km" secondAttribute="topMargin" constant="11" id="bS0-Mn-v4i"/>
                                                 <constraint firstAttribute="trailing" secondItem="l5D-g6-xGy" secondAttribute="trailing" constant="8" id="d6d-43-Cp0"/>
-                                                <constraint firstAttribute="trailing" secondItem="UTJ-s3-NzX" secondAttribute="trailing" constant="141" id="dF3-ow-ytD"/>
-                                                <constraint firstItem="l5D-g6-xGy" firstAttribute="leading" secondItem="d8o-dD-TII" secondAttribute="trailing" constant="8" id="hk8-zI-vKa"/>
+                                                <constraint firstAttribute="trailing" secondItem="UTJ-s3-NzX" secondAttribute="trailing" constant="133" id="dF3-ow-ytD"/>
+                                                <constraint firstItem="l5D-g6-xGy" firstAttribute="leading" secondItem="d8o-dD-TII" secondAttribute="trailing" constant="1" id="hk8-zI-vKa"/>
                                                 <constraint firstItem="d8o-dD-TII" firstAttribute="top" secondItem="xBt-zz-5Km" secondAttribute="top" constant="5" id="k1S-F1-uEl"/>
                                                 <constraint firstItem="aAW-ba-nQo" firstAttribute="trailing" secondItem="xBt-zz-5Km" secondAttribute="trailingMargin" id="nzx-QA-8fP"/>
-                                                <constraint firstItem="UTJ-s3-NzX" firstAttribute="leading" secondItem="d8o-dD-TII" secondAttribute="trailing" constant="8" id="zac-0i-Ymk"/>
+                                                <constraint firstItem="UTJ-s3-NzX" firstAttribute="leading" secondItem="d8o-dD-TII" secondAttribute="trailing" constant="1" id="zac-0i-Ymk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

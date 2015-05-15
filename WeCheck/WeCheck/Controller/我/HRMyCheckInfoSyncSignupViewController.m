@@ -61,6 +61,16 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [_HUD removeFromSuperview];
         if (succeeded) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [paths objectAtIndex:0];
+            //dbPath： 数据库路径，在Document中。
+            NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+            AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"wecheck-%@.db", _tfRegisteName.text] contentsAtPath:dbPath];
+            
+            AVObject *WeCheckDBFile = [AVObject objectWithClassName:@"WeCheckDBFile"];
+            [WeCheckDBFile setObject:_tfRegisteName.text forKey:@"applicantName"];
+            [WeCheckDBFile setObject:file         forKey:@"applicantResumeFile"];
+            [WeCheckDBFile saveInBackground];
             [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注册失败" message:error.userInfo[@"error"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];

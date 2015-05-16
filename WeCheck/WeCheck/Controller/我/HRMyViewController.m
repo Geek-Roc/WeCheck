@@ -63,25 +63,26 @@
         [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
                 // 检索成功
-                NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-                AVObject *WeCheckDBFile = [AVObject objectWithClassName:@"WeCheckDBFile"];
-                [WeCheckDBFile setObject:currentUser.username forKey:@"applicantName"];
-                
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString *documentDirectory = [paths objectAtIndex:0];
-                //dbPath： 数据库路径，在Document中。
-                NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
-                AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"wecheck-%@.db", currentUser.username] contentsAtPath:dbPath];
-                //旧文件
-                AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
-                [objects[0] setObject:file forKey:@"applicantResumeFile"];
-                [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    NSLog(@"1");
-                    //删除云端旧文件
-                    [oldFile deleteInBackground];
-                    [_HUD removeFromSuperview];
-                }];
-                
+                if (objects.count != 0) {
+                    NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+                    AVObject *WeCheckDBFile = [AVObject objectWithClassName:@"WeCheckDBFile"];
+                    [WeCheckDBFile setObject:currentUser.username forKey:@"applicantName"];
+                    
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [paths objectAtIndex:0];
+                    //dbPath： 数据库路径，在Document中。
+                    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"wecheck.db"];
+                    AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"wecheck-%@.db", currentUser.username] contentsAtPath:dbPath];
+                    //旧文件
+                    AVFile *oldFile = [objects[0] objectForKey:@"applicantResumeFile"];
+                    [objects[0] setObject:file forKey:@"applicantResumeFile"];
+                    [objects[0] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        NSLog(@"1");
+                        //删除云端旧文件
+                        [oldFile deleteInBackground];
+                        [_HUD removeFromSuperview];
+                    }];
+                }
             } else {
                 // 输出错误信息
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
